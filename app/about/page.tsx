@@ -1,78 +1,74 @@
 "use client";
 
-import { motion, useScroll, useTransform } from "framer-motion";
-import { useRef } from "react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-
-const TIMELINE = [
-  { year: "2023", title: "THE SPARK", desc: "The idea was simple: Seeduwa needed a place that wasn't just a 'Kade'. It needed a Headquarters. A place for petrolheads, foodies, and night owls." },
-  { year: "2024", title: "BREAKING GROUND", desc: "We took an old structure near the Airport Road and stripped it to the bone. Exposed brick, raw steel, dark asphalt. The 'Neo-Brutalist' identity was born." },
-  { year: "NOW", title: "ONLINE", desc: "Road House isn't just a restaurant. It's a culture. From the 'Wolf Pack' community to the 'Asphalt' grills, we are defining the new standard." },
-];
+import { motion } from "framer-motion";
 
 export default function AboutPage() {
-  const containerRef = useRef(null);
-  const { scrollYProgress } = useScroll({ target: containerRef });
-  const lineHeight = useTransform(scrollYProgress, [0, 1], ["0%", "100%"]);
-
   return (
     <div className="min-h-screen bg-[#050505]">
       <Navbar />
       
-      {/* HEADER */}
+      {/* HERO SECTION */}
       <section className="h-[60vh] flex items-center justify-center relative overflow-hidden">
-         <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=2000&auto=format&fit=crop')] bg-cover bg-center opacity-20" />
-         <h1 className="relative z-10 text-[12vw] font-[family-name:var(--font-blackops)] text-white text-center leading-none mix-blend-difference">
-            THE<br/><span className="text-[#ff5722]">ORIGIN</span>
-         </h1>
-      </section>
-
-      {/* THE BLUEPRINT TIMELINE */}
-      <section ref={containerRef} className="py-24 max-w-4xl mx-auto px-6 relative">
+         {/* Background Image */}
+         <div className="absolute inset-0 bg-black/50 z-10" />
+         <img 
+            src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?q=80&w=2000&auto=format&fit=crop" 
+            className="absolute inset-0 w-full h-full object-cover opacity-40"
+            alt="Restaurant Interior"
+         />
          
-         {/* The "Road" Line */}
-         <div className="absolute left-6 md:left-1/2 top-0 bottom-0 w-[2px] bg-white/10 -translate-x-1/2">
-            <motion.div 
-              style={{ height: lineHeight }} 
-              className="w-full bg-[#ff5722] shadow-[0_0_15px_#ff5722]" 
-            />
+         <div className="relative z-20 text-center px-4">
+            <h1 className="text-6xl md:text-8xl font-[family-name:var(--font-blackops)] text-white mb-4">
+               COMING <span className="text-[#ff5722]">SOON</span>
+            </h1>
+            <p className="font-mono text-xl text-neutral-300 tracking-widest">DECEMBER 2025</p>
          </div>
-
-         <div className="space-y-32">
-            {TIMELINE.map((item, i) => (
-               <div key={i} className={`flex flex-col md:flex-row gap-8 items-center ${i % 2 === 0 ? "md:flex-row-reverse" : ""}`}>
-                  
-                  {/* Content Box */}
-                  <motion.div 
-                    initial={{ opacity: 0, y: 50 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.8 }}
-                    className="flex-1 bg-white/5 border border-white/10 p-8 rounded-lg relative hover:border-[#ff5722] transition-colors group"
-                  >
-                     <span className="absolute -top-4 -right-4 text-6xl font-[family-name:var(--font-blackops)] text-white/5 group-hover:text-[#ff5722]/20 transition-colors">
-                        {item.year}
-                     </span>
-                     <h3 className="text-2xl font-[family-name:var(--font-bebas)] text-white mb-4 tracking-wider">{item.title}</h3>
-                     <p className="font-mono text-neutral-400 text-sm leading-relaxed">{item.desc}</p>
-                  </motion.div>
-
-                  {/* Center Dot */}
-                  <div className="w-4 h-4 rounded-full bg-[#050505] border-2 border-[#ff5722] relative z-10 shadow-[0_0_10px_#ff5722]" />
-
-                  {/* Empty space for alignment */}
-                  <div className="flex-1 hidden md:block" />
-               </div>
-            ))}
-         </div>
-
       </section>
 
-      {/* THE MANIFESTO */}
-      <section className="py-24 bg-[#ff5722] text-black text-center">
+      {/* THE VISION SECTION */}
+      <section className="py-24 max-w-4xl mx-auto px-6">
+         <div className="flex flex-col md:flex-row gap-12 items-center">
+            
+            <div className="w-full md:w-1/2">
+               <h2 className="text-4xl font-[family-name:var(--font-bebas)] text-white mb-6">
+                  BRINGING PREMIUM FLAVORS TO <span className="text-[#ff5722]">SEEDUWA</span>
+               </h2>
+               <p className="text-neutral-400 leading-relaxed mb-6 font-sans">
+                  Road House isn't just another restaurant. It's a brand new culinary experience coming to Kotugoda Road. 
+                  We are building a space where high-quality ingredients meet a relaxed, industrial atmosphere.
+               </p>
+               <p className="text-neutral-400 leading-relaxed font-sans">
+                  Whether you are looking for a heavy BBQ dinner, a quick coffee stop, or a place to hang out with friends, 
+                  we are designing Road House to be your designated spot.
+               </p>
+            </div>
+
+            <div className="w-full md:w-1/2 grid grid-cols-2 gap-4">
+               <img 
+                 src="https://images.unsplash.com/photo-1555939594-58d7cb561ad1?q=80&w=800&auto=format&fit=crop" 
+                 className="rounded-lg mb-8"
+                 alt="Grill"
+               />
+               <img 
+                 src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?q=80&w=800&auto=format&fit=crop" 
+                 className="rounded-lg mt-8"
+                 alt="Cafe Vibes"
+               />
+            </div>
+
+         </div>
+      </section>
+
+      {/* LOCATION & INFO STRIP */}
+      <section className="py-20 bg-neutral-900 text-center">
          <div className="max-w-3xl mx-auto px-6">
-            <h2 className="text-4xl md:text-6xl font-[family-name:var(--font-bebas)] mb-6">WE DON'T SERVE FOOD.<br/>WE SERVE FUEL.</h2>
-            <p className="font-bold font-mono tracking-widest">SEEDUWA • SRI LANKA</p>
+            <h3 className="text-3xl font-[family-name:var(--font-bebas)] text-white mb-8">THE LOCATION</h3>
+            <p className="text-lg text-neutral-300 font-sans mb-8">
+               We are currently under construction at <span className="text-[#ff5722] font-bold">24 Kotugoda Rd, Seeduwa</span>. 
+               Get ready for the grand opening.
+            </p>
          </div>
       </section>
 
