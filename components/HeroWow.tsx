@@ -3,7 +3,6 @@
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
 import Link from "next/link";
-import { ArrowDown } from "lucide-react";
 
 export default function HeroWow() {
   const containerRef = useRef(null);
@@ -12,88 +11,65 @@ export default function HeroWow() {
     offset: ["start start", "end start"],
   });
 
-  // Parallax: Text moves slower than video
+  // Parallax effect for the text
   const y = useTransform(scrollYProgress, [0, 1], ["0%", "50%"]);
   const opacity = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
 
   return (
     <section ref={containerRef} className="relative h-screen w-full bg-black overflow-hidden flex flex-col items-center justify-center">
       
-      {/* 1. THE VIDEO LAYER (The Fire) */}
+      {/* 1. BACKGROUND IMAGE (Grill/Salmon) */}
       <div className="absolute inset-0 z-0">
-         {/* Free high-quality fire loop */}
-         <video 
-            autoPlay 
-            loop 
-            muted 
-            playsInline
-            className="w-full h-full object-cover opacity-80"
-         >
-            <source src="https://www.pexels.com/download/video/3296402/" type="video/mp4" />
-         </video>
+         <img 
+            src="https://images.unsplash.com/photo-1594212699903-ec8a3eca50f5?q=80&w=2500&auto=format&fit=crop"
+            alt="Dark Grill Background"
+            className="w-full h-full object-cover opacity-50"
+         />
+         {/* Dark Gradient Overlay */}
+         <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/40 to-[#050505]" />
       </div>
 
-      {/* 2. THE MASK LAYER (The Magic) */}
-      {/* mix-blend-mode: multiply logic:
-         - White pixels (The Text) become Transparent (revealing the video).
-         - Black pixels (The Background) stay Black.
-      */}
+      {/* 2. THE MASSIVE TEXT (Knockout Effect) */}
+      {/* We use mix-blend-multiply to make the text see-through to the background image */}
       <div className="absolute inset-0 z-10 bg-black mix-blend-multiply select-none flex flex-col items-center justify-center">
-         <motion.div style={{ y, opacity }} className="text-center w-full">
-            
-            {/* The Text must be WHITE for the video to show through */}
-            <h1 className="text-[25vw] leading-[0.8] font-[family-name:var(--font-blackops)] text-white tracking-tighter uppercase">
+         <motion.div style={{ y, opacity }} className="text-center w-full scale-y-110">
+            <h1 className="text-[28vw] leading-[0.75] font-[family-name:var(--font-blackops)] text-white tracking-tighter uppercase mb-0">
                ROAD
             </h1>
-            <h1 className="text-[25vw] leading-[0.8] font-[family-name:var(--font-blackops)] text-white tracking-tighter uppercase">
+            <h1 className="text-[28vw] leading-[0.75] font-[family-name:var(--font-blackops)] text-white tracking-tighter uppercase">
                HOUSE
             </h1>
-
          </motion.div>
       </div>
 
-      {/* 3. THE FLOATING LOGO & CONTENT (Sits on top of everything) */}
+      {/* 3. THE FLOATING NEON LOGO (No Circle, No Subtext) */}
       <div className="absolute inset-0 z-20 flex flex-col items-center justify-center pointer-events-none">
          
-         {/* Center Badge */}
+         {/* The Logo itself */}
          <motion.div 
-            initial={{ scale: 0, rotate: -180 }}
-            animate={{ scale: 1, rotate: 0 }}
-            transition={{ duration: 1.5, type: "spring" }}
-            className="w-40 h-40 md:w-64 md:h-64 bg-black rounded-full border-4 border-[#ff5722] p-2 shadow-[0_0_100px_rgba(255,87,34,0.5)] flex items-center justify-center pointer-events-auto"
+            initial={{ scale: 0, opacity: 0 }}
+            animate={{ scale: 1, opacity: 1 }}
+            transition={{ duration: 1, ease: "circOut", delay: 0.5 }}
+            className="w-64 h-auto pointer-events-auto"
          >
+            {/* The Blue Neon Logo Image */}
             <img 
                src="/logo-full.png" 
-               alt="Road House" 
-               className="w-full h-full object-contain drop-shadow-[0_0_20px_#ff5722]"
+               alt="Road House Neon Logo" 
+               className="w-full h-full object-contain drop-shadow-[0_0_30px_#ff5722] filter brightness-125"
             />
          </motion.div>
 
-         {/* Bottom Action Area */}
-         <div className="absolute bottom-12 w-full flex flex-col items-center gap-6 pointer-events-auto">
-             
-             <div className="flex items-center gap-4">
-                <div className="h-[1px] w-12 bg-white/50" />
-                <span className="text-white font-mono text-xs tracking-[0.5em] uppercase">
-                   Est. 2025 • Seeduwa HQ
-                </span>
-                <div className="h-[1px] w-12 bg-white/50" />
-             </div>
-
+         {/* Bottom Action Button */}
+         <div className="absolute bottom-20 w-full flex flex-col items-center pointer-events-auto">
              <Link 
                href="/menu"
-               className="group bg-[#ff5722] text-black font-black font-[family-name:var(--font-bebas)] text-xl px-12 py-4 tracking-widest skew-x-[-10deg] hover:bg-white transition-colors shadow-[0_0_30px_rgba(255,87,34,0.4)]"
+               className="group relative bg-[#ff5722] text-black font-black font-[family-name:var(--font-bebas)] text-xl px-12 py-4 tracking-widest skew-x-[-10deg] hover:bg-white transition-all shadow-[0_0_30px_rgba(255,87,34,0.5)] hover:shadow-[0_0_50px_rgba(255,255,255,0.6)] overflow-hidden"
              >
-                <span className="skew-x-[10deg] block">ENTER THE GRILL</span>
+                {/* Light Sweep Effect */}
+                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/40 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700 ease-in-out z-10" />
+                <span className="skew-x-[10deg] block relative z-20">ENTER THE GRILL</span>
              </Link>
-
-             <motion.div 
-                animate={{ y: [0, 10, 0] }}
-                transition={{ repeat: Infinity, duration: 1.5 }}
-                className="mt-4 text-white/50"
-             >
-                <ArrowDown size={32} />
-             </motion.div>
          </div>
       </div>
 
