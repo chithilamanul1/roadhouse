@@ -21,7 +21,7 @@ export default function AmbientBackground() {
       <div 
         className="absolute inset-0 opacity-[0.05]"
         style={{
-            backgroundImage: `url("https://i.ibb.co/fdVp3GPV/abstract-blur-coffee-shop-cafe-interior.jpg")`,
+            backgroundImage: `url("https://images.pexels.com/photos/67468/pexels-photo-67468.jpeg")`,
         }}
       />
     </div>
