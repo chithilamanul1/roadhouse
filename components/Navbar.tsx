@@ -8,11 +8,11 @@ import { Menu, X } from "lucide-react";
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
 
-  const navLinks = [
-    { name: "HOME", href: "/" },
+const navLinks = [
     { name: "MENU", href: "/menu" },
-    { name: "OFFERS", href: "/offers" },
-    { name: "LOCATION", href: "/location" },
+    { name: "THE STORY", href: "/about" }, // "About Us" re-branded
+    { name: "THE LOGS", href: "/blog" },   // "Blog" re-branded
+    { name: "CONTACT", href: "/contact" },
   ];
 
   return (
