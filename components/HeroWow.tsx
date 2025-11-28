@@ -29,7 +29,7 @@ export default function HeroWow() {
             playsInline
             className="w-full h-full object-cover opacity-80"
          >
-            <source src="https://videos.pexels.com/video-files/3195598/3195598-uhd_2560_1440_25fps.mp4" type="video/mp4" />
+            <source src="https://www.pexels.com/download/video/3296402/" type="video/mp4" />
          </video>
       </div>
 
