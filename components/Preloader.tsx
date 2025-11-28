@@ -7,10 +7,9 @@ export default function Preloader() {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    // Simulate ignition sequence
     const timer = setTimeout(() => {
       setIsLoading(false);
-    }, 2500); // 2.5 seconds load time
+    }, 2800); 
 
     return () => clearTimeout(timer);
   }, []);
@@ -21,32 +20,43 @@ export default function Preloader() {
         <motion.div
           key="preloader"
           initial={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-          transition={{ duration: 0.5, ease: "easeInOut" }}
-          className="fixed inset-0 z-[9999] flex items-center justify-center bg-[#050505]"
+          exit={{ opacity: 0, y: -50 }}
+          transition={{ duration: 0.8, ease: "easeInOut" }}
+          className="fixed inset-0 z-[9999] flex flex-col items-center justify-center bg-[#050505]"
         >
-          {/* Ignition Text Effect */}
-          <div className="text-center">
-            <motion.h1
-              initial={{ opacity: 0 }}
-              animate={{ opacity: [0, 0.2, 1, 0.5, 1, 0.8, 1] }} // Flicker effect
-              transition={{ duration: 1.5, times: [0, 0.1, 0.2, 0.3, 0.4, 0.5, 1] }}
-              className="text-6xl md:text-9xl font-bebas text-[#e0e0e0] tracking-tighter"
-            >
-              ROAD HOUSE
-            </motion.h1>
-            
+          {/* Glowing Logo */}
+          <motion.div
+            initial={{ scale: 0.8, opacity: 0, filter: "blur(10px)" }}
+            animate={{ scale: 1, opacity: 1, filter: "blur(0px)" }}
+            transition={{ duration: 1.5, ease: "easeOut" }}
+            className="relative"
+          >
+            <div className="absolute inset-0 bg-[#ff5722] blur-[80px] opacity-20 animate-pulse" />
+            <img 
+              src="https://i.ibb.co/Jw4wdwxV/Gemini-Generated-Image-3e5orv3e5orv3e5o.png" 
+              alt="Loading"
+              className="h-40 w-auto relative z-10 drop-shadow-2xl"
+            />
+          </motion.div>
+
+          {/* Loading Bar */}
+          <div className="mt-12 w-64 h-1 bg-neutral-800 rounded-full overflow-hidden relative">
             <motion.div 
               initial={{ width: 0 }}
               animate={{ width: "100%" }}
-              transition={{ duration: 2, ease: "circOut" }}
-              className="h-1 bg-[#ff5722] mt-2 shadow-[0_0_15px_#ff5722]"
+              transition={{ duration: 2.5, ease: "easeInOut" }}
+              className="h-full bg-[#ff5722] shadow-[0_0_15px_#ff5722]"
             />
-            
-            <p className="mt-4 font-mono text-xs text-[#ff5722] animate-pulse">
-              INITIALIZING SYSTEMS...
-            </p>
           </div>
+          
+          <motion.p 
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.5 }}
+            className="mt-4 font-mono text-[10px] text-[#ff5722] tracking-[0.5em] uppercase"
+          >
+            Igniting Systems...
+          </motion.p>
         </motion.div>
       )}
     </AnimatePresence>
