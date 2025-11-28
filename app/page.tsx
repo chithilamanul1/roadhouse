@@ -1,14 +1,13 @@
 import HeroWow from "@/components/HeroWow";
 import InfiniteMarquee from "@/components/InfiniteMarquee";
 import FeaturedSpecials from "@/components/FeaturedSpecials";
+import InteractiveMenu from "@/components/InteractiveMenu"; // NEW
+import LocationSection from "@/components/LocationSection"; // Re-add location
 import Footer from "@/components/Footer";
-
-// We import MenuGrid from previous steps, but wrap it for visuals
-import MenuGrid from "@/components/MenuGrid"; 
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-[#050505]">
+    <div className="min-h-screen">
       
       {/* 1. Kinetic Hero */}
       <HeroWow />
@@ -18,19 +17,16 @@ export default function Home() {
         <InfiniteMarquee />
       </div>
 
-      {/* 3. The Highlight Reel (Horizontal Scroll) */}
+      {/* 3. The Interactive "favorites" list */}
+      <InteractiveMenu />
+
+      {/* 4. The Horizontal Specials Scroll */}
       <FeaturedSpecials />
 
-      {/* 4. The Full Grill (Grid) */}
-      <section className="py-20 relative">
-        <div className="max-w-7xl mx-auto px-6 mb-12 text-center">
-            <h2 className="text-4xl font-[family-name:var(--font-bebas)] text-white">THE FULL <span className="text-[#ff5722]">LINEUP</span></h2>
-            <p className="text-neutral-500 mt-2">Burgers • Grills • Rice • Juice</p>
-        </div>
-        <MenuGrid />
-      </section>
+      {/* 5. Location Map */}
+      <LocationSection />
 
-      {/* 5. Footer */}
+      {/* 6. Footer */}
       <Footer />
       
     </div>
