@@ -9,7 +9,7 @@ export default function AmbientBackground() {
 
       {/* 2. The Texture Image (Static, High Performance) */}
       <img 
-        src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=2000&auto=format&fit=crop"
+        src="https://i.ibb.co/fdVp3GPV/abstract-blur-coffee-shop-cafe-interior.jpg"
         alt="Background Texture"
         className="absolute inset-0 w-full h-full object-cover opacity-20 mix-blend-overlay"
       />
