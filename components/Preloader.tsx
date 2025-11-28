@@ -5,99 +5,110 @@ import { motion, AnimatePresence } from "framer-motion";
 
 export default function Preloader() {
   const [isLoading, setIsLoading] = useState(true);
+  const [fillPercent, setFillPercent] = useState(0);
 
   useEffect(() => {
-    // Total load time: 3 seconds
-    const timer = setTimeout(() => {
-      setIsLoading(false);
-    }, 3000);
+    // 1. Progress Simulation (Non-linear for realism)
+    const interval = setInterval(() => {
+      setFillPercent((prev) => {
+        if (prev >= 100) {
+          clearInterval(interval);
+          setTimeout(() => setIsLoading(false), 800); // Wait a bit after 100%
+          return 100;
+        }
+        // Randomize speed: fast at start, slow at end
+        const jump = Math.random() * 15; 
+        return Math.min(prev + jump, 100);
+      });
+    }, 200);
 
-    return () => clearTimeout(timer);
+    return () => clearInterval(interval);
   }, []);
-
-  // Generate 30 random particles for the "Convergence" effect
-  const particles = Array.from({ length: 30 }).map((_, i) => ({
-    id: i,
-    x: Math.random() * 1000 - 500, // Random start X
-    y: Math.random() * 1000 - 500, // Random start Y
-    duration: Math.random() * 1 + 0.5, // Random speed
-  }));
 
   return (
     <AnimatePresence mode="wait">
       {isLoading && (
         <motion.div
-          exit={{ y: "-100%" }}
-          transition={{ duration: 0.8, ease: [0.76, 0, 0.24, 1] }}
+          key="preloader-overlay"
+          exit={{ opacity: 0 }} // Fade out smoothly
+          transition={{ duration: 0.5 }}
           className="fixed inset-0 z-[9999] bg-[#050505] flex flex-col items-center justify-center overflow-hidden"
         >
-          {/* 1. THE PARTICLES (Flying In) */}
-          <div className="absolute inset-0 pointer-events-none flex items-center justify-center">
-            {particles.map((p) => (
-              <motion.div
-                key={p.id}
-                initial={{ x: p.x, y: p.y, opacity: 0, scale: 0 }}
-                animate={{ x: 0, y: 0, opacity: [0, 1, 0], scale: [0, 1.5, 0] }} // Fly to center and vanish
-                transition={{ duration: 1.5, ease: "easeIn", delay: 0.2 }}
-                className="absolute w-2 h-2 bg-[#ff5722] rounded-full blur-[1px]"
-              />
-            ))}
+          {/* BACKGROUND AMBIANCE (Subtle pulsing glow behind everything) */}
+          <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+             <motion.div 
+               animate={{ opacity: [0.1, 0.3, 0.1], scale: [1, 1.2, 1] }}
+               transition={{ duration: 4, repeat: Infinity }}
+               className="w-[500px] h-[500px] bg-[#ff5722] rounded-full blur-[150px] opacity-20"
+             />
           </div>
 
           <div className="relative z-10 flex flex-col items-center">
              
-             {/* 2. THE LOGO REVEAL (Liquid Fill Effect) */}
-             <div className="relative w-64 h-40 mb-8">
-               {/* Background Ghost (Faint outline) */}
+             {/* --- THE ADVANCED LIQUID LOGO --- */}
+             <div className="relative w-80 h-48 mb-10">
+               
+               {/* Layer 1: The "Empty" Container (Dark Ghost) */}
                <img 
                  src="/logo-full.png" 
                  alt="Logo Base"
-                 className="absolute inset-0 w-full h-full object-contain opacity-20 grayscale"
+                 className="absolute inset-0 w-full h-full object-contain opacity-20 grayscale brightness-50"
                />
-               
-               {/* The Liquid Fill Layer */}
-               <motion.div
-                 initial={{ height: "0%" }}
-                 animate={{ height: "100%" }}
-                 transition={{ duration: 2, ease: "easeInOut", delay: 0.5 }}
-                 className="absolute bottom-0 left-0 w-full overflow-hidden"
-                 style={{ filter: "drop-shadow(0 0 10px #ff5722)" }}
+
+               {/* Layer 2: The "Molten" Liquid Fill */}
+               {/* We use maskImage to clip the wave inside the logo text/shape */}
+               <div 
+                 className="absolute inset-0 w-full h-full"
+                 style={{
+                    maskImage: `url("/logo-full.png")`,
+                    maskSize: "contain",
+                    maskRepeat: "no-repeat",
+                    maskPosition: "center",
+                    WebkitMaskImage: `url("/logo-full.png")`,
+                    WebkitMaskSize: "contain",
+                    WebkitMaskRepeat: "no-repeat",
+                    WebkitMaskPosition: "center",
+                 }}
                >
-                 <img 
-                   src="/logo-full.png" 
-                   alt="Logo Fill"
-                   className="absolute bottom-0 left-0 w-full h-40 object-contain"
-                 />
-               </motion.div>
+                 {/* The Liquid Container (Rising) */}
+                 <div 
+                    className="absolute bottom-0 left-0 w-full bg-[#ff5722]"
+                    style={{ height: `${fillPercent}%`, transition: "height 0.3s ease-out" }}
+                 >
+                    {/* The Wave Surface (Animation) */}
+                    <motion.div 
+                        animate={{ x: ["-50%", "0%"] }}
+                        transition={{ repeat: Infinity, duration: 2, ease: "linear" }}
+                        className="absolute -top-4 left-0 w-[200%] h-8 bg-[#ff5722]"
+                        style={{ 
+                            borderRadius: "40%",
+                            opacity: 0.8
+                        }}
+                    />
+                    
+                    {/* The "Hot" Surface Glow Line */}
+                    <div className="absolute top-0 left-0 w-full h-1 bg-white blur-[2px] opacity-80" />
+                 </div>
+               </div>
              </div>
              
-             {/* 3. LOADING BAR */}
-             <div className="w-64 h-1 bg-neutral-800 rounded-full overflow-hidden relative">
-               <motion.div 
-                 initial={{ width: 0 }}
-                 animate={{ width: "100%" }}
-                 transition={{ duration: 2.8, ease: "linear" }}
-                 className="h-full bg-[#ff5722] shadow-[0_0_15px_#ff5722]"
-               />
+             {/* --- STATS DASHBOARD --- */}
+             <div className="flex items-center gap-4 font-mono text-xs tracking-widest">
+                <div className="flex flex-col items-end text-neutral-500">
+                   <span>SYSTEM</span>
+                   <span>IGNITION</span>
+                </div>
+                
+                {/* Vertical Divider */}
+                <div className="h-8 w-[1px] bg-[#ff5722]/50" />
+                
+                <div className="flex flex-col w-12">
+                   <span className="text-[#ff5722] font-bold text-lg leading-none">
+                     {Math.floor(fillPercent)}%
+                   </span>
+                </div>
              </div>
-             
-             <div className="flex justify-between w-64 mt-2">
-                <motion.span 
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  transition={{ delay: 0.5 }}
-                  className="font-mono text-[10px] text-[#ff5722] animate-pulse"
-                >
-                  SYSTEM LOADING
-                </motion.span>
-                <motion.span 
-                   animate={{ opacity: [1, 0, 1] }}
-                   transition={{ repeat: Infinity, duration: 0.5 }}
-                   className="font-mono text-[10px] text-white"
-                >
-                   100%
-                </motion.span>
-             </div>
+
           </div>
         </motion.div>
       )}
