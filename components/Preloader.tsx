@@ -3,25 +3,36 @@
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
+// Define the particle type to avoid TypeScript errors
+type Particle = {
+  id: number;
+  x: number;
+  y: number;
+  delay: number;
+};
+
 export default function Preloader() {
   const [isLoading, setIsLoading] = useState(true);
+  const [particles, setParticles] = useState<Particle[]>([]);
 
   useEffect(() => {
-    // Total sequence time: 3.5 seconds
+    // 1. GENERATE PARTICLES (Now safely inside useEffect)
+    // This ensures 'window' exists before we try to use it
+    const generatedParticles = Array.from({ length: 50 }).map((_, i) => ({
+      id: i,
+      x: (Math.random() - 0.5) * window.innerWidth * 1.5,
+      y: (Math.random() - 0.5) * window.innerHeight * 1.5,
+      delay: Math.random() * 0.5,
+    }));
+    setParticles(generatedParticles);
+
+    // 2. TIMING SEQUENCE
     const timer = setTimeout(() => {
       setIsLoading(false);
     }, 3500);
 
     return () => clearTimeout(timer);
   }, []);
-
-  // Generate 50 particles for the "Swarm"
-  const particles = Array.from({ length: 50 }).map((_, i) => ({
-    id: i,
-    x: (Math.random() - 0.5) * window.innerWidth * 1.5, // Start far outside
-    y: (Math.random() - 0.5) * window.innerHeight * 1.5,
-    delay: Math.random() * 0.5, // Random arrival times
-  }));
 
   return (
     <AnimatePresence mode="wait">
@@ -41,12 +52,12 @@ export default function Preloader() {
                 animate={{ 
                     x: 0, 
                     y: 0, 
-                    opacity: [0, 1, 0], // Fade in then vanish upon impact
-                    scale: [0.5, 1.5, 0] // Stretch as they move fast
+                    opacity: [0, 1, 0], 
+                    scale: [0.5, 1.5, 0] 
                 }} 
                 transition={{ 
                     duration: 1.2, 
-                    ease: "circIn", // Accelerate heavily at the end
+                    ease: "circIn", 
                     delay: p.delay 
                 }}
                 className="absolute w-1 h-1 bg-[#ff5722] rounded-full shadow-[0_0_10px_#ff5722]"
@@ -57,10 +68,9 @@ export default function Preloader() {
           <div className="relative z-10 flex flex-col items-center justify-center">
              
              {/* 2. THE LOGO FUSION (Blur-to-Focus) */}
-             {/* The particles "hit" at roughly 1.0s to 1.5s mark. We reveal the logo then. */}
              <div className="relative w-80 h-48 mb-8 flex items-center justify-center">
                 
-                {/* The "Flash" behind the logo upon impact */}
+                {/* Impact Flash */}
                 <motion.div 
                    initial={{ opacity: 0, scale: 0 }}
                    animate={{ opacity: [0, 0.5, 0], scale: [0.5, 1.5, 2] }}
@@ -78,8 +88,7 @@ export default function Preloader() {
                 />
              </div>
              
-             {/* 3. MINIMAL LOADING BAR */}
-             {/* Appears smoothly only after logo is formed */}
+             {/* 3. LOADING BAR */}
              <motion.div 
                 initial={{ opacity: 0, width: 0 }}
                 animate={{ opacity: 1, width: "200px" }}
