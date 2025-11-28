@@ -1,9 +1,7 @@
 "use client";
 
-import { useCart } from "@/context/CartContext";
 import { motion } from "framer-motion";
 
-// Standard, appetizing names
 const MOCK_MENU = [
   { id: "01", name: "Classic Chicken Burger", price: 1800, desc: "Grilled chicken patty with cheese and lettuce." },
   { id: "02", name: "Iced Americano", price: 800, desc: "Chilled espresso with water and ice." },
@@ -14,8 +12,6 @@ const MOCK_MENU = [
 ];
 
 export default function MenuGrid() {
-  const { addToCart } = useCart();
-
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 p-8 max-w-7xl mx-auto">
       {MOCK_MENU.map((item, i) => (
@@ -24,21 +20,19 @@ export default function MenuGrid() {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ delay: i * 0.1 }}
-          className="bg-neutral-900/50 border border-white/10 p-6 hover:border-[#ff5722] transition-colors relative overflow-hidden rounded-md"
+          className="bg-neutral-900/50 border border-white/10 p-6 hover:border-[#ff5722] transition-colors relative overflow-hidden rounded-md group"
         >
           <div className="flex justify-between items-start mb-2">
-             <h3 className="font-[family-name:var(--font-bebas)] text-3xl tracking-wide">{item.name}</h3>
-             <span className="text-[#ff5722] font-bold text-lg">{item.price} LKR</span>
+             <h3 className="font-[family-name:var(--font-bebas)] text-3xl tracking-wide text-white group-hover:text-[#ff5722] transition-colors">{item.name}</h3>
+             <span className="text-[#ff5722] font-bold text-lg">{item.price}</span>
           </div>
           
           <p className="text-neutral-400 font-sans text-sm mb-6 min-h-[40px]">{item.desc}</p>
           
-          <button
-            onClick={() => addToCart({ id: item.id, name: item.name, price: item.price })}
-            className="w-full bg-white text-black font-bold text-sm py-3 hover:bg-[#ff5722] hover:text-white transition-colors uppercase rounded-sm"
-          >
-            Add to Cart
-          </button>
+          {/* Changed Button: Now purely aesthetic/informative, or leads to a Gallery */}
+          <div className="w-full bg-white/5 text-neutral-500 font-mono text-xs py-3 text-center uppercase rounded-sm border border-white/5">
+            Dine-In Only
+          </div>
         </motion.div>
       ))}
     </div>
