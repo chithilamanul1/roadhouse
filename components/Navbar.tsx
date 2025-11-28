@@ -8,92 +8,66 @@ import { Menu, X } from "lucide-react";
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
 
-  const links = [
-    { name: "Home", href: "/" },
-    { name: "Full Menu", href: "/menu" },
-    { name: "Location", href: "/location" },
-  ];
-
   return (
     <>
-      <nav className="fixed top-0 left-0 w-full z-50 bg-black/80 backdrop-blur-md border-b border-white/10">
+      <nav className="fixed top-0 left-0 w-full z-50 bg-black/90 backdrop-blur-xl border-b border-white/5">
         <div className="max-w-7xl mx-auto px-6 h-24 flex justify-between items-center">
           
-          {/* NEW LOGO IMPLEMENTATION */}
-          <Link href="/" className="flex items-center gap-3 group">
-            <img 
-              src="https://i.ibb.co/Jw4wdwxV/Gemini-Generated-Image-3e5orv3e5orv3e5o.png" 
-              alt="Road House Logo" 
-              className="h-16 w-auto object-contain group-hover:scale-110 transition-transform duration-300 drop-shadow-[0_0_10px_rgba(255,87,34,0.5)]"
-            />
-            <div className="hidden md:block">
-              <span className="block text-xl font-[family-name:var(--font-bebas)] leading-none tracking-widest text-white">ROAD HOUSE</span>
-              <span className="block text-[10px] font-mono text-[#ff5722] tracking-[0.3em]">EST. 2024</span>
+          {/* REBUILT BRANDING */}
+          <Link href="/" className="flex items-center gap-4 group">
+            {/* The Wolf Icon (Masked from your image) */}
+            <div className="relative w-12 h-12 overflow-hidden rounded-full border-2 border-[#ff5722]/50 group-hover:border-[#ff5722] transition-colors">
+               <img 
+                 src="https://i.ibb.co/Jw4wdwxV/Gemini-Generated-Image-3e5orv3e5orv3e5o.png" 
+                 alt="Wolf Badge"
+                 className="w-full h-full object-cover scale-150" // Zoomed in to focus on the Wolf face
+               />
+            </div>
+            
+            {/* The Text (Using the Stencil Font) */}
+            <div className="flex flex-col">
+              <span className="text-2xl font-[family-name:var(--font-blackops)] text-white tracking-widest leading-none group-hover:text-[#ff5722] transition-colors">
+                ROAD HOUSE
+              </span>
+              <span className="text-[10px] font-mono text-neutral-500 tracking-[0.4em]">SEEDUWA HQ</span>
             </div>
           </Link>
 
           {/* Desktop Links */}
           <div className="hidden md:flex gap-8 items-center">
-            {links.map((link) => (
+            {["Menu", "Location", "Offers"].map((item) => (
               <Link 
-                key={link.name} 
-                href={link.href}
-                className="text-sm font-bold uppercase tracking-widest hover:text-[#ff5722] transition-colors relative group"
+                key={item}
+                href={`/${item.toLowerCase()}`}
+                className="text-sm font-bold uppercase tracking-widest hover:text-[#ff5722] transition-colors font-mono"
               >
-                {link.name}
-                <span className="absolute -bottom-1 left-0 w-0 h-[2px] bg-[#ff5722] transition-all group-hover:w-full" />
+                {item}
               </Link>
             ))}
             <Link 
                href="/menu"
-               className="bg-[#ff5722] text-black font-bold px-6 py-2 rounded-sm uppercase text-xs tracking-wider hover:bg-white transition-colors"
+               className="bg-[#ff5722] text-black font-bold px-6 py-2 uppercase text-xs tracking-wider hover:bg-white transition-colors skew-x-[-10deg]"
             >
               Order Now
             </Link>
           </div>
 
-          {/* Mobile Menu Button */}
           <button onClick={() => setIsOpen(true)} className="md:hidden text-white hover:text-[#ff5722]">
             <Menu size={32} />
           </button>
         </div>
       </nav>
 
-      {/* Mobile Fullscreen Menu */}
+      {/* Mobile Menu (Keep existing code or paste if lost) */}
       <AnimatePresence>
         {isOpen && (
           <motion.div 
-            initial={{ opacity: 0, clipPath: "circle(0% at 100% 0%)" }}
-            animate={{ opacity: 1, clipPath: "circle(150% at 100% 0%)" }}
-            exit={{ opacity: 0, clipPath: "circle(0% at 100% 0%)" }}
-            transition={{ duration: 0.5, ease: "circOut" }}
-            className="fixed inset-0 z-[60] bg-[#050505] flex flex-col items-center justify-center gap-8"
+             initial={{ x: "100%" }} animate={{ x: 0 }} exit={{ x: "100%" }}
+             className="fixed inset-0 z-[60] bg-[#050505] flex flex-col items-center justify-center gap-8"
           >
-            <button onClick={() => setIsOpen(false)} className="absolute top-6 right-6 text-[#ff5722] p-2 border border-[#ff5722] rounded-full">
-              <X size={32} />
-            </button>
-            
-            <img 
-              src="https://i.ibb.co/Jw4wdwxV/Gemini-Generated-Image-3e5orv3e5orv3e5o.png" 
-              alt="Road House Logo" 
-              className="h-32 w-auto mb-8 animate-pulse"
-            />
-
-            {links.map((link, i) => (
-              <motion.div
-                key={link.name}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.1 * i }}
-              >
-                <Link 
-                  href={link.href} 
-                  onClick={() => setIsOpen(false)}
-                  className="text-5xl font-[family-name:var(--font-bebas)] text-white hover:text-[#ff5722] transition-colors"
-                >
-                  {link.name}
-                </Link>
-              </motion.div>
+            <button onClick={() => setIsOpen(false)} className="absolute top-6 right-6 text-[#ff5722]"><X size={32}/></button>
+            {["Home", "Menu", "Location"].map((link) => (
+              <Link key={link} href="#" className="text-4xl font-[family-name:var(--font-blackops)] text-white">{link}</Link>
             ))}
           </motion.div>
         )}
