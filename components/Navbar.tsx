@@ -10,8 +10,9 @@ export default function Navbar() {
 
 const navLinks = [
     { name: "MENU", href: "/menu" },
-    { name: "THE STORY", href: "/about" }, // "About Us" re-branded
-    { name: "THE LOGS", href: "/blog" },   // "Blog" re-branded
+    { name: "THE STORY", href: "/about" },
+    { name: "NEWS", href: "/blog" },
+    { name: "CAREERS", href: "/careers" }, // <--- Added this
     { name: "CONTACT", href: "/contact" },
   ];
 
