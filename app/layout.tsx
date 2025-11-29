@@ -7,6 +7,9 @@ import Preloader from "@/components/Preloader";
 import CustomCursor from "@/components/CustomCursor";
 import SonicIdentity from "@/components/SonicIdentity";
 import FuelGauge from "@/components/FuelGauge";
+import WeatherOps from "@/components/WeatherOps";
+import SecretKeypad from "@/components/SecretKeypad";
+import SystemStatus from "@/components/SystemStatus";
 
 // 1. SETUP FONTS
 const bebas = Bebas_Neue({ 
@@ -37,7 +40,7 @@ export const metadata = {
     siteName: "Road House",
     images: [
       {
-        url: "/logo-full.png", // Ensure this exists in public/
+        url: "/logo-full.png", 
         width: 800,
         height: 600,
       },
@@ -54,7 +57,7 @@ export default function RootLayout({
 }) {
   
   // 3. GOOGLE SCHEMA (JSON-LD)
-  // This tells Google exactly who you are, where you are, and that you are a Restaurant.
+  // This tells Google exactly who you are.
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "Restaurant",
@@ -97,17 +100,25 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
 
-        {/* LOADING SCREEN (Runs independently) */}
+        {/* LOADING SCREEN (Runs independently outside wrapper) */}
         <Preloader />
         
-        {/* CLIENT WRAPPER (Handles Smooth Scroll, Cursor, Audio, & Navigation) */}
+        {/* CLIENT WRAPPER (Handles Smooth Scroll & Interactivity) */}
         <SmoothScrollWrapper>
-          <CustomCursor />
-          <FuelGauge />
-          <Navbar />
-          <FloatingReserve />
-          <SonicIdentity />
           
+          {/* UTILITIES LAYER */}
+          <SystemStatus />  {/* Offline Detector */}
+          <WeatherOps />    {/* Live Weather Effects */}
+          <CustomCursor />  {/* Target Reticle */}
+          <FuelGauge />     {/* Scroll Progress */}
+          
+          {/* UI LAYER */}
+          <Navbar />
+          <FloatingReserve /> {/* WhatsApp Button */}
+          <SonicIdentity />   {/* Music Player */}
+          <SecretKeypad />    {/* Easter Egg (Code: 2025) */}
+          
+          {/* PAGE CONTENT */}
           <main className="relative z-10">
              {children}
           </main>
