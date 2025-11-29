@@ -4,9 +4,9 @@ import { motion } from "framer-motion";
 import { Crown, Trophy, Medal, User } from "lucide-react";
 import { useState, useEffect } from "react";
 
-// REPLACE THESE WITH YOUR JSONBIN KEYS
-const BIN_ID = "YOUR_BIN_ID"; 
-const API_KEY = "YOUR_API_KEY";
+// --- YOUR KEYS ---
+const BIN_ID = "692b254c43b1c97be9cd0b42"; 
+const API_KEY = "$2a$10$2sXRZd4DhW33xy5UlJV8TuBFKYX2nuxQ5zKAOF/qbptARHuM9i25u";
 
 export default function WolfPackLeaderboard() {
   const [customers, setCustomers] = useState<any[]>([]);
@@ -38,7 +38,6 @@ export default function WolfPackLeaderboard() {
         </div>
 
         <div className="bg-neutral-900/50 border border-white/10 rounded-lg overflow-hidden">
-           {/* HEADER */}
            <div className="grid grid-cols-12 gap-4 p-4 border-b border-white/10 bg-black/50 text-[10px] font-mono text-neutral-500 uppercase tracking-widest">
               <div className="col-span-2 text-center">RANK</div>
               <div className="col-span-6">CUSTOMER</div>
@@ -73,7 +72,7 @@ export default function WolfPackLeaderboard() {
                                 {user.name}
                             </h4>
                             <span className="text-[10px] font-mono text-neutral-500 uppercase">
-                                {i === 0 ? "GOLD MEMBER" : i === 1 ? "SILVER MEMBER" : "BRONZE MEMBER"}
+                                {user.title}
                             </span>
                          </div>
                    </div>
