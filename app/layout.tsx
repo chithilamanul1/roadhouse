@@ -4,8 +4,6 @@ import Navbar from "@/components/Navbar";
 import FloatingReserve from "@/components/FloatingReserve";
 import SmoothScrollWrapper from "@/components/SmoothScrollWrapper";
 import Preloader from "@/components/Preloader";
-import CustomCursor from "@/components/CustomCursor";
-import SonicIdentity from "@/components/SonicIdentity";
 import WeatherOps from "@/components/WeatherOps";
 
 // 1. SETUP FONTS
@@ -29,7 +27,7 @@ const blackOps = Black_Ops_One({
 // 2. SEO METADATA
 export const metadata = {
   title: "ROAD HOUSE | Seeduwa HQ",
-  description: "The Designated Pitstop. Premium Grill & Cafe. Opening Dec 2025.",
+  description: "The Designated Pitstop. Premium Grill & Cafe.",
   openGraph: {
     title: "ROAD HOUSE | Seeduwa HQ",
     description: "The Designated Pitstop. Premium Grill & Cafe.",
@@ -74,14 +72,6 @@ export default function RootLayout({
       "latitude": 7.1186, 
       "longitude": 79.8837
     },
-    "openingHoursSpecification": {
-      "@type": "OpeningHoursSpecification",
-      "dayOfWeek": [
-        "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"
-      ],
-      "opens": "11:00",
-      "closes": "23:00"
-    },
     "servesCuisine": ["Grill", "American", "Sri Lankan Fusion"],
     "priceRange": "$$"
   };
@@ -104,12 +94,10 @@ export default function RootLayout({
           
           {/* UTILITIES */}
           <WeatherOps />    {/* Live Weather */}
-          <CustomCursor />  {/* Crosshair Cursor */}
           
           {/* UI LAYER */}
           <Navbar />
           <FloatingReserve /> {/* WhatsApp Button */}
-          <SonicIdentity />   {/* Music Player */}
           
           {/* PAGE CONTENT */}
           <main className="relative z-10">
