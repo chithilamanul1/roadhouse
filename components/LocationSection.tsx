@@ -5,11 +5,12 @@ import { MapPin, Navigation } from "lucide-react";
 export default function LocationSection() {
   return (
     <section className="py-24 bg-[#0a0a0a] border-t border-neutral-800 relative overflow-hidden">
+      {/* Background Decor */}
       <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-[#ff5722] to-transparent opacity-50" />
       
       <div className="max-w-7xl mx-auto px-6 text-center relative z-10">
         <h2 className="text-6xl md:text-8xl font-[family-name:var(--font-blackops)] mb-12 text-[#e0e0e0] leading-[0.8]">
-          FIND THE <span className="text-[#ff5722]">BASE</span>
+          FIND <span className="text-[#ff5722]">US</span>
         </h2>
         
         <div className="flex flex-col items-center justify-center">
@@ -20,7 +21,9 @@ export default function LocationSection() {
                     </div>
                 </div>
                 
-                <h3 className="text-3xl font-[family-name:var(--font-bebas)] text-white mb-2 tracking-wide">SEEDUWA HQ</h3>
+                <h3 className="text-3xl font-[family-name:var(--font-bebas)] text-white mb-2 tracking-wide">
+                    SEEDUWA
+                </h3>
                 <p className="text-neutral-400 mb-8 font-sans leading-relaxed text-lg">
                     24 Kotugoda Rd,<br/>
                     Seeduwa, Sri Lanka.
