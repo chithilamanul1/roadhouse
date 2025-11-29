@@ -4,10 +4,10 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 
 const MENU_HIGHLIGHTS = [
-  { id: 1, name: "Double Smash Burger", price: "2,200", img: "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?q=80&w=800&auto=format&fit=crop" },
-  { id: 2, name: "Spicy Pork Ribs", price: "3,500", img: "https://images.unsplash.com/photo-1544025162-d76690b6d015?q=80&w=800&auto=format&fit=crop" },
-  { id: 3, name: "Seafood Platter", price: "6,000", img: "https://images.unsplash.com/photo-1599487488170-d11ec9c172f0?q=80&w=800&auto=format&fit=crop" },
-  { id: 4, name: "Mojito Pitcher", price: "2,500", img: "https://images.unsplash.com/photo-1551538827-9c037cb4f32d?q=80&w=800&auto=format&fit=crop" },
+  { id: 1, name: "Double Smash Burger", price: "2,200", img: "https://images.pexels.com/photos/1639557/pexels-photo-1639557.jpeg?auto=compress&cs=tinysrgb&w=800" },
+  { id: 2, name: "Spicy Pork Ribs", price: "3,500", img: "https://images.pexels.com/photos/410648/pexels-photo-410648.jpeg?auto=compress&cs=tinysrgb&w=800" },
+  { id: 3, name: "Seafood Platter", price: "6,000", img: "https://images.pexels.com/photos/566345/pexels-photo-566345.jpeg?auto=compress&cs=tinysrgb&w=800" },
+  { id: 4, name: "Mojito Pitcher", price: "2,500", img: "https://images.pexels.com/photos/4784/alcohol-bar-party-cocktail.jpg?auto=compress&cs=tinysrgb&w=800" },
 ];
 
 export default function InteractiveMenu() {
@@ -37,9 +37,11 @@ export default function InteractiveMenu() {
         {/* Right: The Changing Image */}
         <div className="w-full md:w-1/2 h-[500px] relative overflow-hidden rounded-lg">
            <div className="absolute inset-0 bg-black/20 z-10" />
+           {/* FIXED IMAGE TAG */}
            <motion.img
              key={activeImg}
              src={activeImg}
+             referrerPolicy="no-referrer"
              initial={{ scale: 1.1, opacity: 0 }}
              animate={{ scale: 1, opacity: 1 }}
              transition={{ duration: 0.5 }}
