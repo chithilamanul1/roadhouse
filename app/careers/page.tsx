@@ -43,10 +43,6 @@ const JOBS = [
 
 export default function CareersPage() {
   
-  const handleEmail = (role: string) => {
-    window.location.href = `mailto:roadhouseseeduwa@gmail.com?subject=Application for ${role} - Road House`;
-  };
-
   const handleWhatsApp = () => {
     window.open("https://wa.me/94777334078?text=Hi Road House, I am interested in joining the crew.", "_blank");
   };
@@ -101,14 +97,14 @@ export default function CareersPage() {
                   </p>
 
                   <div className="flex gap-4">
-                     {/* Apply via Email Button */}
-                     <button 
-                        onClick={() => handleEmail(job.title)}
-                        className="flex-1 bg-white text-black font-bold py-3 px-4 rounded-sm hover:bg-[#ff5722] hover:text-white transition-colors flex items-center justify-center gap-2 text-sm uppercase"
+                     {/* FIXED: Changed from <button> to <a> tag for reliable Mailto behavior */}
+                     <a 
+                        href={`mailto:roadhouseseeduwa@gmail.com?subject=Application for ${job.title} - Road House`}
+                        className="flex-1 bg-white text-black font-bold py-3 px-4 rounded-sm hover:bg-[#ff5722] hover:text-white transition-colors flex items-center justify-center gap-2 text-sm uppercase no-underline"
                      >
                         <Mail size={18} />
                         Email CV
-                     </button>
+                     </a>
                      
                      {/* Chat Button */}
                      <button 
@@ -132,12 +128,13 @@ export default function CareersPage() {
             <p className="text-neutral-400 mb-8 font-sans">
                We are always looking for talent. If you think you have what it takes to work at Seeduwa's premier grill house, send us an open application.
             </p>
-            <button 
-               onClick={() => handleEmail("Open Application")}
+            {/* FIXED: Changed to <a> tag */}
+            <a 
+               href="mailto:roadhouseseeduwa@gmail.com?subject=Open Application - Road House"
                className="inline-flex items-center gap-2 text-[#ff5722] font-bold uppercase tracking-widest hover:text-white transition-colors"
             >
                Send Open Application <ArrowRight size={18} />
-            </button>
+            </a>
          </div>
       </section>
 
