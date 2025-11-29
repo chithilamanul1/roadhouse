@@ -9,13 +9,14 @@ export default function Footer() {
   return (
     <footer className="bg-black border-t border-white/10 pt-24 pb-12 relative overflow-hidden">
       
+      {/* Background Decor (Subtle Noise) */}
       <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-5 pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-6 relative z-10">
         
         <div className="grid grid-cols-1 md:grid-cols-12 gap-12 mb-20">
           
-          {/* BRAND */}
+          {/* COLUMN 1: BRAND IDENTITY (Span 4) */}
           <div className="md:col-span-4 space-y-6">
             <Link href="/" className="block">
               <h2 className="text-4xl font-[family-name:var(--font-blackops)] text-white leading-none">
@@ -28,6 +29,7 @@ export default function Footer() {
               <span className="text-white font-bold">EST. 2025</span>
             </p>
             
+            {/* Socials */}
             <div className="flex gap-4">
               {[Instagram, Facebook, Twitter].map((Icon, i) => (
                 <a key={i} href="#" className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-white hover:bg-[#ff5722] hover:text-black transition-all duration-300">
@@ -37,34 +39,42 @@ export default function Footer() {
             </div>
           </div>
 
-          {/* EXPLORE - Link changed to NEWS */}
+          {/* COLUMN 2: SITEMAP (Span 2) */}
           <div className="md:col-span-2 space-y-6">
             <h3 className="text-[#ff5722] font-mono text-xs tracking-[0.2em] uppercase mb-4">Explore</h3>
             <ul className="space-y-3 font-[family-name:var(--font-bebas)] text-xl tracking-wide text-neutral-300">
-              <li><Link href="/menu" className="hover:text-white transition-colors">Menu</Link></li>
-              <li><Link href="/about" className="hover:text-white transition-colors">The Story</Link></li>
-              <li><Link href="/blog" className="hover:text-white transition-colors">News</Link></li> {/* Updated */}
-              <li><Link href="/location" className="hover:text-white transition-colors">Location</Link></li>
+              <li><Link href="/menu" className="hover:text-white hover:pl-2 transition-all duration-300 flex items-center gap-1 group">Menu</Link></li>
+              <li><Link href="/about" className="hover:text-white hover:pl-2 transition-all duration-300 flex items-center gap-1 group">The Story</Link></li>
+              <li><Link href="/blog" className="hover:text-white hover:pl-2 transition-all duration-300 flex items-center gap-1 group">Blog</Link></li>
+              <li><Link href="/location" className="hover:text-white hover:pl-2 transition-all duration-300 flex items-center gap-1 group">Location</Link></li>
             </ul>
           </div>
 
-          {/* INTEL */}
+          {/* COLUMN 3: INTEL (Span 3) */}
           <div className="md:col-span-3 space-y-6">
-            <h3 className="text-[#ff5722] font-mono text-xs tracking-[0.2em] uppercase mb-4">Support</h3>
+            <h3 className="text-[#ff5722] font-mono text-xs tracking-[0.2em] uppercase mb-4">Intel & Support</h3>
             <ul className="space-y-3 font-[family-name:var(--font-bebas)] text-xl tracking-wide text-neutral-300">
               <li>
-                <Link href="/careers" className="hover:text-white transition-colors flex items-center gap-2">
+                <Link href="/careers" className="hover:text-white hover:pl-2 transition-all duration-300 flex items-center gap-2">
                   Careers <span className="text-[10px] bg-white/10 text-white px-1 font-sans rounded">HIRING</span>
                 </Link>
               </li>
-              <li><Link href="/faq" className="hover:text-white transition-colors">FAQ</Link></li>
-              <li><Link href="/contact" className="hover:text-white transition-colors">Contact Us</Link></li>
+              <li>
+                <Link href="/faq" className="hover:text-white hover:pl-2 transition-all duration-300">
+                  FAQ / Briefing
+                </Link>
+              </li>
+              <li>
+                <Link href="/contact" className="hover:text-white hover:pl-2 transition-all duration-300">
+                  Contact Base
+                </Link>
+              </li>
             </ul>
           </div>
 
-          {/* CONTACT */}
+          {/* COLUMN 4: COMMS (Span 3) */}
           <div className="md:col-span-3 space-y-6">
-            <h3 className="text-[#ff5722] font-mono text-xs tracking-[0.2em] uppercase mb-4">Visit Us</h3>
+            <h3 className="text-[#ff5722] font-mono text-xs tracking-[0.2em] uppercase mb-4">Comms Uplink</h3>
             
             <div className="space-y-4">
               <div className="group flex items-start gap-4">
@@ -99,8 +109,10 @@ export default function Footer() {
 
         </div>
 
-        {/* BOTTOM */}
+        {/* BOTTOM BAR */}
         <div className="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
+          
+          {/* PAYMENT METHODS */}
           <div className="flex items-center gap-4 opacity-50 grayscale hover:grayscale-0 transition-all duration-500 order-2 md:order-1">
              <span className="text-[10px] font-mono text-neutral-600 uppercase tracking-widest mr-2">SECURED BY:</span>
              <img src="https://upload.wikimedia.org/wikipedia/commons/4/41/Visa_Logo.png" className="h-4 w-auto" alt="Visa" />
