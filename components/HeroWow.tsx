@@ -28,7 +28,7 @@ export default function HeroWow() {
             className="w-full h-full object-cover opacity-60"
          >
             {/* High Quality Fire Loop */}
-            <source src="https://videos.pexels.com/video-files/3195598/3195598-uhd_2560_1440_25fps.mp4" type="video/mp4" />
+            <source src="https://cdn.pixabay.com/video/2024/10/29/238826_large.mp4" type="video/mp4" />
          </video>
          {/* Gradient to fade edges */}
          <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-transparent to-black" />
