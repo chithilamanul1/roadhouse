@@ -9,14 +9,14 @@ export const MENU_CATEGORIES = [
 ];
 
 export const MENU_ITEMS = [
-  // --- STARTERS & SOUPS ---
+  // --- STARTERS, SOUPS & FINGER FOOD ---
   {
     id: "soup1",
     category: "starters",
     name: "Cream of Vegetable Soup",
     price: "750",
     description: "Served with Croutons/Garlic Bread",
-    // Creamy Soup Bowl
+    // Creamy white soup bowl
     image: "https://images.pexels.com/photos/539451/pexels-photo-539451.jpeg?auto=compress&cs=tinysrgb&w=800"
   },
   {
@@ -25,8 +25,8 @@ export const MENU_ITEMS = [
     name: "Cream of Chicken Soup",
     price: "850",
     description: "Served with Croutons/Garlic Bread",
-    // Chicken Soup
-    image: "https://images.pexels.com/photos/6210876/pexels-photo-6210876.jpeg?auto=compress&cs=tinysrgb&w=800"
+    // Creamy soup with garnish
+    image: "https://images.pexels.com/photos/209540/pexels-photo-209540.jpeg?auto=compress&cs=tinysrgb&w=800"
   },
   {
     id: "soup3",
@@ -34,8 +34,17 @@ export const MENU_ITEMS = [
     name: "Tom Yum Soup",
     price: "1,100",
     description: "Spicy and sour Thai soup",
-    // Red Spicy Soup
+    // Red spicy broth
     image: "https://images.pexels.com/photos/699953/pexels-photo-699953.jpeg?auto=compress&cs=tinysrgb&w=800"
+  },
+  {
+    id: "soup4",
+    category: "starters",
+    name: "Sweet Corn Soup",
+    price: "750",
+    description: "Classic sweet corn broth",
+    // Yellow/Clear soup
+    image: "https://images.pexels.com/photos/5358738/pexels-photo-5358738.jpeg?auto=compress&cs=tinysrgb&w=800"
   },
   {
     id: "ff1",
@@ -43,8 +52,17 @@ export const MENU_ITEMS = [
     name: "French Fries",
     price: "700",
     description: "Classic salted fries",
-    // Fries in basket
+    // Basket of Fries
     image: "https://images.pexels.com/photos/1583884/pexels-photo-1583884.jpeg?auto=compress&cs=tinysrgb&w=800"
+  },
+  {
+    id: "ff2",
+    category: "starters",
+    name: "Loaded Fries",
+    price: "1,100",
+    description: "Fries topped with cheese and meat",
+    // Fries with toppings
+    image: "https://images.pexels.com/photos/1159627/pexels-photo-1159627.jpeg?auto=compress&cs=tinysrgb&w=800"
   },
   {
     id: "ff3",
@@ -52,7 +70,7 @@ export const MENU_ITEMS = [
     name: "Hot Battered Mushroom",
     price: "750",
     description: "Deep fried mushrooms",
-    // Fried Battered Veggies
+    // Fried battered bites
     image: "https://images.pexels.com/photos/3052362/pexels-photo-3052362.jpeg?auto=compress&cs=tinysrgb&w=800"
   },
   {
@@ -61,8 +79,8 @@ export const MENU_ITEMS = [
     name: "Chicken Samosa",
     price: "150",
     description: "Crispy pastry filled with spiced chicken",
-    // Actual Triangle Samosas
-    image: "https://images.pexels.com/photos/9543418/pexels-photo-9543418.jpeg?auto=compress&cs=tinysrgb&w=800"
+    // Triangular fried pastry
+    image: "https://images.pexels.com/photos/14477873/pexels-photo-14477873.jpeg?auto=compress&cs=tinysrgb&w=800"
   },
   {
     id: "se2",
@@ -70,8 +88,17 @@ export const MENU_ITEMS = [
     name: "Fish / Egg Rolls",
     price: "160",
     description: "Sri Lankan style rolls",
-    // Spring rolls (Close visual match)
-    image: "https://images.pexels.com/photos/461198/pexels-photo-461198.jpeg?auto=compress&cs=tinysrgb&w=800"
+    // Cylindrical fried rolls
+    image: "https://images.pexels.com/photos/2474658/pexels-photo-2474658.jpeg?auto=compress&cs=tinysrgb&w=800"
+  },
+  {
+    id: "se3",
+    category: "starters",
+    name: "Chicken Pie",
+    price: "200",
+    description: "Baked pastry with chicken filling",
+    // Baked Pastry
+    image: "https://images.pexels.com/photos/12203460/pexels-photo-12203460.jpeg?auto=compress&cs=tinysrgb&w=800"
   },
 
   // --- SUBS & BURGERS ---
@@ -85,12 +112,21 @@ export const MENU_ITEMS = [
     image: "https://images.pexels.com/photos/2983101/pexels-photo-2983101.jpeg?auto=compress&cs=tinysrgb&w=800"
   },
   {
+    id: "sub2",
+    category: "subs_burgers",
+    name: "BBQ Super Sub",
+    price: "1,700",
+    description: "Loaded sub with BBQ sauce",
+    // Sub with dark sauce
+    image: "https://images.pexels.com/photos/461198/pexels-photo-461198.jpeg?auto=compress&cs=tinysrgb&w=800"
+  },
+  {
     id: "burg1",
     category: "subs_burgers",
     name: "Chicken Burger",
     price: "950",
     description: "Classic grilled chicken patty",
-    // Chicken Burger
+    // Crispy Chicken Burger
     image: "https://images.pexels.com/photos/1639557/pexels-photo-1639557.jpeg?auto=compress&cs=tinysrgb&w=800"
   },
   {
@@ -99,8 +135,17 @@ export const MENU_ITEMS = [
     name: "BBQ Chicken Burger",
     price: "1,100",
     description: "Grilled chicken with BBQ glaze",
-    // Darker BBQ Burger
+    // Burger with BBQ sauce
     image: "https://images.pexels.com/photos/1199960/pexels-photo-1199960.jpeg?auto=compress&cs=tinysrgb&w=800"
+  },
+  {
+    id: "burg3",
+    category: "subs_burgers",
+    name: "BBQ Pork Burger",
+    price: "1,200",
+    description: "Juicy pork patty with BBQ sauce",
+    // Beef/Pork Burger
+    image: "https://images.pexels.com/photos/2983099/pexels-photo-2983099.jpeg?auto=compress&cs=tinysrgb&w=800"
   },
   {
     id: "wrap1",
@@ -137,8 +182,17 @@ export const MENU_ITEMS = [
     name: "BBQ Pork",
     price: "2,200",
     description: "Grilled pork chops/steaks",
-    // Grilled Meat
+    // Grilled Meat/Steak
     image: "https://images.pexels.com/photos/410648/pexels-photo-410648.jpeg?auto=compress&cs=tinysrgb&w=800"
+  },
+  {
+    id: "bbq3",
+    category: "mains",
+    name: "Grilled Fish",
+    price: "2,100",
+    description: "Seasoned grilled fish fillet",
+    // Grilled Fish
+    image: "https://images.pexels.com/photos/3655916/pexels-photo-3655916.jpeg?auto=compress&cs=tinysrgb&w=800"
   },
   {
     id: "plat1",
@@ -166,8 +220,8 @@ export const MENU_ITEMS = [
     name: "Chicken Kottu",
     price: "1,200",
     description: "Sri Lankan street food classic",
-    // Chopped Roti/Stir Fry lookalike (Closest high quality match)
-    image: "https://images.pexels.com/photos/12737664/pexels-photo-12737664.jpeg?auto=compress&cs=tinysrgb&w=800"
+    // Actual Kottu Image provided
+    image: "https://cdn.pixabay.com/photo/2021/06/03/01/37/kottu-6305693_960_720.jpg"
   },
   {
     id: "kottu2",
@@ -175,8 +229,8 @@ export const MENU_ITEMS = [
     name: "Cheese Kottu (Any Meat)",
     price: "1,600",
     description: "Signature Kottu covered in cheese",
-    // Cheesy Pasta/Kottu lookalike
-    image: "https://images.pexels.com/photos/12737656/pexels-photo-12737656.jpeg?auto=compress&cs=tinysrgb&w=800"
+    // Actual Kottu Image provided (Reused as it fits visually)
+    image: "https://cdn.pixabay.com/photo/2021/06/03/01/37/kottu-6305693_960_720.jpg"
   },
   {
     id: "pasta1",
@@ -196,7 +250,7 @@ export const MENU_ITEMS = [
     price: "1,500",
     description: "Spicy stir-fried chicken",
     // Red Spicy Chicken
-    image: "https://images.pexels.com/photos/262959/pexels-photo-262959.jpeg?auto=compress&cs=tinysrgb&w=800"
+    image: "https://images.pexels.com/photos/60616/fried-chicken-chicken-fried-crunchy-60616.jpeg?auto=compress&cs=tinysrgb&w=800"
   },
   {
     id: "dev2",
@@ -204,7 +258,7 @@ export const MENU_ITEMS = [
     name: "Hot Butter Cuttlefish",
     price: "2,100",
     description: "Chef's Special: Crispy & Spicy",
-    // Fried Calamari/Seafood
+    // Fried Calamari/Seafood (Looks like HBC)
     image: "https://images.pexels.com/photos/1059905/pexels-photo-1059905.jpeg?auto=compress&cs=tinysrgb&w=800"
   },
   {
@@ -233,7 +287,7 @@ export const MENU_ITEMS = [
     name: "Iced Milo (Bumba)",
     price: "800",
     description: "Thick Milo with ice cream",
-    // Brown Chocolate Drink
+    // Brown Chocolate Drink/Shake
     image: "https://images.pexels.com/photos/3727250/pexels-photo-3727250.jpeg?auto=compress&cs=tinysrgb&w=800"
   },
   {
@@ -271,7 +325,7 @@ export const MENU_ITEMS = [
     name: "Chocolate Biscuit Pudding",
     price: "450",
     description: "Layers of biscuit and chocolate",
-    // Chocolate Dessert in Glass
+    // Chocolate Dessert
     image: "https://images.pexels.com/photos/3026804/pexels-photo-3026804.jpeg?auto=compress&cs=tinysrgb&w=800"
   },
   {
@@ -281,7 +335,7 @@ export const MENU_ITEMS = [
     price: "500",
     description: "Traditional jaggery pudding",
     // Caramel/Brown Pudding
-    image: "https://images.pexels.com/photos/205961/pexels-photo-205961.jpeg?auto=compress&cs=tinysrgb&w=800"
+    image: "https://images.pexels.com/photos/1633525/pexels-photo-1633525.jpeg?auto=compress&cs=tinysrgb&w=800"
   },
   {
     id: "de3",
