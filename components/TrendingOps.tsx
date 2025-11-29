@@ -4,10 +4,11 @@ import { motion } from "framer-motion";
 import { TrendingUp, Star } from "lucide-react";
 import { useState, useEffect } from "react";
 
-// REPLACE THESE WITH YOUR JSONBIN KEYS
-const BIN_ID = "YOUR_BIN_ID"; 
-const API_KEY = "YOUR_API_KEY";
+// --- YOUR KEYS ---
+const BIN_ID = "692b254c43b1c97be9cd0b42"; 
+const API_KEY = "$2a$10$2sXRZd4DhW33xy5UlJV8TuBFKYX2nuxQ5zKAOF/qbptARHuM9i25u";
 
+// Standard placeholder images
 const IMAGES = [
     "https://images.pexels.com/photos/262959/pexels-photo-262959.jpeg?auto=compress&cs=tinysrgb&w=800",
     "https://images.pexels.com/photos/958545/pexels-photo-958545.jpeg?auto=compress&cs=tinysrgb&w=800", 
@@ -50,8 +51,10 @@ export default function TrendingOps() {
                      transition={{ delay: i * 0.2 }}
                      className="relative group h-40 overflow-hidden rounded-sm border border-white/10 bg-neutral-900"
                   >
+                     {/* Image */}
                      <img src={IMAGES[i] || IMAGES[0]} className="w-full h-full object-cover opacity-60 group-hover:opacity-100 transition-opacity" alt={item.name} />
                      
+                     {/* Overlay */}
                      <div className="absolute inset-0 bg-gradient-to-r from-black via-black/50 to-transparent p-6 flex flex-col justify-center">
                         <div className="absolute top-2 left-2 bg-white text-black text-[10px] font-bold px-2 py-0.5 rounded uppercase tracking-wider">
                             #{i+1} BEST SELLER
