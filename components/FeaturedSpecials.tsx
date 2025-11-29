@@ -10,22 +10,21 @@ const SPECIALS = [
     name: "HOT BUTTER CUTTLEFISH",
     price: "2,100 LKR",
     desc: "Crispy battered cuttlefish tossed in spicy butter sauce and spring onions.",
-    image: "https://images.unsplash.com/photo-1626082927389-6cd097cdc6ec?q=80&w=800&auto=format&fit=crop"
+    image: "https://images.pexels.com/photos/262959/pexels-photo-262959.jpeg?auto=compress&cs=tinysrgb&w=800"
   },
   {
     id: "sp2",
     name: "KOCHCHI PORK CURRY",
     price: "1,700 LKR",
     desc: "Slow-cooked pork curry infused with fiery local Kochchi peppers.",
-    // Fixed image link
-    image: "https://images.unsplash.com/photo-1547496502-ffa2264a36b5?q=80&w=800&auto=format&fit=crop"
+    image: "https://images.pexels.com/photos/958545/pexels-photo-958545.jpeg?auto=compress&cs=tinysrgb&w=800"
   },
   {
     id: "sp3",
     name: "MIXED GRILL PLATTER",
     price: "6,000 LKR",
     desc: "The ultimate sharing platter: Chicken, Pork, Sausages & Wedges.",
-    image: "https://images.unsplash.com/photo-1544025162-d76690b6d015?q=80&w=800&auto=format&fit=crop"
+    image: "https://images.pexels.com/photos/1267320/pexels-photo-1267320.jpeg?auto=compress&cs=tinysrgb&w=800"
   }
 ];
 
@@ -58,9 +57,12 @@ export default function FeaturedSpecials() {
              >
                 <div className="h-[400px] md:h-[500px] overflow-hidden rounded-2xl relative border border-white/10 group-hover:border-[#ff5722] transition-colors">
                    <div className="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors z-10" />
+                   
+                   {/* FIXED IMAGE TAG WITH NO-REFERRER */}
                    <img 
                       src={item.image} 
                       alt={item.name} 
+                      referrerPolicy="no-referrer"
                       className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700 ease-out"
                    />
                 </div>
