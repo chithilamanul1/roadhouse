@@ -18,11 +18,10 @@ export default function MenuPage() {
       <FloatingReserve />
 
       <div className="pt-32 pb-10 px-6 max-w-7xl mx-auto">
-        <h1 className="text-5xl md:text-7xl font-[family-name:var(--font-bebas)] text-white mb-8 text-center">
+        <h1 className="text-5xl md:text-7xl font-[family-name:var(--font-blackops)] text-white mb-8 text-center">
           OUR <span className="text-[#ff5722]">MENU</span>
         </h1>
 
-        {/* Scrollable Categories */}
         <div className="flex overflow-x-auto gap-4 mb-10 pb-4 no-scrollbar sticky top-20 z-40 bg-[#050505]/95 backdrop-blur py-4">
           {MENU_CATEGORIES.map((cat) => (
             <button
@@ -39,7 +38,6 @@ export default function MenuPage() {
           ))}
         </div>
 
-        {/* Image Grid */}
         <motion.div layout className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           <AnimatePresence mode="popLayout">
             {filteredItems.map((item) => (
@@ -52,11 +50,12 @@ export default function MenuPage() {
                 transition={{ duration: 0.3 }}
                 className="bg-neutral-900 rounded-xl overflow-hidden shadow-lg group"
               >
-                {/* Image Area */}
                 <div className="h-48 overflow-hidden relative">
+                  {/* FIXED IMAGE TAG */}
                   <img 
                     src={item.image} 
                     alt={item.name} 
+                    referrerPolicy="no-referrer"
                     className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                   />
                   <div className="absolute top-3 right-3 bg-black/70 backdrop-blur px-3 py-1 rounded text-[#ff5722] font-bold">
@@ -64,7 +63,6 @@ export default function MenuPage() {
                   </div>
                 </div>
 
-                {/* Content Area */}
                 <div className="p-5">
                   <h3 className="text-xl font-bold text-white mb-1 uppercase font-[family-name:var(--font-bebas)] tracking-wide">
                     {item.name}
