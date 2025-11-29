@@ -26,7 +26,7 @@ const NEWS_POSTS = [
     category: "TEAM", 
     title: "Join the Wolf Pack: We Are Hiring", 
     date: "Recruitment", 
-    desc: "We are looking for chefs, baristas, and servers who have passion. See what it takes to join the crew.",
+    desc: "We are looking for chefs, baristas, and servers who have passion. See what it takes to join the crew. Just go to the Career section and email your cv.",
     img: "https://images.pexels.com/photos/1957478/pexels-photo-1957478.jpeg?auto=compress&cs=tinysrgb&w=800" 
   },
   { 
