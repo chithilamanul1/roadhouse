@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { Instagram, Facebook, Twitter, MapPin, Phone, Mail, ArrowUpRight } from "lucide-react";
+import { Instagram, Facebook, Twitter, MapPin, Phone, Mail } from "lucide-react";
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
@@ -83,7 +83,7 @@ export default function Footer() {
               <div className="group flex items-start gap-4">
                 <MapPin className="text-[#ff5722] mt-1 shrink-0" size={20} />
                 <div>
-                  <p className="text-white font-bold text-sm uppercase">Seeduwa HQ</p>
+                  <p className="text-white font-bold text-sm uppercase">Road House Seeduwa</p>
                   <p className="text-neutral-500 text-sm font-sans">24 Kotugoda Rd,<br/>Seeduwa, Sri Lanka.</p>
                 </div>
               </div>
@@ -113,12 +113,19 @@ export default function Footer() {
         </div>
 
         {/* BOTTOM BAR */}
-        <div className="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-[10px] font-mono text-neutral-600 uppercase">
-          <p>© {currentYear} ROAD HOUSE. ALL RIGHTS RESERVED.</p>
-          <div className="flex gap-6">
-            <a href="#" className="hover:text-white transition-colors">Privacy Policy</a>
-            <a href="#" className="hover:text-white transition-colors">Terms of Service</a>
-            <a href="#" className="hover:text-white transition-colors">Sitemap</a>
+        <div className="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
+          
+          {/* PAYMENT METHODS */}
+          <div className="flex items-center gap-4 opacity-50 grayscale hover:grayscale-0 transition-all duration-500 order-2 md:order-1">
+             <span className="text-[10px] font-mono text-neutral-600 uppercase tracking-widest mr-2">SECURED BY:</span>
+             {/* Using online assets for icons so you don't need local files */}
+             <img src="https://upload.wikimedia.org/wikipedia/commons/4/41/Visa_Logo.png" className="h-4 w-auto" alt="Visa" />
+             <img src="https://upload.wikimedia.org/wikipedia/commons/b/b7/MasterCard_Logo.svg" className="h-4 w-auto" alt="Mastercard" />
+             <img src="https://upload.wikimedia.org/wikipedia/commons/b/b5/PayPal.svg" className="h-4 w-auto" alt="PayPal" />
+          </div>
+
+          <div className="text-[10px] font-mono text-neutral-600 uppercase order-1 md:order-2">
+            <p>© {currentYear} ROAD HOUSE. ALL RIGHTS RESERVED.</p>
           </div>
         </div>
 
