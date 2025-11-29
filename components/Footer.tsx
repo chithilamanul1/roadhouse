@@ -66,7 +66,7 @@ export default function Footer() {
               </li>
               <li>
                 <Link href="/contact" className="hover:text-white hover:pl-2 transition-all duration-300">
-                  Contact Base
+                  Contact
                 </Link>
               </li>
             </ul>
