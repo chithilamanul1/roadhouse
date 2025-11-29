@@ -1,45 +1,80 @@
 "use client";
 
-import { MapPin, Navigation } from "lucide-react";
+import { MapPin, Navigation, Clock, Car } from "lucide-react";
 
 export default function LocationSection() {
   return (
     <section className="py-24 bg-[#0a0a0a] border-t border-neutral-800 relative overflow-hidden">
-      {/* Background Decor */}
-      <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-[#ff5722] to-transparent opacity-50" />
       
-      <div className="max-w-7xl mx-auto px-6 text-center relative z-10">
-        <h2 className="text-6xl md:text-8xl font-[family-name:var(--font-blackops)] mb-12 text-[#e0e0e0] leading-[0.8]">
-          FIND <span className="text-[#ff5722]">US</span>
-        </h2>
+      <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-12 items-center relative z-10">
         
-        <div className="flex flex-col items-center justify-center">
-            <div className="p-10 border border-neutral-800 bg-[#050505] max-w-lg w-full text-center hover:border-[#ff5722] transition-colors duration-500 group">
-                <div className="flex justify-center mb-6">
-                    <div className="p-4 bg-neutral-900 rounded-full group-hover:bg-[#ff5722] transition-colors">
-                        <MapPin className="text-white" size={32} />
+        {/* LEFT: INFO */}
+        <div className="text-left">
+            <h2 className="text-5xl md:text-7xl font-[family-name:var(--font-blackops)] mb-6 text-[#e0e0e0] leading-[0.8]">
+              FIND <span className="text-[#ff5722]">US</span>
+            </h2>
+            
+            <div className="space-y-8">
+                <div className="flex items-start gap-4">
+                    <div className="p-3 bg-neutral-900 rounded-full text-[#ff5722]">
+                        <MapPin size={28} />
+                    </div>
+                    <div>
+                        <h3 className="text-2xl font-[family-name:var(--font-bebas)] text-white tracking-wide">
+                            ROAD HOUSE SEEDUWA
+                        </h3>
+                        <p className="text-neutral-400 font-sans text-lg">
+                            24 Kotugoda Rd, Seeduwa.<br/>
+                            (5 mins from Airport Turn-off)
+                        </p>
                     </div>
                 </div>
-                
-                <h3 className="text-3xl font-[family-name:var(--font-bebas)] text-white mb-2 tracking-wide">
-                    SEEDUWA
-                </h3>
-                <p className="text-neutral-400 mb-8 font-sans leading-relaxed text-lg">
-                    24 Kotugoda Rd,<br/>
-                    Seeduwa, Sri Lanka.
-                </p>
-                
+
+                <div className="flex items-start gap-4">
+                    <div className="p-3 bg-neutral-900 rounded-full text-[#ff5722]">
+                        <Car size={28} />
+                    </div>
+                    <div>
+                        <h3 className="text-xl font-[family-name:var(--font-bebas)] text-white tracking-wide">
+                            PARKING AVAILABLE
+                        </h3>
+                        <p className="text-neutral-400 font-sans text-sm">
+                            Secure parking for 15+ vehicles. Bike friendly.
+                        </p>
+                    </div>
+                </div>
+
                 <a 
                     href="https://www.google.com/maps/search/?api=1&query=24+Kotugoda+Rd+Seeduwa" 
                     target="_blank"
-                    className="inline-flex items-center gap-2 bg-[#e0e0e0] text-black font-bold px-8 py-4 hover:bg-[#ff5722] hover:text-white transition-all uppercase tracking-wider text-sm clip-path-slant"
-                    style={{ clipPath: 'polygon(10% 0, 100% 0, 100% 100%, 0% 100%)' }}
+                    className="inline-flex items-center gap-2 bg-[#e0e0e0] text-black font-bold px-8 py-4 hover:bg-[#ff5722] hover:text-white transition-all uppercase tracking-wider text-sm rounded-sm mt-4"
                 >
                     <Navigation size={18} />
-                    Get Directions
+                    Open in Google Maps
                 </a>
             </div>
         </div>
+
+        {/* RIGHT: LIVE MAP EMBED */}
+        <div className="h-[400px] w-full bg-neutral-900 rounded-lg overflow-hidden border border-white/10 relative group">
+            {/* Real Google Map Embed for Seeduwa */}
+            <iframe 
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d63359.39050967393!2d79.85411774999999!3d7.118683!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ae2ee9c63236701%3A0x6095907409c2565!2sSeeduwa!5e0!3m2!1sen!2slk!4v1700000000000!5m2!1sen!2slk"
+                width="100%" 
+                height="100%" 
+                style={{ border: 0, filter: "grayscale(100%) invert(90%) contrast(1.2)" }} 
+                allowFullScreen 
+                loading="lazy" 
+                referrerPolicy="no-referrer-when-downgrade"
+                className="group-hover:filter-none transition-all duration-700"
+            ></iframe>
+            
+            {/* Overlay Instructions */}
+            <div className="absolute bottom-4 left-4 bg-black/80 backdrop-blur px-3 py-1 rounded border border-[#ff5722]/50 pointer-events-none">
+                <span className="text-[#ff5722] font-mono text-[10px] animate-pulse">● LIVE SATELLITE FEED</span>
+            </div>
+        </div>
+
       </div>
     </section>
   );
