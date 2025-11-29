@@ -1,20 +1,12 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
-  const [subText, setSubText] = useState("COMING SOON");
-
-  useEffect(() => {
-    const targetDate = new Date("2025-12-30T00:00:00").getTime();
-    if (new Date().getTime() >= targetDate) {
-      setSubText("OPEN NOW");
-    }
-  }, []);
 
   const navLinks = [
     { name: "MENU", href: "/menu" },
@@ -31,6 +23,7 @@ export default function Navbar() {
           
           {/* BRANDING */}
           <Link href="/" className="relative group flex items-center gap-3">
+            {/* Using logo-full.png as requested */}
             <img 
               src="/logo-full.png" 
               alt="Road House Logo" 
@@ -38,10 +31,7 @@ export default function Navbar() {
             />
             <div className="hidden md:block">
                 <span className="block text-white font-[family-name:var(--font-blackops)] text-xl leading-none tracking-wide">ROAD HOUSE</span>
-                {/* Dynamic Subtext */}
-                <span className="block text-[#ff5722] font-mono text-[10px] tracking-[0.3em] uppercase">
-                  SEEDUWA • {subText}
-                </span> 
+                <span className="block text-[#ff5722] font-mono text-[10px] tracking-[0.3em]">SEEDUWA</span> 
             </div>
           </Link>
 
@@ -90,6 +80,7 @@ export default function Navbar() {
               <X size={32} />
             </button>
             
+            {/* Mobile Logo using logo-full.png */}
             <img src="/logo-full.png" alt="Road House" className="h-24 w-auto mb-4" />
 
             <div className="flex flex-col items-center gap-6">
