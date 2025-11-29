@@ -26,10 +26,10 @@ const blackOps = Black_Ops_One({
 
 // 2. SEO METADATA
 export const metadata = {
-  title: "ROAD HOUSE | Seeduwa HQ",
-  description: "The Designated Pitstop. Premium Grill & Cafe.",
+  title: "ROAD HOUSE | Seeduwa",
+  description: "The Designated Pitstop. Premium Grill & Cafe. Opening late 2025.",
   openGraph: {
-    title: "ROAD HOUSE | Seeduwa HQ",
+    title: "ROAD HOUSE | Seeduwa",
     description: "The Designated Pitstop. Premium Grill & Cafe.",
     url: "https://roadhouse.lk",
     siteName: "Road House",
