@@ -62,7 +62,7 @@ export default function HeroWow() {
             className="w-64 h-auto pointer-events-auto"
          >
             <img 
-               src="/logo-blue-neon.png" 
+               src="logo-full.png" 
                alt="Road House Neon Logo" 
                className="w-full h-full object-contain drop-shadow-[0_0_30px_#ff5722] filter brightness-125"
             />
