@@ -4,10 +4,10 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 
 const MENU_HIGHLIGHTS = [
-  { id: 1, name: "Double Smash Burger", price: "2,200", img: "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?q=80&w=1000&auto=format&fit=crop" },
-  { id: 2, name: "Spicy Pork Ribs", price: "3,500", img: "https://images.unsplash.com/photo-1544025162-d76690b6d015?q=80&w=1000&auto=format&fit=crop" },
-  { id: 3, name: "Seafood Platter", price: "6,000", img: "https://images.unsplash.com/photo-1599487488170-d11ec9c172f0?q=80&w=1000&auto=format&fit=crop" },
-  { id: 4, name: "Mojito Pitcher", price: "2,500", img: "https://images.unsplash.com/photo-1551538827-9c037cb4f32d?q=80&w=1000&auto=format&fit=crop" },
+  { id: 1, name: "Double Smash Burger", price: "2,200", img: "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?q=80&w=800&auto=format&fit=crop" },
+  { id: 2, name: "Spicy Pork Ribs", price: "3,500", img: "https://images.unsplash.com/photo-1544025162-d76690b6d015?q=80&w=800&auto=format&fit=crop" },
+  { id: 3, name: "Seafood Platter", price: "6,000", img: "https://images.unsplash.com/photo-1599487488170-d11ec9c172f0?q=80&w=800&auto=format&fit=crop" },
+  { id: 4, name: "Mojito Pitcher", price: "2,500", img: "https://images.unsplash.com/photo-1551538827-9c037cb4f32d?q=80&w=800&auto=format&fit=crop" },
 ];
 
 export default function InteractiveMenu() {
