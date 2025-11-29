@@ -10,7 +10,6 @@ const SPECIALS = [
     name: "HOT BUTTER CUTTLEFISH",
     price: "2,100 LKR",
     desc: "Crispy battered cuttlefish tossed in spicy butter sauce and spring onions.",
-    // Reliable static image
     image: "https://images.unsplash.com/photo-1626082927389-6cd097cdc6ec?q=80&w=800&auto=format&fit=crop"
   },
   {
@@ -18,7 +17,7 @@ const SPECIALS = [
     name: "KOCHCHI PORK CURRY",
     price: "1,700 LKR",
     desc: "Slow-cooked pork curry infused with fiery local Kochchi peppers.",
-    // Reliable static image
+    // Fixed image link
     image: "https://images.unsplash.com/photo-1547496502-ffa2264a36b5?q=80&w=800&auto=format&fit=crop"
   },
   {
@@ -26,13 +25,11 @@ const SPECIALS = [
     name: "MIXED GRILL PLATTER",
     price: "6,000 LKR",
     desc: "The ultimate sharing platter: Chicken, Pork, Sausages & Wedges.",
-    // Reliable static image
     image: "https://images.unsplash.com/photo-1544025162-d76690b6d015?q=80&w=800&auto=format&fit=crop"
   }
 ];
 
 export default function FeaturedSpecials() {
-  // Simple state to track votes (resets on refresh, but good for demo)
   const [votes, setVotes] = useState<Record<string, number>>({ sp1: 124, sp2: 89, sp3: 205 });
 
   const handleVote = (id: string) => {
@@ -61,7 +58,6 @@ export default function FeaturedSpecials() {
              >
                 <div className="h-[400px] md:h-[500px] overflow-hidden rounded-2xl relative border border-white/10 group-hover:border-[#ff5722] transition-colors">
                    <div className="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors z-10" />
-                   {/* FIXED IMAGE TAG */}
                    <img 
                       src={item.image} 
                       alt={item.name} 
@@ -74,7 +70,6 @@ export default function FeaturedSpecials() {
                       <h3 className="text-3xl font-[family-name:var(--font-bebas)] text-white mb-2">{item.name}</h3>
                       <p className="text-neutral-400 max-w-xs text-sm font-sans mb-4">{item.desc}</p>
                       
-                      {/* VOTE BUTTON */}
                       <button 
                         onClick={() => handleVote(item.id)}
                         className="flex items-center gap-2 text-sm font-bold text-white hover:text-[#ff5722] transition-colors border border-white/20 px-4 py-2 rounded-full hover:bg-white/5"
