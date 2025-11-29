@@ -7,7 +7,7 @@ export const MENU_CATEGORIES = [
 ];
 
 export const MENU_ITEMS = [
-  // --- STARTERS & BUNS ---
+  // --- STARTERS ---
   {
     id: "s1",
     category: "starters",
@@ -22,7 +22,7 @@ export const MENU_ITEMS = [
     name: "Hot Battered Mushroom",
     price: "750",
     description: "Deep fried mushrooms with spicy batter",
-    image: "https://images.unsplash.com/photo-1625938145744-e38051524294?q=80&w=800&auto=format&fit=crop"
+    image: "https://images.unsplash.com/photo-1625938144755-652e08e359b7?q=80&w=800&auto=format&fit=crop" // Fixed
   },
   {
     id: "s3",
@@ -57,7 +57,7 @@ export const MENU_ITEMS = [
     image: "https://images.unsplash.com/photo-1633321769407-af3f2fdb3872?q=80&w=800&auto=format&fit=crop"
   },
 
-  // --- MAINS & GRILLS ---
+  // --- MAINS ---
   {
     id: "m1",
     category: "mains",
@@ -72,7 +72,7 @@ export const MENU_ITEMS = [
     name: "Mixed Grill Platter",
     price: "6,000",
     description: "A massive sharing platter with Chicken, Pork, and Sausages",
-    image: "https://images.unsplash.com/photo-1555939594-58d7cb561ad1?q=80&w=800&auto=format&fit=crop"
+    image: "https://images.unsplash.com/photo-1544025162-d76690b6d015?q=80&w=800&auto=format&fit=crop" // Fixed
   },
   {
     id: "m3",
@@ -80,7 +80,7 @@ export const MENU_ITEMS = [
     name: "Hot Butter Cuttlefish",
     price: "2,100",
     description: "Chef's Special: Crispy fried cuttlefish in butter sauce",
-    image: "https://images.unsplash.com/photo-1626645738196-c2a7c87a8f58?q=80&w=800&auto=format&fit=crop"
+    image: "https://images.unsplash.com/photo-1626082927389-6cd097cdc6ec?q=80&w=800&auto=format&fit=crop"
   },
   {
     id: "m4",
@@ -88,14 +88,14 @@ export const MENU_ITEMS = [
     name: "Kochchi Pork",
     price: "1,700",
     description: "Spicy pork curry cooked with kochchi peppers",
-    image: "https://images.unsplash.com/photo-1548869206-93b036288d7e?q=80&w=800&auto=format&fit=crop"
+    image: "https://images.unsplash.com/photo-1626804475297-411d8c6b7ebf?q=80&w=800&auto=format&fit=crop" // Fixed
   },
 
-  // --- RICE & KOTTU ---
+  // --- RICE ---
   {
     id: "r1",
     category: "rice",
-    name: "Mixed Fried Rice (Basmathi)",
+    name: "Mixed Fried Rice",
     price: "1,700",
     description: "Wok fried with Chicken, Egg, and Seafood",
     image: "https://images.unsplash.com/photo-1603133872878-684f208fb84b?q=80&w=800&auto=format&fit=crop"
@@ -106,12 +106,12 @@ export const MENU_ITEMS = [
     name: "Chicken Kottu",
     price: "1,200",
     description: "Sri Lankan street food classic with roast chicken",
-    image: "https://images.unsplash.com/photo-1626804475297-411d8c6b7ebf?q=80&w=800&auto=format&fit=crop"
+    image: "https://images.unsplash.com/photo-1626804475315-18747a61d674?q=80&w=800&auto=format&fit=crop" // Fixed
   },
   {
     id: "r3",
     category: "rice",
-    name: "Cheese Kottu (Any Meat)",
+    name: "Cheese Kottu",
     price: "1,600",
     description: "Our signature Kottu covered in melted cheese",
     image: "https://images.unsplash.com/photo-1512058564366-18510be2db19?q=80&w=800&auto=format&fit=crop"
@@ -125,7 +125,7 @@ export const MENU_ITEMS = [
     image: "https://images.unsplash.com/photo-1555949258-eb67b1ef0ceb?q=80&w=800&auto=format&fit=crop"
   },
 
-  // --- DRINKS & DESSERT ---
+  // --- DRINKS ---
   {
     id: "d1",
     category: "drinks",
@@ -137,7 +137,7 @@ export const MENU_ITEMS = [
   {
     id: "d2",
     category: "drinks",
-    name: "Iced Milo (Bumba)",
+    name: "Iced Milo",
     price: "800",
     description: "Thick Milo topped with ice cream",
     image: "https://images.unsplash.com/photo-1592323281739-16b71891b799?q=80&w=800&auto=format&fit=crop"
@@ -150,10 +150,12 @@ export const MENU_ITEMS = [
     description: "Refreshing mix of lime, mint, and soda",
     image: "https://images.unsplash.com/photo-1551538827-9c037cb4f32d?q=80&w=800&auto=format&fit=crop"
   },
+  
+  // --- DESSERT ---
   {
     id: "de1",
     category: "dessert",
-    name: "Chocolate Biscuit Pudding",
+    name: "Biscuit Pudding",
     price: "450",
     description: "Layers of marie biscuit and chocolate cream",
     image: "https://images.unsplash.com/photo-1563805042-7684c019e1cb?q=80&w=800&auto=format&fit=crop"
