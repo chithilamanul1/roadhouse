@@ -118,7 +118,6 @@ export default function Footer() {
           {/* PAYMENT METHODS */}
           <div className="flex items-center gap-4 opacity-50 grayscale hover:grayscale-0 transition-all duration-500 order-2 md:order-1">
              <span className="text-[10px] font-mono text-neutral-600 uppercase tracking-widest mr-2">SECURED BY:</span>
-             {/* Using online assets for icons so you don't need local files */}
              <img src="https://upload.wikimedia.org/wikipedia/commons/4/41/Visa_Logo.png" className="h-4 w-auto" alt="Visa" />
              <img src="https://upload.wikimedia.org/wikipedia/commons/b/b7/MasterCard_Logo.svg" className="h-4 w-auto" alt="Mastercard" />
              <img src="https://upload.wikimedia.org/wikipedia/commons/b/b5/PayPal.svg" className="h-4 w-auto" alt="PayPal" />
