@@ -1,13 +1,27 @@
 "use client";
 
-const PHOTOS = [
-  "https://images.pexels.com/photos/260922/pexels-photo-260922.jpeg?auto=compress&cs=tinysrgb&w=800",
-  "https://images.pexels.com/photos/1267320/pexels-photo-1267320.jpeg?auto=compress&cs=tinysrgb&w=800",
-  "https://images.pexels.com/photos/2240763/pexels-photo-2240763.jpeg?auto=compress&cs=tinysrgb&w=800",
-  "https://images.pexels.com/photos/941861/pexels-photo-941861.jpeg?auto=compress&cs=tinysrgb&w=800"
-];
+import { useEffect, useState } from "react";
+import { getMasterData } from "@/lib/storage";
 
 export default function PhotoGallery() {
+  const [photos, setPhotos] = useState<string[]>([]);
+
+  useEffect(() => {
+    getMasterData().then(data => {
+        if(data && data.gallery && data.gallery.length > 0) {
+            setPhotos(data.gallery);
+        }
+    });
+  }, []);
+
+  // Default fallback images if Admin hasn't uploaded anything yet
+  const displayPhotos = photos.length > 0 ? photos : [
+    "https://images.pexels.com/photos/260922/pexels-photo-260922.jpeg?auto=compress&cs=tinysrgb&w=800",
+    "https://images.pexels.com/photos/1267320/pexels-photo-1267320.jpeg?auto=compress&cs=tinysrgb&w=800",
+    "https://images.pexels.com/photos/2240763/pexels-photo-2240763.jpeg?auto=compress&cs=tinysrgb&w=800",
+    "https://images.pexels.com/photos/941861/pexels-photo-941861.jpeg?auto=compress&cs=tinysrgb&w=800"
+  ];
+
   return (
     <section className="py-24 bg-[#050505]">
       <div className="max-w-7xl mx-auto px-6">
@@ -20,9 +34,8 @@ export default function PhotoGallery() {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-           {PHOTOS.map((src, i) => (
-              <div key={i} className="h-[250px] overflow-hidden rounded-sm group relative">
-                 {/* FIXED IMAGE TAG */}
+           {displayPhotos.slice(0, 8).map((src, i) => (
+              <div key={i} className="h-[250px] overflow-hidden rounded-sm group relative border border-white/10">
                  <img 
                     src={src} 
                     alt="Gallery" 
