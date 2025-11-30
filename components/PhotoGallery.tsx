@@ -1,26 +1,34 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { getMasterData } from "@/lib/storage";
+import { getMasterData } from "@/lib/storage"; // Import the cloud fetcher
+
+// Default Fallback Images (Show these only if Admin hasn't uploaded anything)
+const DEFAULT_PHOTOS = [
+  "https://images.pexels.com/photos/260922/pexels-photo-260922.jpeg?auto=compress&cs=tinysrgb&w=800",
+  "https://images.pexels.com/photos/1267320/pexels-photo-1267320.jpeg?auto=compress&cs=tinysrgb&w=800",
+  "https://images.pexels.com/photos/2240763/pexels-photo-2240763.jpeg?auto=compress&cs=tinysrgb&w=800",
+  "https://images.pexels.com/photos/941861/pexels-photo-941861.jpeg?auto=compress&cs=tinysrgb&w=800"
+];
 
 export default function PhotoGallery() {
   const [photos, setPhotos] = useState<string[]>([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    getMasterData().then(data => {
-        if(data && data.gallery && data.gallery.length > 0) {
-            setPhotos(data.gallery);
-        }
-    });
+    // 1. Fetch from Cloud
+    async function fetchGallery() {
+      const data = await getMasterData();
+      if (data && data.gallery && data.gallery.length > 0) {
+        setPhotos(data.gallery);
+      }
+      setLoading(false);
+    }
+    fetchGallery();
   }, []);
 
-  // Default fallback images if Admin hasn't uploaded anything yet
-  const displayPhotos = photos.length > 0 ? photos : [
-    "https://images.pexels.com/photos/260922/pexels-photo-260922.jpeg?auto=compress&cs=tinysrgb&w=800",
-    "https://images.pexels.com/photos/1267320/pexels-photo-1267320.jpeg?auto=compress&cs=tinysrgb&w=800",
-    "https://images.pexels.com/photos/2240763/pexels-photo-2240763.jpeg?auto=compress&cs=tinysrgb&w=800",
-    "https://images.pexels.com/photos/941861/pexels-photo-941861.jpeg?auto=compress&cs=tinysrgb&w=800"
-  ];
+  // 2. Decide what to show (Cloud photos OR Defaults)
+  const displayPhotos = photos.length > 0 ? photos : DEFAULT_PHOTOS;
 
   return (
     <section className="py-24 bg-[#050505]">
@@ -33,19 +41,23 @@ export default function PhotoGallery() {
            <p className="text-neutral-500 text-sm mt-2">GOOD FOOD. GOOD VIBES.</p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-           {displayPhotos.slice(0, 8).map((src, i) => (
-              <div key={i} className="h-[250px] overflow-hidden rounded-sm group relative border border-white/10">
-                 <img 
-                    src={src} 
-                    alt="Gallery" 
-                    referrerPolicy="no-referrer"
-                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                 />
-                 <div className="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors" />
-              </div>
-           ))}
-        </div>
+        {loading ? (
+            <div className="text-center text-white/20 animate-pulse">LOADING FEED...</div>
+        ) : (
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+            {displayPhotos.map((src, i) => (
+                <div key={i} className="h-[250px] overflow-hidden rounded-sm group relative border border-white/10">
+                    <img 
+                        src={src} 
+                        alt={`Gallery ${i}`} 
+                        referrerPolicy="no-referrer"
+                        className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                    />
+                    <div className="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors" />
+                </div>
+            ))}
+            </div>
+        )}
 
       </div>
     </section>
