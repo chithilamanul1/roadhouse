@@ -2,8 +2,8 @@
 
 import { useState, useEffect } from "react";
 import { getMasterData, saveMasterData, uploadImage } from "@/lib/storage";
-import { MENU_ITEMS } from "@/lib/menuData"; // Import your hardcoded menu
-import { Save, Lock, RefreshCw, Upload, Trash, Plus, Image as ImageIcon, Utensils, Camera, RotateCcw } from "lucide-react";
+import { MENU_ITEMS } from "@/lib/menuData"; 
+import { Save, Lock, RefreshCw, Upload, Trash, Plus, RotateCcw, Utensils, Camera } from "lucide-react";
 
 export default function AdminPage() {
   const [auth, setAuth] = useState(false);
@@ -36,11 +36,10 @@ export default function AdminPage() {
     alert("WEBSITE UPDATED SUCCESSFULLY");
   };
 
-  // --- NEW FEATURE: LOAD DEFAULTS ---
   const loadDefaults = () => {
-    if (confirm("This will overwrite the current Admin Menu with the default list. Continue?")) {
+    if (confirm("This will import the original menu items into the editor. Continue?")) {
         setData({ ...data, menu: MENU_ITEMS });
-        alert("Default Menu Loaded! Click 'PUBLISH' to save it.");
+        alert("Original Menu Loaded! Click 'PUBLISH' to save.");
     }
   };
 
@@ -61,35 +60,37 @@ export default function AdminPage() {
       }
       setData(newData);
     } else {
-      alert("Upload Failed. Check ImgBB Key.");
+      alert("Upload Failed");
     }
   };
 
   if (!auth) return (
-    <div className="h-screen bg-black flex flex-col items-center justify-center p-6 text-white">
+    <div className="h-screen bg-black flex flex-col items-center justify-center p-6 text-white pt-24">
       <Lock className="text-[#ff5722] mb-4" size={48} />
-      <input type="password" placeholder="ACCESS CODE" className="bg-neutral-900 border border-white/20 p-4 text-center tracking-widest mb-4 w-full max-w-xs rounded focus:border-[#ff5722] outline-none" onChange={(e) => setPass(e.target.value)} />
+      <h1 className="font-[family-name:var(--font-blackops)] text-2xl mb-6">ADMIN ACCESS</h1>
+      <input type="password" placeholder="PASSWORD" className="bg-neutral-900 border border-white/20 p-4 text-center tracking-widest mb-4 w-full max-w-xs rounded outline-none focus:border-[#ff5722]" onChange={(e) => setPass(e.target.value)} />
       <button onClick={checkAuth} className="bg-[#ff5722] text-black font-bold px-8 py-3 w-full max-w-xs rounded">UNLOCK</button>
     </div>
   );
 
   return (
-    <div className="min-h-screen bg-[#050505] text-white font-sans pb-32">
+    // FIX: Added pt-28 to push content below the main Navbar
+    <div className="min-h-screen bg-[#050505] text-white font-sans pb-32 pt-28">
       
-      {/* HEADER */}
-      <div className="sticky top-0 z-50 bg-black/90 backdrop-blur border-b border-white/10 p-4 flex justify-between items-center">
+      {/* HEADER - FIX: Changed top-0 to top-24 so it sticks BELOW the Navbar */}
+      <div className="sticky top-24 z-40 bg-black/95 backdrop-blur border-b border-white/10 p-4 flex justify-between items-center shadow-lg">
         <h1 className="text-lg font-[family-name:var(--font-blackops)] text-[#ff5722]">ADMIN PANEL</h1>
-        <button onClick={handleSave} className="px-6 py-2 bg-[#ff5722] text-black font-bold rounded flex items-center gap-2 text-sm">
+        <button onClick={handleSave} className="px-6 py-2 bg-[#ff5722] text-black font-bold rounded flex items-center gap-2 text-xs hover:bg-white transition-colors">
             <Save size={16} /> {loading ? "SAVING..." : "PUBLISH CHANGES"}
         </button>
       </div>
 
       {/* TABS */}
       <div className="flex border-b border-white/10 bg-neutral-900/50">
-        <button onClick={() => setActiveTab("MENU")} className={`flex-1 p-4 flex justify-center gap-2 text-xs font-bold tracking-widest ${activeTab === "MENU" ? "text-[#ff5722] border-b-2 border-[#ff5722]" : "text-neutral-500"}`}>
+        <button onClick={() => setActiveTab("MENU")} className={`flex-1 p-4 flex justify-center gap-2 text-xs font-bold tracking-widest transition-colors ${activeTab === "MENU" ? "text-[#ff5722] border-b-2 border-[#ff5722] bg-white/5" : "text-neutral-500 hover:text-white"}`}>
             <Utensils size={16} /> MENU MANAGER
         </button>
-        <button onClick={() => setActiveTab("GALLERY")} className={`flex-1 p-4 flex justify-center gap-2 text-xs font-bold tracking-widest ${activeTab === "GALLERY" ? "text-[#ff5722] border-b-2 border-[#ff5722]" : "text-neutral-500"}`}>
+        <button onClick={() => setActiveTab("GALLERY")} className={`flex-1 p-4 flex justify-center gap-2 text-xs font-bold tracking-widest transition-colors ${activeTab === "GALLERY" ? "text-[#ff5722] border-b-2 border-[#ff5722] bg-white/5" : "text-neutral-500 hover:text-white"}`}>
             <Camera size={16} /> GALLERY MANAGER
         </button>
       </div>
@@ -105,9 +106,9 @@ export default function AdminPage() {
                         onClick={() => setData({ ...data, menu: [{ name: "New Dish", price: "0", description: "", category: "mains", image: "" }, ...data.menu] })}
                         className="flex-1 py-4 border-2 border-dashed border-white/20 text-neutral-400 hover:border-[#ff5722] hover:text-[#ff5722] flex items-center justify-center gap-2 rounded transition-colors"
                     >
-                        <Plus size={20} /> ADD NEW ITEM
+                        <Plus size={20} /> ADD BLANK ITEM
                     </button>
-                    {/* RESET BUTTON */}
+                    
                     <button 
                         onClick={loadDefaults}
                         className="px-6 border-2 border-red-900/30 bg-red-900/10 text-red-500 hover:bg-red-900/20 flex items-center justify-center gap-2 rounded transition-colors text-xs font-bold tracking-widest"
@@ -118,7 +119,7 @@ export default function AdminPage() {
 
                 {data.menu.map((item: any, i: number) => (
                     <div key={i} className="bg-neutral-900 border border-white/10 p-4 rounded flex flex-col md:flex-row gap-4">
-                        {/* Image */}
+                        {/* Image Uploader */}
                         <div className="w-24 h-24 bg-black rounded relative group shrink-0 border border-white/10 overflow-hidden">
                             <img src={item.image || "https://via.placeholder.com/150"} className="w-full h-full object-cover" />
                             <label className="absolute inset-0 bg-black/60 flex items-center justify-center opacity-0 group-hover:opacity-100 cursor-pointer transition-opacity">
@@ -129,7 +130,7 @@ export default function AdminPage() {
                         {/* Inputs */}
                         <div className="flex-1 space-y-2">
                             <div className="flex gap-2">
-                                <input value={item.name} onChange={(e) => { const m = [...data.menu]; m[i].name = e.target.value; setData({...data, menu: m}); }} className="flex-1 bg-black p-2 rounded border border-white/20 text-white" placeholder="Item Name" />
+                                <input value={item.name} onChange={(e) => { const m = [...data.menu]; m[i].name = e.target.value; setData({...data, menu: m}); }} className="flex-1 bg-black p-2 rounded border border-white/20 text-white" placeholder="Name" />
                                 <input value={item.price} onChange={(e) => { const m = [...data.menu]; m[i].price = e.target.value; setData({...data, menu: m}); }} className="w-24 bg-black p-2 rounded border border-white/20 text-[#ff5722] font-bold" placeholder="Price" />
                             </div>
                             <input value={item.description} onChange={(e) => { const m = [...data.menu]; m[i].description = e.target.value; setData({...data, menu: m}); }} className="w-full bg-black p-2 rounded border border-white/20 text-sm text-neutral-400" placeholder="Description" />
@@ -140,7 +141,7 @@ export default function AdminPage() {
                                     <option value="mains">BBQ & Grill</option>
                                     <option value="rice_kottu">Rice & Kottu</option>
                                     <option value="portions">Meat Portions</option>
-                                    <option value="drinks">Juice Bar</option>
+                                    <option value="drinks">Drinks</option>
                                     <option value="dessert">Desserts</option>
                                 </select>
                                 <button onClick={() => { if(confirm("Delete item?")) { const m = data.menu.filter((_:any, idx:number) => idx !== i); setData({...data, menu: m}); }}} className="text-red-500 text-xs flex items-center gap-1 hover:text-red-400"><Trash size={14} /> DELETE</button>
