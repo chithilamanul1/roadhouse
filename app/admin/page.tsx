@@ -2,7 +2,8 @@
 
 import { useState, useEffect } from "react";
 import { getMasterData, saveMasterData, uploadImage } from "@/lib/storage";
-import { Save, Lock, RefreshCw, Upload, Trash, Plus, Image as ImageIcon, Utensils, Camera } from "lucide-react";
+import { MENU_ITEMS } from "@/lib/menuData"; // Import your hardcoded menu
+import { Save, Lock, RefreshCw, Upload, Trash, Plus, Image as ImageIcon, Utensils, Camera, RotateCcw } from "lucide-react";
 
 export default function AdminPage() {
   const [auth, setAuth] = useState(false);
@@ -12,16 +13,13 @@ export default function AdminPage() {
   const [loading, setLoading] = useState(false);
   const [uploading, setUploading] = useState(false);
 
-  // AUTH
   const checkAuth = () => { if (pass === "roadhouse2025") setAuth(true); };
 
-  // LOAD
   useEffect(() => {
     if (auth) {
       setLoading(true);
       getMasterData().then((cloudData) => {
         if (cloudData) {
-            // Ensure arrays exist
             if (!cloudData.menu) cloudData.menu = [];
             if (!cloudData.gallery) cloudData.gallery = [];
             setData(cloudData);
@@ -31,7 +29,6 @@ export default function AdminPage() {
     }
   }, [auth]);
 
-  // SAVE
   const handleSave = async () => {
     setLoading(true);
     await saveMasterData(data);
@@ -39,7 +36,14 @@ export default function AdminPage() {
     alert("WEBSITE UPDATED SUCCESSFULLY");
   };
 
-  // UPLOAD
+  // --- NEW FEATURE: LOAD DEFAULTS ---
+  const loadDefaults = () => {
+    if (confirm("This will overwrite the current Admin Menu with the default list. Continue?")) {
+        setData({ ...data, menu: MENU_ITEMS });
+        alert("Default Menu Loaded! Click 'PUBLISH' to save it.");
+    }
+  };
+
   const handleImageUpload = async (e: any, target: 'menu' | 'gallery', index?: number) => {
     const file = e.target.files[0];
     if (!file) return;
@@ -95,19 +99,29 @@ export default function AdminPage() {
         {/* --- MENU EDITOR --- */}
         {activeTab === "MENU" && (
             <div className="space-y-6">
-                <button 
-                    onClick={() => setData({ ...data, menu: [{ name: "New Dish", price: "0", description: "", category: "mains", image: "" }, ...data.menu] })}
-                    className="w-full py-4 border-2 border-dashed border-white/20 text-neutral-400 hover:border-[#ff5722] hover:text-[#ff5722] flex items-center justify-center gap-2 rounded"
-                >
-                    <Plus size={20} /> ADD NEW ITEM
-                </button>
+                
+                <div className="flex gap-4">
+                    <button 
+                        onClick={() => setData({ ...data, menu: [{ name: "New Dish", price: "0", description: "", category: "mains", image: "" }, ...data.menu] })}
+                        className="flex-1 py-4 border-2 border-dashed border-white/20 text-neutral-400 hover:border-[#ff5722] hover:text-[#ff5722] flex items-center justify-center gap-2 rounded transition-colors"
+                    >
+                        <Plus size={20} /> ADD NEW ITEM
+                    </button>
+                    {/* RESET BUTTON */}
+                    <button 
+                        onClick={loadDefaults}
+                        className="px-6 border-2 border-red-900/30 bg-red-900/10 text-red-500 hover:bg-red-900/20 flex items-center justify-center gap-2 rounded transition-colors text-xs font-bold tracking-widest"
+                    >
+                        <RotateCcw size={16} /> LOAD DEFAULTS
+                    </button>
+                </div>
 
                 {data.menu.map((item: any, i: number) => (
                     <div key={i} className="bg-neutral-900 border border-white/10 p-4 rounded flex flex-col md:flex-row gap-4">
                         {/* Image */}
                         <div className="w-24 h-24 bg-black rounded relative group shrink-0 border border-white/10 overflow-hidden">
                             <img src={item.image || "https://via.placeholder.com/150"} className="w-full h-full object-cover" />
-                            <label className="absolute inset-0 bg-black/60 flex items-center justify-center opacity-0 group-hover:opacity-100 cursor-pointer">
+                            <label className="absolute inset-0 bg-black/60 flex items-center justify-center opacity-0 group-hover:opacity-100 cursor-pointer transition-opacity">
                                 {uploading ? <RefreshCw className="animate-spin text-white"/> : <Upload className="text-white" size={20} />}
                                 <input type="file" className="hidden" onChange={(e) => handleImageUpload(e, 'menu', i)} />
                             </label>
@@ -115,12 +129,12 @@ export default function AdminPage() {
                         {/* Inputs */}
                         <div className="flex-1 space-y-2">
                             <div className="flex gap-2">
-                                <input value={item.name} onChange={(e) => { const m = [...data.menu]; m[i].name = e.target.value; setData({...data, menu: m}); }} className="flex-1 bg-black p-2 rounded border border-white/20" placeholder="Item Name" />
-                                <input value={item.price} onChange={(e) => { const m = [...data.menu]; m[i].price = e.target.value; setData({...data, menu: m}); }} className="w-24 bg-black p-2 rounded border border-white/20 text-[#ff5722]" placeholder="Price" />
+                                <input value={item.name} onChange={(e) => { const m = [...data.menu]; m[i].name = e.target.value; setData({...data, menu: m}); }} className="flex-1 bg-black p-2 rounded border border-white/20 text-white" placeholder="Item Name" />
+                                <input value={item.price} onChange={(e) => { const m = [...data.menu]; m[i].price = e.target.value; setData({...data, menu: m}); }} className="w-24 bg-black p-2 rounded border border-white/20 text-[#ff5722] font-bold" placeholder="Price" />
                             </div>
                             <input value={item.description} onChange={(e) => { const m = [...data.menu]; m[i].description = e.target.value; setData({...data, menu: m}); }} className="w-full bg-black p-2 rounded border border-white/20 text-sm text-neutral-400" placeholder="Description" />
                             <div className="flex justify-between">
-                                <select value={item.category} onChange={(e) => { const m = [...data.menu]; m[i].category = e.target.value; setData({...data, menu: m}); }} className="bg-black p-2 rounded border border-white/20 text-xs">
+                                <select value={item.category} onChange={(e) => { const m = [...data.menu]; m[i].category = e.target.value; setData({...data, menu: m}); }} className="bg-black p-2 rounded border border-white/20 text-xs text-neutral-300">
                                     <option value="starters">Starters</option>
                                     <option value="subs_burgers">Subs & Burgers</option>
                                     <option value="mains">BBQ & Grill</option>
@@ -129,7 +143,7 @@ export default function AdminPage() {
                                     <option value="drinks">Juice Bar</option>
                                     <option value="dessert">Desserts</option>
                                 </select>
-                                <button onClick={() => { if(confirm("Delete item?")) { const m = data.menu.filter((_:any, idx:number) => idx !== i); setData({...data, menu: m}); }}} className="text-red-500 text-xs flex items-center gap-1"><Trash size={14} /> DELETE</button>
+                                <button onClick={() => { if(confirm("Delete item?")) { const m = data.menu.filter((_:any, idx:number) => idx !== i); setData({...data, menu: m}); }}} className="text-red-500 text-xs flex items-center gap-1 hover:text-red-400"><Trash size={14} /> DELETE</button>
                             </div>
                         </div>
                     </div>
@@ -140,7 +154,7 @@ export default function AdminPage() {
         {/* --- GALLERY EDITOR --- */}
         {activeTab === "GALLERY" && (
             <div>
-                <label className="w-full py-8 border-2 border-dashed border-white/20 text-neutral-400 hover:border-[#ff5722] hover:text-[#ff5722] flex flex-col items-center justify-center gap-2 rounded cursor-pointer mb-8">
+                <label className="w-full py-8 border-2 border-dashed border-white/20 text-neutral-400 hover:border-[#ff5722] hover:text-[#ff5722] flex flex-col items-center justify-center gap-2 rounded cursor-pointer mb-8 transition-colors">
                     {uploading ? <RefreshCw className="animate-spin" /> : <Upload size={32} />}
                     <span className="font-bold tracking-widest">UPLOAD NEW PHOTO</span>
                     <input type="file" className="hidden" onChange={(e) => handleImageUpload(e, 'gallery')} />
