@@ -3,36 +3,27 @@
 @tailwind utilities;
 
 :root {
-  --foreground-rgb: 255, 255, 255;
-  --background-start-rgb: 5, 5, 5;
+  --asphalt: #18181b;
+  --concrete: #27272a;
+  --paint: #f4f4f5;
+  --amber: #f59e0b;
 }
 
 body {
-  background: #050505;
-  color: #fff;
-  overflow-x: hidden; /* Prevents horizontal scroll from animations */
+  color: var(--paint);
+  background-color: var(--asphalt);
+  font-family: sans-serif;
+  overflow-x: hidden;
 }
 
-/* Industrial Scrollbar - Custom Design */
-::-webkit-scrollbar {
-  width: 10px;
+/* Road Line Pattern */
+.road-line {
+  background-image: linear-gradient(to bottom, transparent 50%, rgba(255, 255, 255, 0.1) 50%);
+  background-size: 100% 20px;
 }
 
-::-webkit-scrollbar-track {
-  background: #0a0a0a;
-}
-
-::-webkit-scrollbar-thumb {
-  background: #333;
-  border: 1px solid #000;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: #ff5722; /* Road House Orange on Hover */
-}
-
-/* Custom Text Selection Color */
-::selection {
-  background: #ff5722;
-  color: #000;
+/* Luxury Matte Card */
+.matte-card {
+  background: linear-gradient(145deg, #1e1e21, #161618);
+  box-shadow:  5px 5px 10px #0f0f11, -5px -5px 10px #212125;
 }
