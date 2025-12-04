@@ -1,6 +1,8 @@
 import Navbar from "@/components/Navbar";
 import VenueAd from "@/components/VenueAd";
-import { MapPin, Utensils, Coffee, Wine, Mic2, Music, Sun, ShoppingBag } from "lucide-react";
+import MenuSection from "@/components/MenuSection";
+import Footer from "@/components/Footer";
+import { MapPin, Utensils, Coffee, Wine, Mic2, Music, Sun } from "lucide-react";
 
 const zones = [
   { id: "street-food", title: "Street Food", icon: <Utensils/>, desc: "Kottu & BBQ Grills" },
@@ -25,7 +27,6 @@ export default function Home() {
       
       {/* HERO SECTION */}
       <section className="relative h-screen flex flex-col items-center justify-center pt-20 overflow-hidden bg-[#5e565a]">
-        {/* Industrial Grid Background */}
         <div className="absolute inset-0 opacity-10" style={{backgroundImage: 'linear-gradient(#f7ff58 1px, transparent 1px), linear-gradient(90deg, #f7ff58 1px, transparent 1px)', backgroundSize: '40px 40px'}}></div>
 
         <div className="relative z-10 text-center max-w-4xl px-6">
@@ -47,7 +48,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* CROSS PROMO AD (Link to Dinidu) */}
+      {/* CROSS PROMO AD */}
       <VenueAd />
 
       {/* ZONES GRID */}
@@ -70,6 +71,9 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      {/* MENU SECTION */}
+      <MenuSection />
 
       {/* ENTERTAINMENT */}
       <section id="entertainment" className="py-24 bg-[#5e565a] border-t border-[#f7ff58]/20">
@@ -94,13 +98,14 @@ export default function Home() {
                   </div>
                   <div className="text-left">
                      <h3 className="text-2xl font-black text-[#efecca] uppercase">Live Bands</h3>
-                     <p className="text-[#a9cbb7]">Sunday Sessions</p>
+                     <p className="text-gray-400">Sunday Sessions</p>
                   </div>
                </div>
             </div>
          </div>
       </section>
 
+      <Footer />
     </main>
   );
 }

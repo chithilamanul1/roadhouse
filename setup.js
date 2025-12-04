@@ -4,126 +4,84 @@ const rootDir = process.cwd();
 
 function write(filePath, content) {
     const fullPath = path.join(rootDir, filePath);
+    const dir = path.dirname(fullPath);
+    if (!fs.existsSync(dir)) fs.mkdirSync(dir, { recursive: true });
     fs.writeFileSync(fullPath, content.trim());
-    console.log(`✅ ROAD HOUSE BUILT: ${filePath}`);
+    console.log(`✅ INSTALLED: ${filePath}`);
 }
 
-function removeDir(dirPath) {
-    const fullPath = path.join(rootDir, dirPath);
-    if (fs.existsSync(fullPath)) {
-        fs.rmSync(fullPath, { recursive: true, force: true });
-        console.log(`🗑️ REMOVED: ${dirPath}`);
-    }
-}
+console.log("🚀 FINALIZING ROAD HOUSE WEBSITE...");
 
-console.log("🚀 CONVERTING TO STANDALONE ROAD HOUSE SITE...");
-
-// 1. CLEANUP (Remove Dinidu folders from this project)
-removeDir('app/dinidu');
-removeDir('app/roadhouse'); // We are moving this to root
-
-// 2. NAVBAR (With External Link to Dinidu)
-write('components/Navbar.jsx', `
+// 1. MENU SECTION (Industrial Tabs)
+write('components/MenuSection.jsx', `
 'use client';
-import Link from "next/link";
-import { useState } from "react";
-import { Menu, X, ArrowUpRight } from "lucide-react";
+import { useState } from 'react';
+import { Utensils, Coffee, Beer, IceCream } from 'lucide-react';
 
-export default function Navbar() {
-  const [mobileOpen, setMobileOpen] = useState(false);
+const categories = [
+  { id: 'street', name: 'Street Food', icon: <Utensils size={18} />, items: [
+      { name: 'Dolphin Kottu', price: '1,200', desc: 'Cheesy, spicy, heavy.' },
+      { name: 'Egg Hoppers (3)', price: '450', desc: 'With Lunu Miris.' },
+      { name: 'BBQ Chicken Leg', price: '950', desc: 'Charcoal grilled.' },
+      { name: 'Seafood Rice', price: '1,500', desc: 'Wok fried street style.' }
+  ]},
+  { id: 'bites', name: 'Bites & BYOB', icon: <Beer size={18} />, items: [
+      { name: 'Hot Butter Cuttlefish', price: '1,800', desc: 'The classic.' },
+      { name: 'Devilled Cashew', price: '1,200', desc: 'Spicy roast.' },
+      { name: 'Pepper Pork', price: '1,600', desc: 'Black pepper dry fry.' },
+      { name: 'French Fries', price: '800', desc: 'Thick cut.' }
+  ]},
+  { id: 'cafe', name: 'Cafe & Juice', icon: <Coffee size={18} />, items: [
+      { name: 'Iced Milo', price: '400', desc: 'Extra chocolatey.' },
+      { name: 'Cappuccino', price: '600', desc: 'Fresh brew.' },
+      { name: 'Passion Mojito', price: '750', desc: 'Mint & lime refresher.' },
+      { name: 'Chocolate Waffle', price: '900', desc: 'With ice cream.' }
+  ]}
+];
+
+export default function MenuSection() {
+  const [active, setActive] = useState('street');
 
   return (
-    <nav className="fixed top-0 w-full z-50 bg-[#5e565a] border-b border-[#f7ff58]/20 shadow-xl">
-      
-      {/* TOP BAR: CROSS PROMO */}
-      <div className="bg-[#4a4448] text-[10px] font-bold tracking-[0.2em] px-6 py-2 flex justify-between items-center text-[#efecca] uppercase">
-        <span className="hidden md:block opacity-70">The Food District</span>
-        <a href="https://dinidugardens.lk" target="_blank" className="flex items-center gap-2 hover:text-[#f7ff58] transition-colors cursor-pointer group">
-            <span>Looking for a Banquet Hall?</span>
-            <ArrowUpRight size={12} className="group-hover:-translate-y-0.5 group-hover:translate-x-0.5 transition-transform"/>
-        </a>
-      </div>
-
-      <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
-        
-        {/* LOGO */}
-        <Link href="/" className="flex items-center gap-4 group">
-           <div className="w-12 h-12 bg-[#ff934f] -skew-x-12 flex items-center justify-center border-2 border-[#efecca] shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] group-hover:translate-y-1 group-hover:shadow-none transition-all">
-             <span className="font-black text-[#5e565a] text-xl skew-x-12">RH</span>
-           </div>
-           <div className="flex flex-col">
-             <span className="font-bold text-2xl text-[#efecca] tracking-widest leading-none">ROAD<span className="text-[#f7ff58]">HOUSE</span></span>
-             <span className="text-[9px] text-[#a9cbb7] tracking-[0.4em] uppercase font-bold mt-1">Seeduwa</span>
-           </div>
-        </Link>
-
-        {/* DESKTOP LINKS */}
-        <div className="hidden md:flex items-center gap-10">
-          <Link href="#zones" className="text-xs font-bold text-[#efecca]/80 hover:text-[#f7ff58] transition-colors uppercase tracking-widest">Zones</Link>
-          <Link href="#menu" className="text-xs font-bold text-[#efecca]/80 hover:text-[#f7ff58] transition-colors uppercase tracking-widest">Menu</Link>
-          <Link href="#entertainment" className="text-xs font-bold text-[#efecca]/80 hover:text-[#f7ff58] transition-colors uppercase tracking-widest">Events</Link>
-          <Link href="/contact" className="px-6 py-3 bg-[#f7ff58] text-[#5e565a] font-black uppercase text-xs tracking-widest hover:bg-white transition-colors skew-x-[-10deg] shadow-[4px_4px_0px_0px_rgba(0,0,0,0.5)] hover:shadow-none hover:translate-y-1">
-            Book Table
-          </Link>
-        </div>
-
-        {/* MOBILE TOGGLE */}
-        <button onClick={() => setMobileOpen(!mobileOpen)} className="md:hidden text-[#efecca]">
-          {mobileOpen ? <X /> : <Menu />}
-        </button>
-      </div>
-
-      {/* MOBILE MENU */}
-      {mobileOpen && (
-        <div className="md:hidden absolute top-28 left-0 w-full h-screen bg-[#5e565a] p-8 flex flex-col gap-8 z-40 border-t border-[#f7ff58]/20">
-          <Link href="#zones" onClick={() => setMobileOpen(false)} className="text-2xl font-bold text-[#efecca] uppercase">Zones</Link>
-          <Link href="#menu" onClick={() => setMobileOpen(false)} className="text-2xl font-bold text-[#efecca] uppercase">Menu</Link>
-          <div className="w-full h-px bg-[#efecca]/10"></div>
-          <a href="https://dinidugardens.lk" className="text-lg text-[#a9cbb7] uppercase flex items-center gap-2">
-             Visit Dinidu Gardens <ArrowUpRight size={18}/>
-          </a>
-        </div>
-      )}
-    </nav>
-  );
-}
-`);
-
-// 3. CROSS PROMO CARD (The "Ad" Component)
-write('components/VenueAd.jsx', `
-import { ArrowRight, PartyPopper } from "lucide-react";
-
-export default function VenueAd() {
-  return (
-    <section className="bg-[#4a4448] border-y-4 border-[#ff934f] py-16 px-6">
-      <div className="max-w-6xl mx-auto bg-[#5e565a] rounded-xl overflow-hidden shadow-2xl flex flex-col md:flex-row relative group">
-        
-        {/* Decorative Pattern */}
-        <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')] opacity-20 pointer-events-none"></div>
-
-        <div className="p-10 md:p-16 flex-1 flex flex-col justify-center relative z-10">
-           <div className="inline-flex items-center gap-2 text-[#ff934f] font-bold tracking-widest text-xs uppercase mb-4">
-              <PartyPopper size={16} /> Partner Venue
-           </div>
-           <h2 className="text-3xl md:text-5xl font-black text-[#efecca] uppercase mb-6 leading-tight">
-             Planning a <span className="text-[#f7ff58]">Wedding</span> or <span className="text-[#f7ff58]">Event?</span>
+    <section id="menu" className="py-24 px-6 bg-[#4a4448]">
+      <div className="max-w-5xl mx-auto">
+        <div className="text-center mb-12">
+           <h2 className="text-4xl md:text-6xl font-black text-[#efecca] uppercase italic">
+             The <span className="text-[#f7ff58]">Menu</span>
            </h2>
-           <p className="text-[#a9cbb7] text-lg mb-8 max-w-md">
-             Experience luxury at Dinidu Banquet Hall. Just 2 minutes away from Road House.
-           </p>
-           <a href="https://dinidugardens.lk" target="_blank" className="inline-flex items-center gap-3 text-[#efecca] font-bold uppercase tracking-widest border-b-2 border-[#ff934f] pb-1 hover:text-[#ff934f] transition-colors w-fit">
-             Visit Dinidu Gardens <ArrowRight size={16} />
-           </a>
+           <p className="text-[#a9cbb7] font-mono tracking-widest uppercase text-xs mt-2">Fuel for the Road</p>
         </div>
 
-        {/* Visual Side */}
-        <div className="md:w-1/3 bg-[#ecc8ae] relative min-h-[200px] flex items-center justify-center overflow-hidden">
-           <div className="absolute inset-0 bg-[#6c4b5e]/80"></div>
-           <div className="relative z-10 text-center p-6 border-4 border-[#ddffd9] m-6">
-              <span className="font-serif text-3xl text-[#ddffd9] tracking-widest">DINIDU</span>
-              <div className="w-full h-px bg-[#ddffd9]/50 my-2"></div>
-              <span className="text-xs text-[#ddffd9] uppercase tracking-[0.3em]">Banquet Halls</span>
-           </div>
+        {/* TABS */}
+        <div className="flex flex-wrap justify-center gap-4 mb-12">
+          {categories.map((cat) => (
+            <button 
+              key={cat.id}
+              onClick={() => setActive(cat.id)}
+              className={\`flex items-center gap-2 px-6 py-3 font-bold uppercase tracking-widest text-sm border-2 transition-all skew-x-[-10deg] \${active === cat.id ? 'bg-[#ff934f] border-[#ff934f] text-[#5e565a]' : 'border-[#a9cbb7] text-[#a9cbb7] hover:border-[#f7ff58] hover:text-[#f7ff58]'}\`}
+            >
+              {cat.icon} {cat.name}
+            </button>
+          ))}
+        </div>
+
+        {/* MENU GRID */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+           {categories.find(c => c.id === active).items.map((item, i) => (
+             <div key={i} className="bg-[#5e565a] p-6 border-l-4 border-[#f7ff58] flex justify-between items-start group hover:bg-[#27272a] transition-colors">
+                <div>
+                   <h4 className="text-xl font-bold text-[#efecca] uppercase group-hover:text-[#f7ff58] transition-colors">{item.name}</h4>
+                   <p className="text-sm text-[#a9cbb7] mt-1">{item.desc}</p>
+                </div>
+                <span className="text-xl font-black text-[#ff934f]">{item.price}</span>
+             </div>
+           ))}
+        </div>
+        
+        <div className="text-center mt-12">
+           <a href="/contact" className="inline-block border-b-2 border-[#efecca] text-[#efecca] font-bold uppercase tracking-widest hover:text-[#ff934f] hover:border-[#ff934f] transition-colors">
+             Download Full Menu (PDF)
+           </a>
         </div>
       </div>
     </section>
@@ -131,11 +89,153 @@ export default function VenueAd() {
 }
 `);
 
-// 4. ROAD HOUSE HOME PAGE (Root)
+// 2. FOOTER (Industrial Footer)
+write('components/Footer.jsx', `
+import { MapPin, Phone, Clock, Facebook, Instagram } from 'lucide-react';
+
+export default function Footer() {
+  return (
+    <footer className="bg-[#18181b] border-t-4 border-[#ff934f] pt-16 pb-8 text-[#efecca]">
+      <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
+        
+        {/* Brand */}
+        <div className="col-span-1 md:col-span-2">
+           <div className="flex items-center gap-3 mb-6">
+              <div className="w-10 h-10 bg-[#f7ff58] text-[#5e565a] font-black text-xl flex items-center justify-center -skew-x-12">RH</div>
+              <span className="text-3xl font-black italic uppercase">ROAD HOUSE</span>
+           </div>
+           <p className="text-[#a9cbb7] max-w-sm mb-6">
+             The ultimate food district in Seeduwa. 8 Zones, Live Music, and the best Street Food in town.
+           </p>
+           <div className="flex gap-4">
+              <a href="#" className="w-10 h-10 bg-[#4a4448] flex items-center justify-center hover:bg-[#ff934f] hover:text-[#5e565a] transition-colors"><Facebook size={20}/></a>
+              <a href="#" className="w-10 h-10 bg-[#4a4448] flex items-center justify-center hover:bg-[#ff934f] hover:text-[#5e565a] transition-colors"><Instagram size={20}/></a>
+           </div>
+        </div>
+
+        {/* Contact Info */}
+        <div>
+           <h4 className="text-[#ff934f] font-bold uppercase tracking-widest mb-6 text-sm">Location</h4>
+           <ul className="space-y-4 text-sm">
+              <li className="flex items-start gap-3">
+                 <MapPin className="text-[#f7ff58] shrink-0" size={18} />
+                 <span>24 Kotugoda Rd,<br/>Seeduwa, Sri Lanka</span>
+              </li>
+              <li className="flex items-center gap-3">
+                 <Phone className="text-[#f7ff58] shrink-0" size={18} />
+                 <a href="tel:0724139621" className="hover:text-[#ff934f]">072 413 9621</a>
+              </li>
+           </ul>
+        </div>
+
+        {/* Hours */}
+        <div>
+           <h4 className="text-[#ff934f] font-bold uppercase tracking-widest mb-6 text-sm">Opening Hours</h4>
+           <ul className="space-y-4 text-sm">
+              <li className="flex items-start gap-3">
+                 <Clock className="text-[#f7ff58] shrink-0" size={18} />
+                 <div>
+                    <span className="block font-bold text-white">Daily</span>
+                    <span className="text-[#a9cbb7]">10:00 AM - 11:00 PM</span>
+                 </div>
+              </li>
+              <li className="mt-4 pt-4 border-t border-[#4a4448]">
+                 <span className="block font-bold text-white">Happy Hour</span>
+                 <span className="text-[#a9cbb7]">5:00 PM - 7:00 PM</span>
+              </li>
+           </ul>
+        </div>
+      </div>
+
+      <div className="border-t border-[#4a4448] pt-8 text-center text-xs text-[#a9cbb7] font-mono uppercase tracking-widest">
+         &copy; {new Date().getFullYear()} Road House Seeduwa. All Rights Reserved.
+      </div>
+    </footer>
+  );
+}
+`);
+
+// 3. RESERVATION PAGE (Work Order Style)
+write('app/contact/page.js', `
+import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
+
+export const metadata = {
+  title: "Book a Table | Road House",
+};
+
+export default function Contact() {
+  return (
+    <main className="min-h-screen bg-[#5e565a]">
+      <Navbar />
+      
+      <section className="pt-32 pb-20 px-6">
+         <div className="max-w-3xl mx-auto bg-[#4a4448] p-8 md:p-12 border-t-8 border-[#ff934f] shadow-2xl relative">
+            {/* Stamp Effect */}
+            <div className="absolute top-8 right-8 border-4 border-[#f7ff58] text-[#f7ff58] font-black text-xl px-4 py-2 -rotate-12 opacity-50 pointer-events-none">
+               OPEN 365 DAYS
+            </div>
+
+            <h1 className="text-4xl md:text-5xl font-black text-[#efecca] uppercase mb-2">Reserve Your Spot</h1>
+            <p className="text-[#a9cbb7] font-mono uppercase tracking-widest text-sm mb-10">Table Reservation Form // RH-001</p>
+
+            <form className="space-y-6">
+               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  <div>
+                     <label className="block text-[#ff934f] text-xs font-bold uppercase tracking-widest mb-2">Name</label>
+                     <input type="text" className="w-full bg-[#5e565a] border-2 border-transparent focus:border-[#f7ff58] p-4 text-white outline-none font-bold" placeholder="YOUR NAME" />
+                  </div>
+                  <div>
+                     <label className="block text-[#ff934f] text-xs font-bold uppercase tracking-widest mb-2">Phone</label>
+                     <input type="tel" className="w-full bg-[#5e565a] border-2 border-transparent focus:border-[#f7ff58] p-4 text-white outline-none font-bold" placeholder="07X XXX XXXX" />
+                  </div>
+               </div>
+
+               <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                  <div>
+                     <label className="block text-[#ff934f] text-xs font-bold uppercase tracking-widest mb-2">Date</label>
+                     <input type="date" className="w-full bg-[#5e565a] border-2 border-transparent focus:border-[#f7ff58] p-4 text-white outline-none font-bold" />
+                  </div>
+                  <div>
+                     <label className="block text-[#ff934f] text-xs font-bold uppercase tracking-widest mb-2">Time</label>
+                     <input type="time" className="w-full bg-[#5e565a] border-2 border-transparent focus:border-[#f7ff58] p-4 text-white outline-none font-bold" />
+                  </div>
+                  <div>
+                     <label className="block text-[#ff934f] text-xs font-bold uppercase tracking-widest mb-2">Guests</label>
+                     <input type="number" className="w-full bg-[#5e565a] border-2 border-transparent focus:border-[#f7ff58] p-4 text-white outline-none font-bold" placeholder="2" />
+                  </div>
+               </div>
+
+               <div>
+                  <label className="block text-[#ff934f] text-xs font-bold uppercase tracking-widest mb-2">Preferred Zone</label>
+                  <select className="w-full bg-[#5e565a] border-2 border-transparent focus:border-[#f7ff58] p-4 text-white outline-none font-bold uppercase">
+                     <option>Family Restaurant (A/C)</option>
+                     <option>Outdoor Garden</option>
+                     <option>Karaoke Room</option>
+                     <option>BYOB Lounge</option>
+                  </select>
+               </div>
+
+               <button className="w-full py-5 bg-[#ff934f] hover:bg-[#f7ff58] text-[#5e565a] font-black uppercase tracking-[0.2em] text-lg transition-colors mt-8">
+                  Confirm Booking
+               </button>
+            </form>
+         </div>
+      </section>
+
+      <Footer />
+    </main>
+  );
+}
+`);
+
+// 4. ASSEMBLE HOME PAGE (Inject Menu & Footer)
 write('app/page.js', `
 import Navbar from "@/components/Navbar";
 import VenueAd from "@/components/VenueAd";
-import { MapPin, Utensils, Coffee, Wine, Mic2, Music, Sun, ShoppingBag } from "lucide-react";
+import MenuSection from "@/components/MenuSection";
+import Footer from "@/components/Footer";
+import { MapPin, Utensils, Coffee, Wine, Mic2, Music, Sun } from "lucide-react";
 
 const zones = [
   { id: "street-food", title: "Street Food", icon: <Utensils/>, desc: "Kottu & BBQ Grills" },
@@ -160,7 +260,6 @@ export default function Home() {
       
       {/* HERO SECTION */}
       <section className="relative h-screen flex flex-col items-center justify-center pt-20 overflow-hidden bg-[#5e565a]">
-        {/* Industrial Grid Background */}
         <div className="absolute inset-0 opacity-10" style={{backgroundImage: 'linear-gradient(#f7ff58 1px, transparent 1px), linear-gradient(90deg, #f7ff58 1px, transparent 1px)', backgroundSize: '40px 40px'}}></div>
 
         <div className="relative z-10 text-center max-w-4xl px-6">
@@ -182,7 +281,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* CROSS PROMO AD (Link to Dinidu) */}
+      {/* CROSS PROMO AD */}
       <VenueAd />
 
       {/* ZONES GRID */}
@@ -205,6 +304,9 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      {/* MENU SECTION */}
+      <MenuSection />
 
       {/* ENTERTAINMENT */}
       <section id="entertainment" className="py-24 bg-[#5e565a] border-t border-[#f7ff58]/20">
@@ -229,17 +331,18 @@ export default function Home() {
                   </div>
                   <div className="text-left">
                      <h3 className="text-2xl font-black text-[#efecca] uppercase">Live Bands</h3>
-                     <p className="text-[#a9cbb7]">Sunday Sessions</p>
+                     <p className="text-gray-400">Sunday Sessions</p>
                   </div>
                </div>
             </div>
          </div>
       </section>
 
+      <Footer />
     </main>
   );
 }
 `);
 
-console.log("✅ ROAD HOUSE STANDALONE DEPLOYED.");
-console.log("👉 ACTION: git add . && git commit -m 'Road House Standalone Build' && git push");
+console.log("✅ ROAD HOUSE SITE FINISHED. READY FOR DEPLOYMENT.");
+console.log("👉 ACTION: git add . && git commit -m 'Final Road House Build' && git push");
