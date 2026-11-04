@@ -20,11 +20,11 @@ export default function MenuGrid() {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ delay: i * 0.1 }}
-          className="bg-neutral-900/50 border border-white/10 p-6 hover:border-[#ff5722] transition-colors relative overflow-hidden rounded-md group"
+          className="bg-neutral-900/50 border border-white/10 p-6 hover:border-[#00D2FF] transition-colors relative overflow-hidden rounded-md group"
         >
           <div className="flex justify-between items-start mb-2">
-             <h3 className="font-[family-name:var(--font-bebas)] text-3xl tracking-wide text-white group-hover:text-[#ff5722] transition-colors">{item.name}</h3>
-             <span className="text-[#ff5722] font-bold text-lg">{item.price}</span>
+             <h3 className="font-[family-name:var(--font-bebas)] text-3xl tracking-wide text-white group-hover:text-[#00D2FF] transition-colors">{item.name}</h3>
+             <span className="text-[#00D2FF] font-bold text-lg">{item.price}</span>
           </div>
           
           <p className="text-neutral-400 font-sans text-sm mb-6 min-h-[40px]">{item.desc}</p>

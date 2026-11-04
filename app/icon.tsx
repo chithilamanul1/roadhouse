@@ -11,23 +11,21 @@ export const contentType = 'image/png'
 export default function Icon() {
   return new ImageResponse(
     (
-      // ImageResponse JSX element
       <div
         style={{
           fontSize: 24,
-          background: '#050505',
+          background: '#050811',
           width: '100%',
           height: '100%',
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
           borderRadius: '50%',
-          border: '2px solid #ff5722', // Your Orange Border
+          border: '2px solid #00D2FF',
         }}
       >
-        {/* The "R" for Road House */}
-        <div style={{ color: '#ff5722', fontFamily: 'sans-serif', fontWeight: 900, fontSize: '20px', marginTop: '-2px' }}>
-            R
+        <div style={{ color: '#00D2FF', fontFamily: 'sans-serif', fontWeight: 900, fontSize: '20px', marginTop: '-2px' }}>
+          R
         </div>
       </div>
     ),

@@ -3,27 +3,51 @@
 @tailwind utilities;
 
 :root {
-  --asphalt: #18181b;
-  --concrete: #27272a;
-  --paint: #f4f4f5;
-  --amber: #f59e0b;
+  --neon-blue: #00D2FF;
+  --neon-cyan: #38BDF8;
+  --deep-blue: #0070F3;
+  --dark-night: #050811;
+  --card-bg: #0C172E;
 }
 
 body {
-  color: var(--paint);
-  background-color: var(--asphalt);
+  color: #E2E8F0;
+  background-color: var(--dark-night);
   font-family: sans-serif;
   overflow-x: hidden;
 }
 
-/* Road Line Pattern */
-.road-line {
-  background-image: linear-gradient(to bottom, transparent 50%, rgba(255, 255, 255, 0.1) 50%);
-  background-size: 100% 20px;
+/* Custom Neon Glow Utilities */
+.neon-glow {
+  text-shadow: 0 0 10px rgba(0, 210, 255, 0.7), 0 0 25px rgba(0, 210, 255, 0.4);
 }
 
-/* Luxury Matte Card */
-.matte-card {
-  background: linear-gradient(145deg, #1e1e21, #161618);
-  box-shadow:  5px 5px 10px #0f0f11, -5px -5px 10px #212125;
+.neon-border {
+  border-color: rgba(0, 210, 255, 0.4);
+  box-shadow: 0 0 15px rgba(0, 210, 255, 0.2);
+}
+
+.blue-card {
+  background: linear-gradient(145deg, #0C172E, #070D1C);
+  border: 1px solid rgba(0, 210, 255, 0.15);
+}
+
+.blue-card:hover {
+  border-color: rgba(0, 210, 255, 0.4);
+  box-shadow: 0 0 25px rgba(0, 210, 255, 0.15);
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #050811;
+}
+::-webkit-scrollbar-thumb {
+  background: #0C2340;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #00D2FF;
 }

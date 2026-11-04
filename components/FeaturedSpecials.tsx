@@ -1,86 +1,89 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ThumbsUp } from "lucide-react";
-import { useState } from "react";
+import { ThumbsUp, Plus } from "lucide-react";
+import { useCart } from "@/context/CartContext";
 
 const SPECIALS = [
   {
     id: "sp1",
     name: "HOT BUTTER CUTTLEFISH",
-    price: "2,100 LKR",
+    price: 2100,
     desc: "Crispy battered cuttlefish tossed in spicy butter sauce and spring onions.",
     image: "https://images.pexels.com/photos/262959/pexels-photo-262959.jpeg?auto=compress&cs=tinysrgb&w=800"
   },
   {
     id: "sp2",
     name: "KOCHCHI PORK CURRY",
-    price: "1,700 LKR",
+    price: 1700,
     desc: "Slow-cooked pork curry infused with fiery local Kochchi peppers.",
     image: "https://images.pexels.com/photos/958545/pexels-photo-958545.jpeg?auto=compress&cs=tinysrgb&w=800"
   },
   {
     id: "sp3",
     name: "MIXED GRILL PLATTER",
-    price: "6,000 LKR",
+    price: 6000,
     desc: "The ultimate sharing platter: Chicken, Pork, Sausages & Wedges.",
     image: "https://images.pexels.com/photos/1267320/pexels-photo-1267320.jpeg?auto=compress&cs=tinysrgb&w=800"
   }
 ];
 
 export default function FeaturedSpecials() {
-  const [votes, setVotes] = useState<Record<string, number>>({ sp1: 124, sp2: 89, sp3: 205 });
-
-  const handleVote = (id: string) => {
-    setVotes(prev => ({ ...prev, [id]: prev[id] + 1 }));
-  };
+  const { addToCart } = useCart();
 
   return (
-    <section className="py-24 bg-[#0a0a0a] relative overflow-hidden">
-       <div className="px-6 mb-16 max-w-7xl mx-auto flex items-end justify-between">
+    <section className="py-24 bg-[#070D1C] relative overflow-hidden border-t border-[#00D2FF]/10">
+       <div className="px-6 mb-14 max-w-7xl mx-auto flex flex-col md:flex-row md:items-end justify-between gap-4">
           <div>
-            <h2 className="text-6xl md:text-8xl font-[family-name:var(--font-blackops)] text-white leading-none">
-                SIGNATURE <br/> <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#ff5722] to-yellow-600">DISHES</span>
+            <p className="text-[#00D2FF] font-mono text-xs tracking-[0.3em] uppercase mb-2 font-bold">
+              Signature Plates
+            </p>
+            <h2 className="text-4xl md:text-7xl font-[family-name:var(--font-blackops)] text-white leading-none">
+                CHEF&apos;S <span className="text-[#00D2FF]">SPECIALS</span>
             </h2>
-            <p className="text-neutral-500 mt-4 font-mono text-sm">VOTE FOR YOUR FAVORITE TO BE ON THE OPENING MENU</p>
+            <p className="text-neutral-400 mt-2 font-sans text-sm">
+              Our most popular dishes, freshly prepared to perfection.
+            </p>
           </div>
        </div>
 
-       <div className="flex overflow-x-auto gap-8 px-6 pb-12 snap-x snap-mandatory no-scrollbar">
+       <div className="flex overflow-x-auto gap-6 px-6 pb-8 snap-x snap-mandatory no-scrollbar max-w-7xl mx-auto">
           {SPECIALS.map((item, i) => (
              <motion.div 
                key={item.id}
-               initial={{ opacity: 0, x: 50 }}
-               whileInView={{ opacity: 1, x: 0 }}
-               transition={{ delay: i * 0.2 }}
-               className="snap-center shrink-0 w-[85vw] md:w-[600px] group relative"
+               initial={{ opacity: 0, y: 20 }}
+               whileInView={{ opacity: 1, y: 0 }}
+               transition={{ delay: i * 0.15 }}
+               className="snap-center shrink-0 w-[85vw] md:w-[380px] bg-[#0C172E] rounded-2xl overflow-hidden border border-white/10 hover:border-[#00D2FF] transition-all flex flex-col justify-between"
              >
-                <div className="h-[400px] md:h-[500px] overflow-hidden rounded-2xl relative border border-white/10 group-hover:border-[#ff5722] transition-colors">
-                   <div className="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors z-10" />
-                   
-                   {/* FIXED IMAGE TAG WITH NO-REFERRER */}
+                <div className="h-60 overflow-hidden relative">
                    <img 
                       src={item.image} 
                       alt={item.name} 
                       referrerPolicy="no-referrer"
-                      className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700 ease-out"
+                      className="w-full h-full object-cover transition-transform duration-700 hover:scale-105"
                    />
-                </div>
-                
-                <div className="mt-6 flex justify-between items-start">
-                   <div>
-                      <h3 className="text-3xl font-[family-name:var(--font-bebas)] text-white mb-2">{item.name}</h3>
-                      <p className="text-neutral-400 max-w-xs text-sm font-sans mb-4">{item.desc}</p>
-                      
-                      <button 
-                        onClick={() => handleVote(item.id)}
-                        className="flex items-center gap-2 text-sm font-bold text-white hover:text-[#ff5722] transition-colors border border-white/20 px-4 py-2 rounded-full hover:bg-white/5"
-                      >
-                         <ThumbsUp size={16} />
-                         <span>{votes[item.id]} Votes</span>
-                      </button>
+                   <div className="absolute top-4 right-4 bg-black/80 backdrop-blur border border-[#00D2FF]/40 px-3 py-1 rounded-full text-[#00D2FF] font-mono text-xs font-bold">
+                      Rs. {item.price.toLocaleString()}
                    </div>
-                   <span className="text-[#ff5722] font-bold text-xl">{item.price}</span>
+                </div>
+
+                <div className="p-6 flex-1 flex flex-col justify-between">
+                   <div>
+                     <h3 className="font-[family-name:var(--font-bebas)] text-2xl text-white tracking-wide mb-2">
+                        {item.name}
+                     </h3>
+                     <p className="text-xs text-neutral-400 leading-relaxed mb-6">
+                        {item.desc}
+                     </p>
+                   </div>
+
+                   <button
+                     onClick={() => addToCart({ id: item.id, name: item.name, price: item.price, image: item.image })}
+                     className="w-full bg-[#00D2FF] text-black font-bold text-xs uppercase tracking-wider py-3 rounded-lg flex items-center justify-center gap-2 hover:bg-white transition-all shadow-[0_0_15px_rgba(0,210,255,0.3)]"
+                   >
+                     <Plus size={16} /> Add to Order
+                   </button>
                 </div>
              </motion.div>
           ))}

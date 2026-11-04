@@ -28,7 +28,7 @@ const FlapChar = ({ char, delay }: { char: string; delay: number }) => {
     }, [char, delay]);
 
     return (
-        <span className="inline-block w-6 h-8 md:w-8 md:h-12 bg-[#1a1a1a] text-[#ff5722] border-b-2 border-black font-mono text-xl md:text-3xl text-center leading-8 md:leading-[3rem] mx-[1px] shadow-sm uppercase">
+        <span className="inline-block w-6 h-8 md:w-8 md:h-12 bg-[#0C172E] text-[#00D2FF] border-b-2 border-black font-mono text-xl md:text-3xl text-center leading-8 md:leading-[3rem] mx-[1px] shadow-sm uppercase">
             {displayChar}
         </span>
     );

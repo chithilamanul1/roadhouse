@@ -2,28 +2,33 @@
 
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import { motion } from "framer-motion";
-import { Users, Music, Calendar } from "lucide-react";
+import FloatingReserve from "@/components/FloatingReserve";
+import { Users, Music, Calendar, Sparkles } from "lucide-react";
 
 export default function EventsPage() {
   return (
-    <div className="min-h-screen bg-[#050505]">
+    <div className="min-h-screen bg-[#050811] text-[#E2E8F0]">
       <Navbar />
+      <FloatingReserve />
       
       {/* HERO */}
       <section className="h-[50vh] flex items-center justify-center relative overflow-hidden">
-         <div className="absolute inset-0 bg-black/60 z-10" />
          <img 
-            src="https://images.pexels.com/photos/167385/pexels-photo-167385.jpeg?auto=compress&cs=tinysrgb&w=1200" 
-            className="absolute inset-0 w-full h-full object-cover opacity-50"
-            alt="Party Vibe"
+            src="/gallery-bar.jpg" 
+            className="absolute inset-0 w-full h-full object-cover"
+            alt="RoadHouse Blue Neon Bar & Events"
          />
-         <div className="relative z-20 text-center px-4">
-            <h1 className="text-5xl md:text-7xl font-[family-name:var(--font-blackops)] text-white mb-2">
-               HOST YOUR <span className="text-[#ff5722]">EVENT</span>
+         <div className="absolute inset-0 bg-gradient-to-b from-[#050811]/90 via-[#050811]/70 to-[#050811]" />
+         
+         <div className="relative z-20 text-center px-4 max-w-2xl">
+            <p className="text-[#00D2FF] font-mono text-xs tracking-[0.3em] uppercase mb-2 font-bold">
+               Gatherings &amp; Celebrations
+            </p>
+            <h1 className="text-4xl md:text-7xl font-[family-name:var(--font-blackops)] text-white mb-2">
+               HOST YOUR <span className="text-[#00D2FF]">EVENT</span>
             </h1>
-            <p className="font-mono text-lg text-neutral-300 tracking-widest uppercase">
-               PRIVATE PARTIES • CORPORATE • CAR MEETS
+            <p className="font-mono text-sm text-neutral-300 tracking-wider uppercase">
+               BIRTHDAYS • OFFICE DINNERS • GET-TOGETHERS • PARTIES
             </p>
          </div>
       </section>
@@ -33,42 +38,75 @@ export default function EventsPage() {
          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             
             {/* CARD 1 */}
-            <div className="bg-neutral-900 border border-white/10 p-8 rounded-lg group hover:border-[#ff5722] transition-colors">
-               <Users size={32} className="text-[#ff5722] mb-4" />
-               <h3 className="text-2xl font-[family-name:var(--font-bebas)] text-white mb-2">THE CREW TABLE</h3>
-               <p className="text-neutral-400 text-sm mb-4">Perfect for birthdays and small gatherings.</p>
-               <ul className="text-neutral-500 text-sm font-mono space-y-2 mb-6">
-                  <li>● 10 - 15 PAX</li>
-                  <li>● RESERVED SECTION</li>
-                  <li>● A LA CARTE MENU</li>
-               </ul>
-               <a href="https://wa.me/94777334078?text=Inquiry for Crew Table Booking" target="_blank" className="text-white border-b border-[#ff5722] text-sm uppercase font-bold">Book Now</a>
+            <div className="bg-[#0C172E] border border-white/10 p-8 rounded-2xl hover:border-[#00D2FF] transition-all flex flex-col justify-between shadow-xl">
+               <div>
+                  <div className="w-14 h-14 rounded-xl bg-[#00D2FF]/10 border border-[#00D2FF]/30 flex items-center justify-center text-[#00D2FF] mb-5">
+                     <Users size={28} />
+                  </div>
+                  <h3 className="text-2xl font-[family-name:var(--font-bebas)] text-white mb-2">FRIENDS &amp; FAMILY TABLE</h3>
+                  <p className="text-neutral-400 text-xs mb-6">Ideal for casual birthday celebrations and family gatherings.</p>
+                  <ul className="text-neutral-300 text-xs space-y-2 mb-8">
+                     <li className="flex items-center gap-2">● 6 to 15 Guests</li>
+                     <li className="flex items-center gap-2">● Reserved Seating Area</li>
+                     <li className="flex items-center gap-2">● Full A La Carte Food &amp; Drink Menu</li>
+                  </ul>
+               </div>
+               <a 
+                  href="https://wa.me/94777702044?text=Hi%20RoadHouse,%20I%20want%20to%20book%20a%20Friends%20Table."
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="w-full text-center bg-[#00D2FF] text-black font-bold py-3 rounded-lg text-xs uppercase tracking-wider hover:bg-white transition-colors"
+               >
+                  Book on WhatsApp
+               </a>
             </div>
 
             {/* CARD 2 */}
-            <div className="bg-neutral-900 border border-white/10 p-8 rounded-lg group hover:border-[#ff5722] transition-colors">
-               <Music size={32} className="text-[#ff5722] mb-4" />
-               <h3 className="text-2xl font-[family-name:var(--font-bebas)] text-white mb-2">THE VIP DECK</h3>
-               <p className="text-neutral-400 text-sm mb-4">Exclusive access to the upper deck area.</p>
-               <ul className="text-neutral-500 text-sm font-mono space-y-2 mb-6">
-                  <li>● 20 - 30 PAX</li>
-                  <li>● PRIVATE MUSIC</li>
-                  <li>● BUFFET OPTION</li>
-               </ul>
-               <a href="https://wa.me/94777334078?text=Inquiry for VIP Deck Booking" target="_blank" className="text-white border-b border-[#ff5722] text-sm uppercase font-bold">Book Now</a>
+            <div className="bg-[#0C172E] border border-[#00D2FF]/40 p-8 rounded-2xl hover:border-[#00D2FF] transition-all flex flex-col justify-between shadow-[0_0_30px_rgba(0,210,255,0.15)]">
+               <div>
+                  <div className="w-14 h-14 rounded-xl bg-[#00D2FF]/20 border border-[#00D2FF] flex items-center justify-center text-[#00D2FF] mb-5">
+                     <Music size={28} />
+                  </div>
+                  <h3 className="text-2xl font-[family-name:var(--font-bebas)] text-white mb-2">NEON LOUNGE PARTY</h3>
+                  <p className="text-neutral-400 text-xs mb-6">Enjoy our signature blue neon bar with your crew.</p>
+                  <ul className="text-neutral-300 text-xs space-y-2 mb-8">
+                     <li className="flex items-center gap-2">● 15 to 30 Guests</li>
+                     <li className="flex items-center gap-2">● Lounge &amp; Bar Seating</li>
+                     <li className="flex items-center gap-2">● Sharing Platters &amp; Beverages</li>
+                  </ul>
+               </div>
+               <a 
+                  href="https://wa.me/94777702044?text=Hi%20RoadHouse,%20I%20want%20to%20book%20the%20Neon%20Lounge%20Area."
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="w-full text-center bg-[#00D2FF] text-black font-black py-3 rounded-lg text-xs uppercase tracking-wider hover:bg-white transition-colors shadow-md"
+               >
+                  Book on WhatsApp
+               </a>
             </div>
 
             {/* CARD 3 */}
-            <div className="bg-neutral-900 border border-white/10 p-8 rounded-lg group hover:border-[#ff5722] transition-colors">
-               <Calendar size={32} className="text-[#ff5722] mb-4" />
-               <h3 className="text-2xl font-[family-name:var(--font-bebas)] text-white mb-2">FULL TAKEOVER</h3>
-               <p className="text-neutral-400 text-sm mb-4">Rent the entire Road House for your event.</p>
-               <ul className="text-neutral-500 text-sm font-mono space-y-2 mb-6">
-                  <li>● 50+ PAX</li>
-                  <li>● CUSTOM MENU</li>
-                  <li>● FULL STAFF SERVICE</li>
-               </ul>
-               <a href="https://wa.me/94777334078?text=Inquiry for Full Venue Takeover" target="_blank" className="text-white border-b border-[#ff5722] text-sm uppercase font-bold">Contact Us</a>
+            <div className="bg-[#0C172E] border border-white/10 p-8 rounded-2xl hover:border-[#00D2FF] transition-all flex flex-col justify-between shadow-xl">
+               <div>
+                  <div className="w-14 h-14 rounded-xl bg-[#00D2FF]/10 border border-[#00D2FF]/30 flex items-center justify-center text-[#00D2FF] mb-5">
+                     <Calendar size={28} />
+                  </div>
+                  <h3 className="text-2xl font-[family-name:var(--font-bebas)] text-white mb-2">CORPORATE &amp; TOUR GROUPS</h3>
+                  <p className="text-neutral-400 text-xs mb-6">Custom menus and dedicated service for tour buses and corporate teams.</p>
+                  <ul className="text-neutral-300 text-xs space-y-2 mb-8">
+                     <li className="flex items-center gap-2">● 25+ Guests</li>
+                     <li className="flex items-center gap-2">● Convenient Free Van &amp; Bus Parking</li>
+                     <li className="flex items-center gap-2">● 10 Mins from Airport</li>
+                  </ul>
+               </div>
+               <a 
+                  href="https://wa.me/94777702044?text=Hi%20RoadHouse,%20I%20have%20an%20inquiry%20for%20a%20Group%20Booking."
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="w-full text-center bg-[#00D2FF] text-black font-bold py-3 rounded-lg text-xs uppercase tracking-wider hover:bg-white transition-colors"
+               >
+                  Inquire on WhatsApp
+               </a>
             </div>
 
          </div>

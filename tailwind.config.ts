@@ -10,28 +10,32 @@ const config: Config = {
     extend: {
       colors: {
         brand: {
-          dark: "#050505",      // Darker than black (Asphalt)
-          gray: "#121212",      // Card backgrounds
-          orange: "#ff5722",    // The Road House Flare
-          orangeHover: "#e64a19",
-          smoke: "#e0e0e0",     // Text
+          dark: "#050811",      // Deep midnight navy
+          gray: "#0B132B",      // Card backgrounds
+          card: "#0C172E",
+          blue: "#00D2FF",      // RoadHouse signature electric blue
+          blueGlow: "#38BDF8",  // Neon cyan glow
+          blueDark: "#0070F3",  // Deep vibrant blue
+          smoke: "#E2E8F0",     // Text
         },
       },
       fontFamily: {
         bebas: ["var(--font-bebas)"],
         montserrat: ["var(--font-montserrat)"],
+        blackops: ["var(--font-blackops)"],
       },
       animation: {
         'flicker': 'flicker 2s linear infinite',
+        'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
       },
       keyframes: {
         flicker: {
           '0%, 19.999%, 22%, 62.999%, 64%, 64.999%, 70%, 100%': {
             opacity: '0.99',
-            filter: 'drop-shadow(0 0 1px rgba(255,87,34,1)) drop-shadow(0 0 15px rgba(255,87,34,0.7)) drop-shadow(0 0 1px rgba(255,87,34,1))',
+            filter: 'drop-shadow(0 0 2px rgba(0,210,255,1)) drop-shadow(0 0 18px rgba(0,210,255,0.75))',
           },
           '20%, 21.999%, 63%, 63.999%, 65%, 69.999%': {
-            opacity: '0.4',
+            opacity: '0.5',
             filter: 'none',
           },
         },

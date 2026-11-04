@@ -5,38 +5,41 @@ import Footer from "@/components/Footer";
 
 export default function PrivacyPage() {
   return (
-    <div className="min-h-screen bg-[#050505]">
+    <div className="min-h-screen bg-[#050811] text-white">
       <Navbar />
       
       <div className="pt-32 pb-20 px-6 max-w-4xl mx-auto">
-         <h1 className="text-4xl font-[family-name:var(--font-blackops)] text-white mb-8">
-            PRIVACY & <span className="text-[#ff5722]">TERMS</span>
+         <span className="text-neon-cyan font-mono text-xs uppercase tracking-widest px-3 py-1 bg-neon-cyan/10 border border-neon-cyan/30 rounded-full inline-block mb-4">
+            Legal & Policy
+         </span>
+         <h1 className="text-4xl md:text-5xl font-[family-name:var(--font-blackops)] text-white mb-8">
+            PRIVACY & <span className="text-neon-cyan neon-glow">TERMS</span>
          </h1>
          
-         <div className="space-y-8 text-neutral-400 font-sans text-sm leading-relaxed">
+         <div className="space-y-8 text-neutral-300 font-sans text-sm md:text-base leading-relaxed bg-slate-900/50 border border-blue-500/20 p-8 rounded-2xl">
             <div>
-               <h3 className="text-white font-bold mb-2">1. INTRODUCTION</h3>
-               <p>Welcome to Road House Seeduwa. By accessing our website, you agree to these terms. We are committed to protecting your privacy and data.</p>
+               <h3 className="text-white font-bold text-lg mb-2">1. Introduction</h3>
+               <p className="text-neutral-400">Welcome to RoadHouse Cafe & Restro Seeduwa. By accessing our website, ordering food, or reserving tables, you agree to these terms. We respect and protect your privacy.</p>
             </div>
 
             <div>
-               <h3 className="text-white font-bold mb-2">2. DATA COLLECTION</h3>
-               <p>We collect basic information (Email, Name) only when you voluntarily submit forms for our Newsletter, Reservations, or Career applications. We do not sell this data to third parties.</p>
+               <h3 className="text-white font-bold text-lg mb-2">2. Information We Collect</h3>
+               <p className="text-neutral-400">We only collect contact details (such as your name, phone number, and delivery address) when you place an order or message us via WhatsApp or our web forms. We never share or sell your details to third parties.</p>
             </div>
 
             <div>
-               <h3 className="text-white font-bold mb-2">3. RESERVATION POLICY</h3>
-               <p>Table reservations are held for 15 minutes past the scheduled time. Management reserves the right to cancel bookings for no-shows.</p>
+               <h3 className="text-white font-bold text-lg mb-2">3. Online Orders & Table Reservations</h3>
+               <p className="text-neutral-400">Orders placed on our website are sent straight to our official WhatsApp hotline (+94 77 770 2044) for immediate kitchen preparation. Table reservations are held for 15 minutes past the scheduled arrival time.</p>
             </div>
 
             <div>
-               <h3 className="text-white font-bold mb-2">4. CONTENT</h3>
-               <p>All images, logos, and text on this site are the property of Road House Seeduwa. Unauthorized reproduction is prohibited.</p>
+               <h3 className="text-white font-bold text-lg mb-2">4. Content & Copyright</h3>
+               <p className="text-neutral-400">All photographs, brand logos, menu descriptions, and materials on this site belong to RoadHouse Cafe & Restro Seeduwa.</p>
             </div>
             
-            <div className="pt-8 border-t border-white/10">
-               <p>Last Updated: November 2025</p>
-               <p>Contact: roadhouseseeduwa@gmail.com</p>
+            <div className="pt-6 border-t border-blue-500/20 text-xs font-mono text-neutral-400">
+               <p>Hotline: 077 770 2044 | WhatsApp: +94 77 770 2044</p>
+               <p className="mt-1">Email: roadhouseseeduwa@gmail.com | 24 Kotugoda Rd, Seeduwa, Sri Lanka</p>
             </div>
          </div>
       </div>

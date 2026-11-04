@@ -2,29 +2,30 @@
 
 import { motion } from "framer-motion";
 
-// Update these deals from your Admin/CMS later
 const OFFERS = [
-  "HAPPY HOUR: 1-for-1 Mojitos (5PM - 7PM)",
-  "NEW: Hot Butter Cuttlefish Now Available", 
-  "FRIDAY: Live Acoustic Night @ 8PM",
-  "LUNCH: Free Iced Tea with any Rice Dish",
+  "NOW OPEN: Delicious Food & Cool Drinks Daily",
+  "BEST RESTAURANT NEAR KATUNAYAKE AIRPORT & SEEDUWA",
+  "HOT BUTTER CUTTLEFISH & SPICY DEVILLED KOTTU",
+  "FREE CUSTOMER PARKING FOR 15+ VEHICLES",
+  "FRESH JUICE BAR: Shakes, Mojitos & Coffee",
+  "SCAN TABLE QR TO ORDER DIRECTLY TO YOUR SEAT",
 ];
 
 export default function InfiniteMarquee() {
   return (
-    <div className="w-full bg-[#ff5722] py-4 overflow-hidden relative z-30 rotate-1">
+    <div className="w-full bg-gradient-to-r from-[#0070F3] via-[#00D2FF] to-[#00A3FF] py-3.5 overflow-hidden relative z-30 shadow-[0_0_20px_rgba(0,210,255,0.4)]">
       <div className="flex whitespace-nowrap">
         <motion.div
           animate={{ x: [0, -1000] }}
-          transition={{ repeat: Infinity, ease: "linear", duration: 20 }}
+          transition={{ repeat: Infinity, ease: "linear", duration: 22 }}
           className="flex gap-12 items-center"
         >
           {[...OFFERS, ...OFFERS, ...OFFERS].map((offer, i) => (
             <div key={i} className="flex items-center gap-12">
-              <span className="text-black font-black text-2xl md:text-4xl font-[family-name:var(--font-bebas)] uppercase tracking-wide">
+              <span className="text-black font-black text-xl md:text-3xl font-[family-name:var(--font-bebas)] uppercase tracking-wider">
                 {offer}
               </span>
-              <span className="text-black text-2xl">✦</span> {/* Star Separator */}
+              <span className="text-black text-xl">✦</span>
             </div>
           ))}
         </motion.div>

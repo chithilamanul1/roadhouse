@@ -1,50 +1,64 @@
 "use client";
 
-import { Clock } from "lucide-react";
+import { Clock, Calendar, Utensils } from "lucide-react";
 
 export default function OpeningHours() {
   return (
-    <section className="py-20 bg-neutral-900 border-t border-white/5">
+    <section className="py-20 bg-[#050811] border-t border-[#00D2FF]/10">
       <div className="max-w-4xl mx-auto px-6">
         
-        <div className="flex items-center gap-4 mb-8 justify-center">
-           <Clock className="text-[#ff5722]" size={32} />
-           <h2 className="text-3xl md:text-4xl font-[family-name:var(--font-blackops)] text-white uppercase">
-              Operational <span className="text-[#ff5722]">Hours</span>
+        <div className="flex flex-col items-center gap-2 mb-10 text-center">
+           <div className="w-12 h-12 rounded-full bg-[#00D2FF]/10 border border-[#00D2FF] flex items-center justify-center text-[#00D2FF] mb-2">
+             <Clock size={24} />
+           </div>
+           <h2 className="text-4xl md:text-5xl font-[family-name:var(--font-blackops)] text-white uppercase">
+              OPENING <span className="text-[#00D2FF]">HOURS</span>
            </h2>
+           <p className="text-xs font-mono text-neutral-400 uppercase tracking-widest">
+              Come eat with us or order takeaway anytime
+           </p>
         </div>
 
-        <div className="bg-black border border-white/10 p-8 rounded-sm relative overflow-hidden">
-           {/* Decorative corner */}
-           <div className="absolute top-0 right-0 w-16 h-16 bg-[#ff5722]/10 rounded-bl-full" />
-
+        <div className="bg-[#0C172E] border border-[#00D2FF]/30 p-8 rounded-2xl relative overflow-hidden shadow-2xl">
            <div className="space-y-6">
               
               {/* Weekdays */}
-              <div className="flex justify-between items-center border-b border-white/10 pb-4">
-                 <div className="flex flex-col">
-                    <span className="text-xl font-[family-name:var(--font-bebas)] text-white tracking-wide">MONDAY - THURSDAY</span>
-                    <span className="text-xs font-mono text-neutral-500">STANDARD SERVICE</span>
+              <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center border-b border-white/10 pb-5 gap-2">
+                 <div>
+                    <span className="text-2xl font-[family-name:var(--font-bebas)] text-white tracking-wide block">
+                      MONDAY — THURSDAY
+                    </span>
+                    <span className="text-xs text-neutral-400">Lunch, Dinner, Cafe &amp; Drinks</span>
                  </div>
-                 <span className="text-[#ff5722] font-mono font-bold text-lg">11:00 AM - 11:00 PM</span>
+                 <span className="text-[#00D2FF] font-mono font-black text-lg bg-[#00D2FF]/10 border border-[#00D2FF]/30 px-4 py-1.5 rounded-lg">
+                    11:00 AM — 11:00 PM
+                 </span>
               </div>
 
               {/* Weekends */}
-              <div className="flex justify-between items-center border-b border-white/10 pb-4">
-                 <div className="flex flex-col">
-                    <span className="text-xl font-[family-name:var(--font-bebas)] text-white tracking-wide">FRIDAY - SUNDAY</span>
-                    <span className="text-xs font-mono text-neutral-500">LATE NIGHT GRILL</span>
+              <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center border-b border-white/10 pb-5 gap-2">
+                 <div>
+                    <span className="text-2xl font-[family-name:var(--font-bebas)] text-white tracking-wide block">
+                      FRIDAY — SUNDAY
+                    </span>
+                    <span className="text-xs text-neutral-400">Late Night Grills, Music &amp; Blue Neon Bar</span>
                  </div>
-                 <span className="text-[#ff5722] font-mono font-bold text-lg">11:00 AM - 01:00 AM</span>
+                 <span className="text-[#00D2FF] font-mono font-black text-lg bg-[#00D2FF]/10 border border-[#00D2FF]/30 px-4 py-1.5 rounded-lg">
+                    11:00 AM — 01:00 AM
+                 </span>
               </div>
 
-              {/* Poya/Holidays */}
-              <div className="flex justify-between items-center">
-                 <div className="flex flex-col">
-                    <span className="text-xl font-[family-name:var(--font-bebas)] text-white tracking-wide">POYA DAYS</span>
-                    <span className="text-xs font-mono text-neutral-500">SPECIAL HOURS</span>
+              {/* Poya Days */}
+              <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2">
+                 <div>
+                    <span className="text-2xl font-[family-name:var(--font-bebas)] text-white tracking-wide block">
+                      POYA DAYS &amp; HOLIDAYS
+                    </span>
+                    <span className="text-xs text-neutral-400">Open for full food menu &amp; fresh juices (No alcohol)</span>
                  </div>
-                 <span className="text-white font-mono font-bold text-lg">OPEN (NO ALCOHOL)</span>
+                 <span className="text-white font-mono font-bold text-sm bg-white/10 px-4 py-1.5 rounded-lg">
+                    OPEN NORMAL HOURS
+                 </span>
               </div>
 
            </div>

@@ -1,53 +1,81 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Phone, Mail, MapPin, MessageCircle, Send } from "lucide-react";
+import { Phone, Mail, MapPin, MessageCircle, Send, Clock, Navigation } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 
 export default function ContactPage() {
   return (
-    <div className="min-h-screen bg-[#050505]">
+    <div className="min-h-screen bg-[#050811] text-white">
       <Navbar />
       
       <div className="min-h-screen flex flex-col md:flex-row pt-24">
          
          {/* LEFT: INFO PANEL */}
-         <div className="w-full md:w-1/2 p-6 md:p-12 lg:p-20 flex flex-col justify-center border-r border-white/5">
+         <div className="w-full md:w-1/2 p-6 md:p-12 lg:p-20 flex flex-col justify-center border-r border-blue-500/10">
             <motion.div 
                initial={{ opacity: 0, x: -20 }}
                animate={{ opacity: 1, x: 0 }}
                transition={{ duration: 0.8 }}
             >
-               <h1 className="text-5xl md:text-7xl font-[family-name:var(--font-blackops)] text-white mb-8">
-                  CONTACT <span className="text-[#ff5722]">BASE</span>
+               <span className="text-neon-cyan font-mono text-xs uppercase tracking-widest px-3 py-1 bg-neon-cyan/10 border border-neon-cyan/30 rounded-full inline-block mb-4">
+                  Get In Touch
+               </span>
+               <h1 className="text-5xl md:text-7xl font-[family-name:var(--font-blackops)] text-white mb-6">
+                  CONTACT <span className="text-neon-cyan neon-glow">US</span>
                </h1>
+               <p className="text-neutral-400 text-sm md:text-base mb-8 max-w-md">
+                  Have a question, need a table reservation, or want food delivered? Call, message, or visit us anytime.
+               </p>
 
-               <div className="space-y-10 mb-12">
+               <div className="space-y-6 mb-10">
                   {/* Phone */}
-                  <div>
-                     <p className="font-mono text-neutral-500 text-xs mb-1 tracking-widest">HOTLINE</p>
-                     <a href="tel:+94777702044" className="flex items-center gap-3 text-2xl md:text-3xl font-[family-name:var(--font-bebas)] text-white hover:text-[#ff5722] transition-colors">
-                        <Phone size={24} />
-                        077 770 2044
+                  <div className="bg-slate-900/60 border border-blue-500/20 p-4 rounded-xl flex items-center justify-between">
+                     <div>
+                        <p className="font-mono text-neon-cyan text-xs mb-1 tracking-widest">CALL OR WHATSAPP</p>
+                        <a href="https://wa.me/94777702044" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-2xl font-[family-name:var(--font-bebas)] text-white hover:text-neon-cyan transition-colors">
+                           <Phone size={20} className="text-neon-cyan" />
+                           077 770 2044
+                        </a>
+                     </div>
+                     <a 
+                       href="https://wa.me/94777702044?text=Hi%20RoadHouse!%20I%20would%20like%20to%20inquire%20about%20a%20table%20reservation%20or%20food%20order." 
+                       target="_blank" 
+                       rel="noopener noreferrer"
+                       className="bg-[#25D366] text-white px-4 py-2 rounded-lg text-xs font-bold uppercase tracking-wider flex items-center gap-2 hover:bg-[#20ba59] transition-all"
+                     >
+                       <MessageCircle size={16} /> WhatsApp
                      </a>
                   </div>
 
                   {/* Email */}
-                  <div>
-                     <p className="font-mono text-neutral-500 text-xs mb-1 tracking-widest">EMAIL</p>
-                     <a href="mailto:roadhouseseeduwa@gmail.com" className="flex items-center gap-3 text-xl md:text-2xl font-[family-name:var(--font-bebas)] text-white hover:text-[#ff5722] transition-colors break-all">
-                        <Mail size={24} />
+                  <div className="bg-slate-900/60 border border-blue-500/20 p-4 rounded-xl">
+                     <p className="font-mono text-neon-cyan text-xs mb-1 tracking-widest">EMAIL ADDRESS</p>
+                     <a href="mailto:roadhouseseeduwa@gmail.com" className="flex items-center gap-2 text-lg font-mono text-white hover:text-neon-cyan transition-colors break-all">
+                        <Mail size={18} className="text-neon-cyan shrink-0" />
                         roadhouseseeduwa@gmail.com
                      </a>
                   </div>
 
                   {/* Address */}
-                  <div>
-                     <p className="font-mono text-neutral-500 text-xs mb-1 tracking-widest">LOCATION</p>
-                     <div className="flex items-start gap-3 text-xl md:text-2xl font-[family-name:var(--font-bebas)] text-white">
-                        <MapPin size={24} className="text-[#ff5722] mt-1 shrink-0" />
-                        <span>24 Kotugoda Rd,<br/>Seeduwa, Sri Lanka.</span>
+                  <div className="bg-slate-900/60 border border-blue-500/20 p-4 rounded-xl">
+                     <p className="font-mono text-neon-cyan text-xs mb-1 tracking-widest">LOCATION (10 MINS FROM AIRPORT)</p>
+                     <div className="flex items-start gap-2 text-base text-neutral-300">
+                        <MapPin size={20} className="text-neon-cyan mt-1 shrink-0" />
+                        <div>
+                           <p className="font-semibold text-white">24 Kotugoda Rd, Seeduwa, Sri Lanka</p>
+                           <p className="text-xs text-neutral-400 mt-1">Convenient road access with free parking for 15+ vehicles</p>
+                        </div>
+                     </div>
+                  </div>
+
+                  {/* Hours */}
+                  <div className="bg-slate-900/60 border border-blue-500/20 p-4 rounded-xl flex items-center gap-3">
+                     <Clock size={20} className="text-neon-cyan shrink-0" />
+                     <div>
+                        <p className="text-xs font-mono text-neon-cyan">OPENING HOURS</p>
+                        <p className="text-sm text-neutral-300">Mon – Thu: 11:00 AM – 11:00 PM | Fri – Sun: 11:00 AM – 1:00 AM</p>
                      </div>
                   </div>
                </div>
@@ -58,37 +86,50 @@ export default function ContactPage() {
                  method="POST"
                  className="space-y-4"
                >
-                  <input type="hidden" name="_subject" value="Contact Page Inquiry" />
+                  <input type="hidden" name="_subject" value="Website Message - RoadHouse" />
                   <input type="hidden" name="_captcha" value="false" />
                   
-                  <input 
-                    type="text" 
-                    name="message" 
-                    placeholder="SEND A QUICK MESSAGE..." 
-                    className="w-full bg-white/5 border border-white/10 p-4 text-white placeholder:text-neutral-600 focus:border-[#ff5722] outline-none font-mono text-sm"
-                    required 
-                  />
-                  <button className="bg-[#ff5722] text-black font-bold px-6 py-3 uppercase tracking-wider text-sm hover:bg-white transition-colors flex items-center gap-2">
-                     Transmit <Send size={16} />
-                  </button>
+                  <div className="flex gap-2">
+                     <input 
+                       type="text" 
+                       name="message" 
+                       placeholder="SEND US A QUICK MESSAGE..." 
+                       className="flex-1 bg-slate-900/80 border border-blue-500/30 p-4 rounded-xl text-white placeholder:text-neutral-500 focus:border-neon-cyan outline-none font-mono text-sm"
+                       required 
+                     />
+                     <button className="bg-neon-blue hover:bg-neon-cyan text-white hover:text-black font-bold px-6 py-4 rounded-xl uppercase tracking-wider text-sm transition-all shadow-[0_0_15px_rgba(0,210,255,0.4)] flex items-center gap-2 shrink-0">
+                        Send <Send size={16} />
+                     </button>
+                  </div>
                </form>
 
             </motion.div>
          </div>
 
          {/* RIGHT: MAP VISUAL */}
-         <div className="w-full md:w-1/2 bg-neutral-900 relative min-h-[50vh] overflow-hidden group">
+         <div className="w-full md:w-1/2 bg-slate-950 relative min-h-[50vh] overflow-hidden group">
             <iframe 
                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d63359.39050967393!2d79.85411774999999!3d7.118683!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ae2ee9c63236701%3A0x6095907409c2565!2sSeeduwa!5e0!3m2!1sen!2slk!4v1700000000000!5m2!1sen!2slk" 
-               className="absolute inset-0 w-full h-full opacity-60 grayscale group-hover:grayscale-0 transition-all duration-700 invert"
+               className="absolute inset-0 w-full h-full opacity-80 transition-all duration-700"
                style={{ border: 0 }} 
                loading="lazy"
             ></iframe>
             
-            <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20 pointer-events-none" />
-            
-            <div className="absolute bottom-8 left-8 bg-black/90 backdrop-blur border border-[#ff5722] p-4 pointer-events-none">
-               <p className="font-mono text-[#ff5722] text-xs animate-pulse">● LIVE SATELLITE FEED</p>
+            <div className="absolute bottom-8 left-8 right-8 md:right-auto bg-slate-950/90 backdrop-blur-md border border-neon-cyan/40 p-5 rounded-2xl shadow-[0_0_20px_rgba(0,210,255,0.2)]">
+               <div className="flex items-center gap-2 mb-2">
+                  <span className="w-2.5 h-2.5 rounded-full bg-neon-cyan animate-ping" />
+                  <p className="font-mono text-neon-cyan text-xs font-bold tracking-wider">ROADHOUSE LOCATION</p>
+               </div>
+               <p className="text-white text-sm font-semibold">24 Kotugoda Rd, Seeduwa</p>
+               <p className="text-xs text-neutral-400 mt-1">10 mins from Katunayake International Airport</p>
+               <a 
+                 href="https://maps.google.com/?q=RoadHouse+Seeduwa" 
+                 target="_blank" 
+                 rel="noopener noreferrer"
+                 className="mt-3 inline-flex items-center gap-2 text-xs font-bold text-black bg-neon-cyan px-3 py-1.5 rounded-lg hover:bg-white transition-all"
+               >
+                 <Navigation size={14} /> Open in Google Maps
+               </a>
             </div>
          </div>
 

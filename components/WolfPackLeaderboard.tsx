@@ -30,7 +30,7 @@ export default function WolfPackLeaderboard() {
         
         <div className="text-center mb-12">
            <h2 className="text-4xl md:text-5xl font-[family-name:var(--font-blackops)] text-white mb-2">
-              LOYALTY <span className="text-[#ff5722]">LEADERBOARD</span>
+              LOYALTY <span className="text-[#00D2FF]">LEADERBOARD</span>
            </h2>
            <p className="font-mono text-neutral-500 text-sm uppercase tracking-widest">
               Top Customers of the Month
@@ -53,7 +53,7 @@ export default function WolfPackLeaderboard() {
                   initial={{ opacity: 0, x: -20 }}
                   whileInView={{ opacity: 1, x: 0 }}
                   transition={{ delay: i * 0.1 }}
-                  className={`grid grid-cols-12 gap-4 p-4 items-center border-b border-white/5 hover:bg-white/5 transition-colors ${i === 0 ? "bg-[#ff5722]/10" : ""}`}
+                  className={`grid grid-cols-12 gap-4 p-4 items-center border-b border-white/5 hover:bg-white/5 transition-colors ${i === 0 ? "bg-[#00D2FF]/10" : ""}`}
                 >
                    <div className="col-span-2 flex justify-center">
                       {i === 0 ? <Crown className="text-yellow-500" size={20} /> : 
@@ -68,7 +68,7 @@ export default function WolfPackLeaderboard() {
                             <User size={14} />
                          </div>
                          <div>
-                            <h4 className={`font-bold font-[family-name:var(--font-bebas)] tracking-wide text-lg leading-none ${i === 0 ? "text-[#ff5722]" : "text-white"}`}>
+                            <h4 className={`font-bold font-[family-name:var(--font-bebas)] tracking-wide text-lg leading-none ${i === 0 ? "text-[#00D2FF]" : "text-white"}`}>
                                 {user.name}
                             </h4>
                             <span className="text-[10px] font-mono text-neutral-500 uppercase">
@@ -78,7 +78,7 @@ export default function WolfPackLeaderboard() {
                    </div>
 
                    <div className="col-span-4 text-right">
-                      <span className="font-mono text-[#ff5722] font-bold">
+                      <span className="font-mono text-[#00D2FF] font-bold">
                          {Number(user.points).toLocaleString()} <span className="text-[10px] text-white/50">LKR</span>
                       </span>
                    </div>
