@@ -4,7 +4,7 @@ import { Send, Tag } from "lucide-react";
 
 export default function Newsletter() {
   return (
-    <section className="py-20 bg-gradient-to-r from-[#0070F3] via-[#00A3FF] to-[#00D2FF] text-black">
+    <section className="py-20 bg-[#ff5722] text-black">
       <div className="max-w-4xl mx-auto px-6 text-center">
          
          <div className="inline-flex items-center gap-2 bg-black/10 border border-black/20 px-4 py-1 rounded-full text-xs font-mono font-bold uppercase mb-4">
@@ -35,7 +35,7 @@ export default function Newsletter() {
             />
             <button 
                type="submit"
-               className="bg-black text-[#00D2FF] font-black px-8 py-4 hover:bg-white hover:text-black transition-colors flex items-center justify-center gap-2 uppercase tracking-wide rounded-lg text-sm"
+               className="bg-black text-[#ff5722] font-black px-8 py-4 hover:bg-white hover:text-black transition-colors flex items-center justify-center gap-2 uppercase tracking-wide rounded-lg text-sm"
             >
                Join Club <Send size={16} />
             </button>

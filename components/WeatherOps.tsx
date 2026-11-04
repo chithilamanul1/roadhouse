@@ -43,7 +43,7 @@ export default function WeatherOps() {
   const getComment = () => {
     if (isRaining) return "Rainy weather — Warm soups & hot coffee ready!";
     if (isHot) return `Warm outside (${temp}°C) — Try an iced passion mojito!`;
-    if (isNight) return "Evening chill — Blue neon bar & dinner live!";
+    if (isNight) return "Evening chill — Grills & cold drinks live!";
     return "Great weather for delicious food & cold drinks!";
   };
 
@@ -51,7 +51,7 @@ export default function WeatherOps() {
     <>
       {/* Night Atmosphere */}
       {isNight && (
-        <div className="fixed inset-0 bg-blue-950/20 mix-blend-multiply pointer-events-none z-[5]" />
+        <div className="fixed inset-0 bg-orange-950/10 mix-blend-multiply pointer-events-none z-[5]" />
       )}
 
       {/* TOP RIGHT WIDGET */}
@@ -61,8 +61,8 @@ export default function WeatherOps() {
         transition={{ delay: 0.8 }}
         className="fixed top-28 right-6 z-40 hidden md:flex items-center gap-3"
       >
-        <div className="bg-[#0A1224]/90 backdrop-blur-md border border-[#00D2FF]/20 p-3 rounded-xl flex items-center gap-3.5 shadow-xl">
-           <div className="text-[#00D2FF] animate-pulse">
+        <div className="bg-black/90 backdrop-blur-md border border-white/10 p-3 rounded-xl flex items-center gap-3.5 shadow-xl">
+           <div className="text-[#ff5722] animate-pulse">
               {isRaining ? <CloudRain size={20} /> : 
                isNight ? <Moon size={20} /> : 
                isHot ? <Sun size={20} /> : 
@@ -74,12 +74,12 @@ export default function WeatherOps() {
                  <span className="text-lg font-[family-name:var(--font-blackops)] text-white leading-none">
                     {temp}°C
                  </span>
-                 <span className="text-[9px] font-mono text-[#00D2FF] uppercase tracking-wider font-bold">
+                 <span className="text-[9px] font-mono text-[#ff5722] uppercase tracking-wider font-bold">
                     SEEDUWA LIVE
                  </span>
               </div>
               
-              <p className="text-[10px] text-neutral-300 mt-0.5 max-w-[200px] leading-tight font-sans">
+              <p className="text-[10px] text-neutral-400 mt-0.5 max-w-[200px] leading-tight font-sans">
                  {getComment()}
               </p>
            </div>

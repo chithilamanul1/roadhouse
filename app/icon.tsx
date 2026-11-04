@@ -14,17 +14,17 @@ export default function Icon() {
       <div
         style={{
           fontSize: 24,
-          background: '#050811',
+          background: '#050505',
           width: '100%',
           height: '100%',
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
           borderRadius: '50%',
-          border: '2px solid #00D2FF',
+          border: '2px solid #ff5722',
         }}
       >
-        <div style={{ color: '#00D2FF', fontFamily: 'sans-serif', fontWeight: 900, fontSize: '20px', marginTop: '-2px' }}>
+        <div style={{ color: '#ff5722', fontFamily: 'sans-serif', fontWeight: 900, fontSize: '20px', marginTop: '-2px' }}>
           R
         </div>
       </div>

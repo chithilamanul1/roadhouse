@@ -32,14 +32,14 @@ export default function FeaturedSpecials() {
   const { addToCart } = useCart();
 
   return (
-    <section className="py-24 bg-[#070D1C] relative overflow-hidden border-t border-[#00D2FF]/10">
+    <section className="py-24 bg-[#0a0a0a] relative overflow-hidden border-t border-white/10">
        <div className="px-6 mb-14 max-w-7xl mx-auto flex flex-col md:flex-row md:items-end justify-between gap-4">
           <div>
-            <p className="text-[#00D2FF] font-mono text-xs tracking-[0.3em] uppercase mb-2 font-bold">
+            <p className="text-[#ff5722] font-mono text-xs tracking-[0.3em] uppercase mb-2 font-bold">
               Signature Plates
             </p>
             <h2 className="text-4xl md:text-7xl font-[family-name:var(--font-blackops)] text-white leading-none">
-                CHEF&apos;S <span className="text-[#00D2FF]">SPECIALS</span>
+                CHEF&apos;S <span className="text-[#ff5722]">SPECIALS</span>
             </h2>
             <p className="text-neutral-400 mt-2 font-sans text-sm">
               Our most popular dishes, freshly prepared to perfection.
@@ -54,35 +54,39 @@ export default function FeaturedSpecials() {
                initial={{ opacity: 0, y: 20 }}
                whileInView={{ opacity: 1, y: 0 }}
                transition={{ delay: i * 0.15 }}
-               className="snap-center shrink-0 w-[85vw] md:w-[380px] bg-[#0C172E] rounded-2xl overflow-hidden border border-white/10 hover:border-[#00D2FF] transition-all flex flex-col justify-between"
+               className="snap-center shrink-0 w-[85vw] md:w-[380px] bg-neutral-900/60 rounded-2xl overflow-hidden border border-white/10 hover:border-[#ff5722] transition-all flex flex-col justify-between"
              >
                 <div className="h-60 overflow-hidden relative">
                    <img 
                       src={item.image} 
                       alt={item.name} 
-                      referrerPolicy="no-referrer"
-                      className="w-full h-full object-cover transition-transform duration-700 hover:scale-105"
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                    />
-                   <div className="absolute top-4 right-4 bg-black/80 backdrop-blur border border-[#00D2FF]/40 px-3 py-1 rounded-full text-[#00D2FF] font-mono text-xs font-bold">
-                      Rs. {item.price.toLocaleString()}
+                   <div className="absolute top-4 right-4 bg-black/80 backdrop-blur px-3 py-1 rounded-full border border-white/10">
+                      <span className="font-mono text-sm font-bold text-[#ff5722]">Rs. {item.price.toLocaleString()}</span>
                    </div>
                 </div>
 
-                <div className="p-6 flex-1 flex flex-col justify-between">
+                <div className="p-6 flex flex-col flex-1 justify-between">
                    <div>
-                     <h3 className="font-[family-name:var(--font-bebas)] text-2xl text-white tracking-wide mb-2">
-                        {item.name}
-                     </h3>
-                     <p className="text-xs text-neutral-400 leading-relaxed mb-6">
-                        {item.desc}
-                     </p>
+                      <h3 className="text-2xl font-[family-name:var(--font-bebas)] text-white tracking-wide mb-2">
+                         {item.name}
+                      </h3>
+                      <p className="text-neutral-400 text-xs leading-relaxed mb-6">
+                         {item.desc}
+                      </p>
                    </div>
 
                    <button
-                     onClick={() => addToCart({ id: item.id, name: item.name, price: item.price, image: item.image })}
-                     className="w-full bg-[#00D2FF] text-black font-bold text-xs uppercase tracking-wider py-3 rounded-lg flex items-center justify-center gap-2 hover:bg-white transition-all shadow-[0_0_15px_rgba(0,210,255,0.3)]"
+                     onClick={() => addToCart({
+                       id: item.id,
+                       name: item.name,
+                       price: item.price,
+                       image: item.image,
+                     })}
+                     className="w-full py-3 bg-[#ff5722] hover:bg-white text-black font-bold uppercase text-xs tracking-wider rounded-xl transition-all flex items-center justify-center gap-2 shadow-[0_0_15px_rgba(255,87,34,0.3)]"
                    >
-                     <Plus size={16} /> Add to Order
+                     <Plus size={16} /> + Add to Order
                    </button>
                 </div>
              </motion.div>

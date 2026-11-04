@@ -134,7 +134,7 @@ export default function RootLayout({
 
   return (
     <html lang="en" className="scroll-smooth">
-      <body className={`${bebas.variable} ${montserrat.variable} ${blackOps.variable} bg-[#050811] text-[#E2E8F0] antialiased selection:bg-[#00D2FF] selection:text-black`}>
+      <body className={`${bebas.variable} ${montserrat.variable} ${blackOps.variable} bg-[#050505] text-[#e0e0e0] antialiased selection:bg-[#ff5722] selection:text-black`}>
         
         {/* INJECT GOOGLE LOCAL BUSINESS & RESTAURANT SCHEMA */}
         <script

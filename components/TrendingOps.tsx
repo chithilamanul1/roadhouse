@@ -34,7 +34,7 @@ export default function TrendingOps() {
   return (
     <section className="py-20 bg-black">
        <div className="max-w-7xl mx-auto px-6">
-          <div className="flex items-center gap-2 mb-8 text-[#00D2FF]">
+          <div className="flex items-center gap-2 mb-8 text-[#ff5722]">
              <TrendingUp size={24} />
              <span className="font-mono text-xs tracking-[0.3em] uppercase font-bold">POPULAR DISHES</span>
           </div>
@@ -60,8 +60,8 @@ export default function TrendingOps() {
                             #{i+1} BEST SELLER
                         </div>
                         <h3 className="text-2xl font-[family-name:var(--font-bebas)] text-white mb-1 leading-none">{item.name}</h3>
-                        <div className="flex items-center gap-2 text-[#00D2FF]">
-                           <Star size={14} fill="#00D2FF" />
+                        <div className="flex items-center gap-2 text-[#ff5722]">
+                           <Star size={14} fill="#ff5722" />
                            <span className="font-mono text-sm font-bold">{item.sold} ORDERS</span>
                         </div>
                      </div>

@@ -31,7 +31,7 @@ export default function OffersSlider() {
   return (
     <section className="py-10 bg-[#050505]">
       <h2 className="text-3xl font-[family-name:var(--font-bebas)] text-center mb-8 text-white">
-        LIVE <span className="text-[#00D2FF]">OFFERS</span>
+        LIVE <span className="text-[#ff5722]">OFFERS</span>
       </h2>
       
       <div className="flex overflow-x-auto snap-x snap-mandatory gap-4 px-6 pb-8 no-scrollbar">
@@ -51,7 +51,7 @@ export default function OffersSlider() {
             <div className={`absolute inset-0 bg-gradient-to-t ${offer.color} opacity-80 mix-blend-multiply`} />
             
             <div className="absolute bottom-0 left-0 p-6">
-              <span className="bg-[#00D2FF] text-black text-xs font-bold px-2 py-1 rounded mb-2 inline-block">LIMITED TIME</span>
+              <span className="bg-[#ff5722] text-black text-xs font-bold px-2 py-1 rounded mb-2 inline-block">LIMITED TIME</span>
               <h3 className="text-4xl font-[family-name:var(--font-bebas)] text-white leading-none mb-1">{offer.title}</h3>
               <p className="text-white/90 font-sans text-sm">{offer.desc}</p>
             </div>

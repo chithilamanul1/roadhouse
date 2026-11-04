@@ -3,38 +3,39 @@
 @tailwind utilities;
 
 :root {
-  --neon-blue: #00D2FF;
-  --neon-cyan: #38BDF8;
-  --deep-blue: #0070F3;
-  --dark-night: #050811;
-  --card-bg: #0C172E;
+  --primary-orange: #ff5722;
+  --primary-hover: #e64a19;
+  --dark-asphalt: #050505;
+  --card-bg: #121212;
+  --card-border: rgba(255, 255, 255, 0.1);
 }
 
 body {
-  color: #E2E8F0;
-  background-color: var(--dark-night);
+  color: #e0e0e0;
+  background-color: var(--dark-asphalt);
   font-family: sans-serif;
   overflow-x: hidden;
 }
 
-/* Custom Neon Glow Utilities */
+/* Custom Orange Glow Utilities */
 .neon-glow {
-  text-shadow: 0 0 10px rgba(0, 210, 255, 0.7), 0 0 25px rgba(0, 210, 255, 0.4);
+  text-shadow: 0 0 10px rgba(255, 87, 34, 0.7), 0 0 25px rgba(255, 87, 34, 0.4);
 }
 
 .neon-border {
-  border-color: rgba(0, 210, 255, 0.4);
-  box-shadow: 0 0 15px rgba(0, 210, 255, 0.2);
+  border-color: rgba(255, 87, 34, 0.4);
+  box-shadow: 0 0 15px rgba(255, 87, 34, 0.2);
 }
 
-.blue-card {
-  background: linear-gradient(145deg, #0C172E, #070D1C);
-  border: 1px solid rgba(0, 210, 255, 0.15);
+/* Luxury Matte Card */
+.matte-card {
+  background: linear-gradient(145deg, #18181b, #0f0f11);
+  border: 1px solid rgba(255, 87, 34, 0.15);
 }
 
-.blue-card:hover {
-  border-color: rgba(0, 210, 255, 0.4);
-  box-shadow: 0 0 25px rgba(0, 210, 255, 0.15);
+.matte-card:hover {
+  border-color: rgba(255, 87, 34, 0.5);
+  box-shadow: 0 0 25px rgba(255, 87, 34, 0.2);
 }
 
 /* Custom Scrollbar */
@@ -42,12 +43,12 @@ body {
   width: 8px;
 }
 ::-webkit-scrollbar-track {
-  background: #050811;
+  background: #050505;
 }
 ::-webkit-scrollbar-thumb {
-  background: #0C2340;
+  background: #27272a;
   border-radius: 4px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #00D2FF;
+  background: #ff5722;
 }

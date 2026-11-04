@@ -10,13 +10,12 @@ const config: Config = {
     extend: {
       colors: {
         brand: {
-          dark: "#050811",      // Deep midnight navy
-          gray: "#0B132B",      // Card backgrounds
-          card: "#0C172E",
-          blue: "#00D2FF",      // RoadHouse signature electric blue
-          blueGlow: "#38BDF8",  // Neon cyan glow
-          blueDark: "#0070F3",  // Deep vibrant blue
-          smoke: "#E2E8F0",     // Text
+          dark: "#050505",      // Asphalt black
+          gray: "#121212",      // Card backgrounds
+          card: "#18181b",
+          orange: "#ff5722",    // The Road House Signature Flare
+          orangeHover: "#e64a19",
+          smoke: "#e0e0e0",     // Text
         },
       },
       fontFamily: {
@@ -32,10 +31,10 @@ const config: Config = {
         flicker: {
           '0%, 19.999%, 22%, 62.999%, 64%, 64.999%, 70%, 100%': {
             opacity: '0.99',
-            filter: 'drop-shadow(0 0 2px rgba(0,210,255,1)) drop-shadow(0 0 18px rgba(0,210,255,0.75))',
+            filter: 'drop-shadow(0 0 1px rgba(255,87,34,1)) drop-shadow(0 0 15px rgba(255,87,34,0.7)) drop-shadow(0 0 1px rgba(255,87,34,1))',
           },
           '20%, 21.999%, 63%, 63.999%, 65%, 69.999%': {
-            opacity: '0.5',
+            opacity: '0.4',
             filter: 'none',
           },
         },

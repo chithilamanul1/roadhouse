@@ -38,7 +38,7 @@ export default function Preloader() {
           key="preloader"
           exit={{ opacity: 0, filter: "blur(10px)" }}
           transition={{ duration: 0.6, ease: "easeInOut" }}
-          className="fixed inset-0 z-[9999] bg-[#050811] flex flex-col items-center justify-center overflow-hidden"
+          className="fixed inset-0 z-[9999] bg-[#050505] flex flex-col items-center justify-center overflow-hidden"
         >
           {/* PARTICLES */}
           <div className="absolute inset-0 pointer-events-none flex items-center justify-center">
@@ -57,55 +57,43 @@ export default function Preloader() {
                     ease: "circIn", 
                     delay: p.delay 
                 }}
-                className="absolute w-1.5 h-1.5 bg-[#00D2FF] rounded-full shadow-[0_0_12px_#00D2FF]"
+                className="absolute w-1.5 h-1.5 bg-[#ff5722] rounded-full shadow-[0_0_12px_#ff5722]"
               />
             ))}
           </div>
 
-          <div className="relative z-10 flex flex-col items-center justify-center px-4">
-             {/* Logo */}
-             <div className="relative w-64 md:w-80 h-36 mb-6 flex items-center justify-center">
-                <motion.div 
-                   initial={{ opacity: 0, scale: 0 }}
-                   animate={{ opacity: [0, 0.4, 0], scale: [0.5, 1.5, 2] }}
-                   transition={{ delay: 0.6, duration: 0.6 }}
-                   className="absolute w-44 h-44 bg-[#00D2FF] rounded-full blur-[80px]"
-                />
+          {/* LOGO */}
+          <motion.div
+            initial={{ scale: 0.5, opacity: 0 }}
+            animate={{ scale: 1, opacity: 1 }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+            className="relative z-10 w-44 md:w-60 mb-6"
+          >
+            <img
+              src="/logo-full.png"
+              alt="RoadHouse Logo"
+              className="w-full h-auto object-contain drop-shadow-[0_0_35px_rgba(255,87,34,0.6)]"
+            />
+          </motion.div>
 
-                <motion.img 
-                  src="/logo-full.png" 
-                  alt="RoadHouse Café & Restro"
-                  initial={{ opacity: 0, scale: 1.3, filter: "blur(15px)" }}
-                  animate={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
-                  transition={{ delay: 0.7, duration: 0.8, ease: "circOut" }}
-                  className="w-full h-full object-contain relative z-10 drop-shadow-[0_0_30px_rgba(0,210,255,0.7)]"
-                />
-             </div>
-             
-             {/* Loading Bar */}
-             <motion.div 
-                initial={{ opacity: 0, width: 0 }}
-                animate={{ opacity: 1, width: "180px" }}
-                transition={{ delay: 0.9, duration: 0.6 }}
-                className="h-[3px] bg-neutral-800 rounded-full overflow-hidden relative"
-             >
-               <motion.div 
-                 initial={{ x: "-100%" }}
-                 animate={{ x: "0%" }}
-                 transition={{ delay: 0.9, duration: 0.9, ease: "linear" }}
-                 className="h-full bg-[#00D2FF] shadow-[0_0_12px_#00D2FF]"
-               />
-             </motion.div>
-             
-             <motion.p 
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ delay: 1.0 }}
-                className="mt-3 font-mono text-[10px] text-[#00D2FF] tracking-[0.4em] font-bold"
-             >
-                WELCOME TO ROADHOUSE
-             </motion.p>
+          {/* PROGRESS BAR */}
+          <div className="w-48 h-1 bg-white/10 rounded-full overflow-hidden relative z-10">
+            <motion.div
+              initial={{ x: "-100%" }}
+              animate={{ x: "0%" }}
+              transition={{ duration: 1.5, ease: "easeInOut" }}
+              className="w-full h-full bg-[#ff5722] shadow-[0_0_15px_#ff5722]"
+            />
           </div>
+
+          <motion.p
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.4 }}
+            className="text-neutral-500 font-mono text-[10px] tracking-[0.3em] uppercase mt-4"
+          >
+            ROADHOUSE • SEEDUWA
+          </motion.p>
         </motion.div>
       )}
     </AnimatePresence>

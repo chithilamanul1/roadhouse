@@ -63,7 +63,7 @@ export default function Hero() {
                 </p>
 
                 <motion.button
-                    whileHover={{ scale: 1.05, backgroundColor: "#00D2FF", color: "#000" }}
+                    whileHover={{ scale: 1.05, backgroundColor: "#ff5722", color: "#000" }}
                     whileTap={{ scale: 0.95 }}
                     className="mt-12 px-8 py-3 border border-brand-orange text-brand-orange font-bebas text-xl tracking-widest uppercase transition-colors duration-300"
                 >

@@ -47,77 +47,85 @@ export default function InteractiveMenu() {
   const [activeItem, setActiveItem] = useState(MENU_HIGHLIGHTS[0]);
 
   return (
-    <section className="py-24 bg-[#050811] relative z-10 px-6">
+    <section className="py-24 bg-[#050505] relative z-10 px-6">
       <div className="max-w-7xl mx-auto flex flex-col md:flex-row gap-12 items-center">
         
         {/* Left: The List */}
         <div className="w-full md:w-1/2 space-y-3">
-          <p className="text-[#00D2FF] font-mono tracking-widest uppercase text-xs font-bold">
+          <p className="text-[#ff5722] font-mono tracking-widest uppercase text-xs font-bold">
             Customer Favorites
           </p>
           <h2 className="text-4xl md:text-5xl font-[family-name:var(--font-blackops)] text-white mb-6">
-            WHAT EVERYONE <span className="text-[#00D2FF]">ORDERS</span>
+            WHAT EVERYONE <span className="text-[#ff5722]">ORDERS</span>
           </h2>
 
           <div className="space-y-2">
             {MENU_HIGHLIGHTS.map((item) => (
-              <div 
+              <div
                 key={item.id}
                 onMouseEnter={() => setActiveItem(item)}
                 onClick={() => setActiveItem(item)}
-                className={`border-b border-white/10 p-5 rounded-xl cursor-pointer transition-all duration-300 flex justify-between items-center ${
-                  activeItem.id === item.id 
-                    ? "bg-[#0C172E] border-[#00D2FF]/40 shadow-[0_0_20px_rgba(0,210,255,0.15)]" 
-                    : "hover:bg-white/5"
+                className={`p-4 rounded-xl cursor-pointer transition-all border ${
+                  activeItem.id === item.id
+                    ? "bg-neutral-900 border-[#ff5722] shadow-[0_0_20px_rgba(255,87,34,0.15)]"
+                    : "bg-transparent border-white/5 hover:border-white/20"
                 }`}
               >
-                <div>
-                  <h3 className={`text-2xl md:text-3xl font-[family-name:var(--font-bebas)] transition-colors ${
-                    activeItem.id === item.id ? "text-[#00D2FF]" : "text-white"
+                <div className="flex justify-between items-center">
+                  <h3 className={`text-xl font-[family-name:var(--font-bebas)] tracking-wide transition-colors ${
+                    activeItem.id === item.id ? "text-[#ff5722]" : "text-white"
                   }`}>
                     {item.name}
                   </h3>
-                  <p className="text-xs text-neutral-400 mt-0.5">{item.desc}</p>
+                  <span className="font-mono text-sm font-bold text-white">
+                    {item.price}
+                  </span>
                 </div>
-                <span className="font-mono text-sm font-bold text-[#00D2FF]">
-                  {item.price}
-                </span>
+                <p className="text-neutral-400 text-xs mt-1">
+                  {item.desc}
+                </p>
               </div>
             ))}
           </div>
 
-          <div className="pt-4">
+          <div className="pt-6">
             <Link
               href="/menu"
-              className="inline-flex items-center gap-2 text-white hover:text-[#00D2FF] font-bold text-sm tracking-wider uppercase transition-colors"
+              className="inline-flex items-center gap-2 bg-[#ff5722] text-black font-black text-sm uppercase tracking-wider px-6 py-3 rounded-lg hover:bg-white transition-all shadow-[0_0_15px_rgba(255,87,34,0.3)]"
             >
-              See Full Menu with 30+ Dishes <ArrowRight size={16} />
+              <span>See Full Menu &amp; Order Online</span>
+              <ArrowRight size={16} />
             </Link>
           </div>
         </div>
 
-        {/* Right: The Changing Image */}
-        <div className="w-full md:w-1/2 h-[450px] relative overflow-hidden rounded-2xl border border-[#00D2FF]/20 shadow-2xl bg-black">
-           <motion.img
-             key={activeItem.img}
-             src={activeItem.img}
-             referrerPolicy="no-referrer"
-             initial={{ scale: 1.1, opacity: 0 }}
-             animate={{ scale: 1, opacity: 1 }}
-             transition={{ duration: 0.4 }}
-             className="w-full h-full object-cover"
-             alt={activeItem.name}
-           />
-           <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent flex items-end p-6">
-             <div>
-               <p className="text-white font-[family-name:var(--font-bebas)] text-2xl tracking-wider">
-                 {activeItem.name}
-               </p>
-               <p className="text-[#00D2FF] font-mono text-sm font-bold">
-                 {activeItem.price}
-               </p>
-             </div>
-           </div>
+        {/* Right: Active Preview Card */}
+        <div className="w-full md:w-1/2 flex justify-center">
+          <motion.div
+            key={activeItem.id}
+            initial={{ opacity: 0, scale: 0.95 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.3 }}
+            className="relative w-full max-w-md aspect-square rounded-2xl overflow-hidden border border-[#ff5722]/30 shadow-2xl group"
+          >
+            <img
+              src={activeItem.img}
+              alt={activeItem.name}
+              className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-black via-black/30 to-transparent" />
+            <div className="absolute bottom-6 left-6 right-6">
+              <span className="text-[#ff5722] font-mono text-xs font-bold uppercase tracking-widest bg-black/80 px-3 py-1 rounded-full border border-white/10">
+                Fresh &amp; Hot
+              </span>
+              <h3 className="text-3xl font-[family-name:var(--font-bebas)] text-white mt-2">
+                {activeItem.name}
+              </h3>
+              <p className="text-neutral-300 text-sm mt-1">
+                {activeItem.desc}
+              </p>
+            </div>
+          </motion.div>
         </div>
 
       </div>

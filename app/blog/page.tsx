@@ -43,17 +43,17 @@ const NEWS_POSTS = [
 
 export default function BlogPage() {
   return (
-    <div className="min-h-screen bg-[#050811] text-white">
+    <div className="min-h-screen bg-[#050505] text-[#e0e0e0]">
       <Navbar />
       
       <div className="pt-32 pb-16 px-6 max-w-7xl mx-auto">
          
-         <div className="mb-12 border-b border-blue-500/20 pb-6 text-center md:text-left">
-            <span className="text-neon-cyan font-mono text-xs uppercase tracking-widest px-3 py-1 bg-neon-cyan/10 border border-neon-cyan/30 rounded-full inline-block mb-3">
+         <div className="mb-12 border-b border-white/10 pb-6 text-center md:text-left">
+            <span className="text-[#ff5722] font-mono text-xs uppercase tracking-widest px-3 py-1 bg-[#ff5722]/10 border border-[#ff5722]/30 rounded-full inline-block mb-3 font-bold">
                RoadHouse Stories
             </span>
             <h1 className="text-5xl md:text-7xl font-[family-name:var(--font-blackops)] text-white uppercase">
-               LATEST <span className="text-neon-cyan neon-glow">NEWS</span>
+               LATEST <span className="text-[#ff5722]">NEWS</span>
             </h1>
             <p className="text-neutral-400 mt-2 font-sans max-w-lg text-sm md:text-base">
                Updates, food stories, and news from RoadHouse Cafe & Restro in Seeduwa.
@@ -67,7 +67,7 @@ export default function BlogPage() {
                  initial={{ opacity: 0, y: 20 }}
                  whileInView={{ opacity: 1, y: 0 }}
                  transition={{ delay: i * 0.1 }}
-                 className="group cursor-pointer bg-slate-900/60 border border-blue-500/20 hover:border-neon-cyan transition-all duration-300 rounded-2xl overflow-hidden flex flex-col shadow-[0_4px_20px_rgba(0,0,0,0.5)]"
+                 className="group cursor-pointer bg-neutral-900/60 border border-white/10 hover:border-[#ff5722] transition-all duration-300 rounded-2xl overflow-hidden flex flex-col shadow-lg"
                >
                   <div className="h-[250px] overflow-hidden relative">
                      <img 
@@ -75,21 +75,21 @@ export default function BlogPage() {
                         alt={post.title} 
                         className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                      />
-                     <div className="absolute top-4 left-4 bg-slate-950/90 backdrop-blur px-3 py-1 rounded-full border border-neon-cyan/40">
-                        <span className="text-neon-cyan font-bold text-xs tracking-wider uppercase">{post.category}</span>
+                     <div className="absolute top-4 left-4 bg-black/90 backdrop-blur px-3 py-1 rounded-full border border-white/10">
+                        <span className="text-[#ff5722] font-bold text-xs tracking-wider uppercase">{post.category}</span>
                      </div>
                   </div>
 
                   <div className="p-6 md:p-8 flex flex-col flex-1">
                      <p className="text-neutral-500 text-xs mb-2 font-mono uppercase">{post.date}</p>
-                     <h2 className="text-2xl md:text-3xl font-[family-name:var(--font-bebas)] text-white mb-3 group-hover:text-neon-cyan transition-colors leading-tight">
+                     <h2 className="text-2xl md:text-3xl font-[family-name:var(--font-bebas)] text-white mb-3 group-hover:text-[#ff5722] transition-colors leading-tight">
                         {post.title}
                      </h2>
                      <p className="text-neutral-400 font-sans text-sm mb-6 line-clamp-3">
                         {post.desc}
                      </p>
                      <div className="mt-auto">
-                        <Link href="/menu" className="inline-flex items-center gap-2 text-sm font-bold text-neon-cyan hover:text-white transition-colors">
+                        <Link href="/menu" className="inline-flex items-center gap-2 text-sm font-bold text-[#ff5722] hover:text-white transition-colors">
                            <span>View Our Menu</span>
                            <ArrowRight size={16} />
                         </Link>

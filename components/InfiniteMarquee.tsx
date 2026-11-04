@@ -13,7 +13,7 @@ const OFFERS = [
 
 export default function InfiniteMarquee() {
   return (
-    <div className="w-full bg-gradient-to-r from-[#0070F3] via-[#00D2FF] to-[#00A3FF] py-3.5 overflow-hidden relative z-30 shadow-[0_0_20px_rgba(0,210,255,0.4)]">
+    <div className="w-full bg-[#ff5722] py-3.5 overflow-hidden relative z-30 shadow-[0_0_20px_rgba(255,87,34,0.4)]">
       <div className="flex whitespace-nowrap">
         <motion.div
           animate={{ x: [0, -1000] }}
