@@ -16,7 +16,7 @@ export default function Navbar() {
       const now = new Date();
       
       // 1. DATE LOCK: Are we officially launched yet? (Dec 30, 2025)
-      const launchDate = new Date("2025-12-30T00:00:00").getTime();
+      const launchDate = new Date("2024-01-01T00:00:00").getTime();
       if (now.getTime() < launchDate) {
         setShopStatus({ text: "COMING SOON", color: "text-[#ff5722]", dot: "bg-[#ff5722]" });
         return;

@@ -32,7 +32,7 @@ export default function Footer() {
             {/* Socials */}
             <div className="flex gap-4">
               {[Instagram, Facebook, Twitter].map((Icon, i) => (
-                <a key={i} href="#" className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-white hover:bg-[#ff5722] hover:text-black transition-all duration-300">
+                <a key={i} href={["https://www.instagram.com/roadhouse.cafe.restro", "#", "#"][i]} target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-white hover:bg-[#ff5722] hover:text-black transition-all duration-300">
                   <Icon size={18} />
                 </a>
               ))}
@@ -89,8 +89,8 @@ export default function Footer() {
                 <Phone className="text-[#ff5722] mt-1 shrink-0" size={20} />
                 <div>
                   <p className="text-white font-bold text-sm uppercase">Hotline</p>
-                  <a href="tel:+94777334078" className="text-neutral-500 text-sm font-sans hover:text-white transition-colors">
-                    077 733 4078
+                  <a href="tel:+94777702044" className="text-neutral-500 text-sm font-sans hover:text-white transition-colors">
+                    077 770 2044
                   </a>
                 </div>
               </div>

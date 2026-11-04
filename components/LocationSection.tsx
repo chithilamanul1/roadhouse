@@ -45,7 +45,7 @@ export default function LocationSection() {
                 </div>
 
                 <a 
-                    href="https://www.google.com/maps/search/?api=1&query=24+Kotugoda+Rd+Seeduwa" 
+                    href="https://share.google/HiEDjYVkfO7hPATl4" 
                     target="_blank"
                     className="inline-flex items-center gap-2 bg-[#e0e0e0] text-black font-bold px-8 py-4 hover:bg-[#ff5722] hover:text-white transition-all uppercase tracking-wider text-sm rounded-sm mt-4"
                 >

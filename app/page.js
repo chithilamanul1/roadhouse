@@ -1,6 +1,7 @@
 import Navbar from "@/components/Navbar";
 import VenueAd from "@/components/VenueAd";
 import MenuSection from "@/components/MenuSection";
+import PhotoGallery from "@/components/PhotoGallery";
 import Footer from "@/components/Footer";
 import { MapPin, Utensils, Coffee, Wine, Mic2, Music, Sun } from "lucide-react";
 
@@ -103,6 +104,27 @@ export default function Home() {
                </div>
             </div>
          </div>
+      </section>
+
+      {/* REAL PHOTO GALLERY */}
+      <PhotoGallery />
+
+      {/* GOOGLE REVIEWS BANNER */}
+      <section className="py-16 bg-[#ff934f] text-[#18181b] text-center px-6">
+        <h2 className="text-3xl md:text-5xl font-black uppercase mb-3">
+          Visited Road House?
+        </h2>
+        <p className="font-bold text-base md:text-lg mb-6 max-w-lg mx-auto">
+          We would love to know how your visit was! Tap below to leave us a quick Google review.
+        </p>
+        <a
+          href="https://share.google/HiEDjYVkfO7hPATl4"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-block bg-[#18181b] text-[#f7ff58] font-black px-8 py-4 uppercase tracking-wider hover:bg-white hover:text-black transition-all shadow-lg text-sm md:text-base"
+        >
+          ★ Leave a Google Review
+        </a>
       </section>
 
       <Footer />

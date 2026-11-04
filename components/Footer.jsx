@@ -15,8 +15,8 @@ export default function Footer() {
              The ultimate food district in Seeduwa. 8 Zones, Live Music, and the best Street Food in town.
            </p>
            <div className="flex gap-4">
-              <a href="#" className="w-10 h-10 bg-[#4a4448] flex items-center justify-center hover:bg-[#ff934f] hover:text-[#5e565a] transition-colors"><Facebook size={20}/></a>
-              <a href="#" className="w-10 h-10 bg-[#4a4448] flex items-center justify-center hover:bg-[#ff934f] hover:text-[#5e565a] transition-colors"><Instagram size={20}/></a>
+              <a href="https://share.google/HiEDjYVkfO7hPATl4" target="_blank" rel="noopener noreferrer" className="w-10 h-10 bg-[#4a4448] flex items-center justify-center hover:bg-[#ff934f] hover:text-[#5e565a] transition-colors" title="Google Reviews & Profile"><MapPin size={20}/></a>
+              <a href="https://www.instagram.com/roadhouse.cafe.restro" target="_blank" rel="noopener noreferrer" className="w-10 h-10 bg-[#4a4448] flex items-center justify-center hover:bg-[#ff934f] hover:text-[#5e565a] transition-colors"><Instagram size={20}/></a>
            </div>
         </div>
 
@@ -30,7 +30,7 @@ export default function Footer() {
               </li>
               <li className="flex items-center gap-3">
                  <Phone className="text-[#f7ff58] shrink-0" size={18} />
-                 <a href="tel:0724139621" className="hover:text-[#ff934f]">072 413 9621</a>
+                 <a href="tel:0777702044" className="hover:text-[#ff934f]">077 770 2044</a>
               </li>
            </ul>
         </div>

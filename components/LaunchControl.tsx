@@ -8,7 +8,7 @@ export default function LaunchControl() {
 
   useEffect(() => {
     // AUTOMATION: Check if it's 2026
-    const openDate = new Date("2026-01-01T00:00:00").getTime();
+    const openDate = new Date("2024-01-01T00:00:00").getTime();
     if (new Date().getTime() >= openDate) {
       setIsOpen(true);
     }
