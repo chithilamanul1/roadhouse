@@ -1,6 +1,6 @@
 "use client";
 
-import { Clock, Calendar, Utensils } from "lucide-react";
+import { Clock } from "lucide-react";
 
 export default function OpeningHours() {
   return (
@@ -15,11 +15,11 @@ export default function OpeningHours() {
               OPENING <span className="text-[#ff5722]">HOURS</span>
            </h2>
            <p className="text-xs font-mono text-neutral-400 uppercase tracking-widest">
-              Come eat with us or order takeaway anytime
+              Open 7 days a week for lunch, dinner &amp; late night
            </p>
         </div>
 
-        <div className="bg-neutral-900/60 border border-white/10 p-8 rounded-2xl relative overflow-hidden shadow-2xl">
+        <div className="bg-neutral-900/80 border border-white/10 p-8 rounded-2xl shadow-xl">
            <div className="space-y-6">
               
               {/* Weekdays */}
@@ -48,8 +48,7 @@ export default function OpeningHours() {
                  </span>
               </div>
 
-              {/* Takeaway / Delivery note */}
-              <div className="pt-2 flex items-center justify-between text-xs font-mono text-neutral-400">
+              <div className="pt-2 flex flex-col sm:flex-row items-start sm:items-center justify-between text-xs font-mono text-neutral-400 gap-2">
                  <span>📍 24 Kotugoda Rd, Seeduwa (10 mins from Airport)</span>
                  <span className="text-[#ff5722] font-bold">Hotline: 077 770 2044</span>
               </div>

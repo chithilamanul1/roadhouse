@@ -1,109 +1,95 @@
 "use client";
 
-import { motion, useScroll, useTransform } from "framer-motion";
-import { useRef } from "react";
+import { motion } from "framer-motion";
 import Link from "next/link";
-import { ArrowDown, MapPin, Sparkles } from "lucide-react";
+import { ArrowDown, Flame, Phone } from "lucide-react";
 
 export default function HeroWow() {
-  const containerRef = useRef(null);
-  
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ["start start", "end start"],
-  });
-
-  const y = useTransform(scrollYProgress, [0, 1], ["0%", "50%"]);
-  const opacity = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
-
   return (
-    <section ref={containerRef} className="relative h-screen w-full bg-[#050505] overflow-hidden flex flex-col items-center justify-center">
+    <section className="relative min-h-[92vh] md:min-h-screen w-full bg-[#050505] overflow-hidden flex flex-col items-center justify-center pt-20">
       
-      {/* 1. BACKGROUND VIDEO */}
-      <div className="absolute inset-0 z-0">
-         <video 
-            autoPlay 
-            loop 
-            muted 
-            playsInline
-            className="w-full h-full object-cover opacity-50"
-         >
-            <source src="https://www.pexels.com/download/video/3769033/" type="video/mp4" />
-         </video>
-         <div className="absolute inset-0 bg-gradient-to-b from-[#050505]/90 via-[#050505]/60 to-[#050505]" />
+      {/* 1. HIGH-PERFORMANCE STATIC BACKDROP (Zero video decoding lag, 0ms load) */}
+      <div className="absolute inset-0 z-0 pointer-events-none">
+        {/* Subtle orange radial grill-glow at center bottom */}
+        <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[800px] h-[500px] bg-[radial-gradient(ellipse_at_center,rgba(255,87,34,0.18)_0%,transparent_70%)] blur-2xl" />
+        {/* Subtle grid pattern */}
+        <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:40px_40px] opacity-40" />
       </div>
 
-      {/* 2. TEXT KNOCKOUT */}
-      <div className="absolute inset-0 z-10 bg-[#050505] mix-blend-multiply select-none flex flex-col items-center justify-center">
-         <motion.div style={{ y, opacity }} className="text-center w-full scale-y-110">
-            <h1 className="text-[25vw] leading-[0.8] font-[family-name:var(--font-blackops)] text-white tracking-tighter uppercase mb-0">
-               ROAD
-            </h1>
-            <h1 className="text-[25vw] leading-[0.8] font-[family-name:var(--font-blackops)] text-white tracking-tighter uppercase">
-               HOUSE
-            </h1>
-         </motion.div>
+      {/* 2. GIANT WATERMARK TEXT (Pure CSS, 0 CPU overhead) */}
+      <div className="absolute inset-0 z-0 select-none flex flex-col items-center justify-center opacity-10 pointer-events-none">
+        <h1 className="text-[22vw] leading-[0.8] font-[family-name:var(--font-blackops)] text-white tracking-tighter uppercase">
+          ROAD
+        </h1>
+        <h1 className="text-[22vw] leading-[0.8] font-[family-name:var(--font-blackops)] text-white tracking-tighter uppercase">
+          HOUSE
+        </h1>
       </div>
 
-      {/* 3. LOGO & HERO CONTENT */}
-      <div className="absolute inset-0 z-20 flex flex-col items-center justify-center pointer-events-none px-4">
-         
-         {/* The Logo with Glow */}
-         <motion.div 
-            initial={{ scale: 0, rotate: -180 }}
-            animate={{ scale: 1, rotate: 0 }}
-            transition={{ duration: 1.2, type: "spring" }}
-            className="w-64 md:w-80 h-auto pointer-events-auto"
-         >
-            <img 
-               src="/logo-full.png" 
-               alt="RoadHouse Café & Restro" 
-               className="w-full h-full object-contain drop-shadow-[0_0_35px_rgba(255,87,34,0.6)]"
-            />
-         </motion.div>
+      {/* 3. MAIN HERO CONTENT */}
+      <div className="relative z-10 flex flex-col items-center justify-center text-center px-4 max-w-4xl mx-auto">
+        
+        {/* Real Logo with hardware-accelerated entrance */}
+        <motion.div 
+          initial={{ scale: 0.9, opacity: 0 }}
+          animate={{ scale: 1, opacity: 1 }}
+          transition={{ duration: 0.5, ease: "easeOut" }}
+          className="w-60 sm:w-72 md:w-88 h-auto mb-6 transform-gpu"
+        >
+          <img 
+            src="/logo-full.png" 
+            alt="RoadHouse Café & Restro" 
+            className="w-full h-full object-contain drop-shadow-[0_10px_25px_rgba(255,87,34,0.4)]"
+            loading="eager"
+          />
+        </motion.div>
 
-         {/* Bottom Status Text */}
-         <div className="absolute bottom-10 w-full flex flex-col items-center gap-5 pointer-events-auto max-w-2xl text-center">
-             
-             {/* Open Status & Distance Pill */}
-             <div className="inline-flex items-center gap-2 bg-neutral-900/90 border border-[#ff5722]/30 px-4 py-1.5 rounded-full shadow-lg">
-                <span className="w-2 h-2 rounded-full bg-[#ff5722] animate-ping" />
-                <span className="text-[#ff5722] font-mono text-[11px] tracking-widest uppercase font-bold">
-                   NOW OPEN • SEEDUWA • 10 MINS FROM AIRPORT
-                </span>
-             </div>
+        {/* STATUS PILL */}
+        <div className="inline-flex items-center gap-2 bg-neutral-900/90 border border-[#ff5722]/40 px-5 py-2 rounded-full mb-5 shadow-lg">
+          <span className="w-2.5 h-2.5 rounded-full bg-[#25D366] animate-pulse" />
+          <span className="text-white font-mono text-xs sm:text-sm tracking-[0.2em] uppercase font-bold">
+            NOW OPEN • SEEDUWA • 10 MINS FROM AIRPORT
+          </span>
+        </div>
 
-             <h2 className="text-xl md:text-2xl font-[family-name:var(--font-bebas)] text-white tracking-wider max-w-lg">
-                GOOD FOOD • SIZZLING GRILLS • COLD DRINKS
-             </h2>
+        {/* CATCHPHRASE */}
+        <h2 className="text-2xl sm:text-4xl md:text-5xl font-[family-name:var(--font-blackops)] text-white tracking-wide uppercase mb-4 leading-tight">
+          GOOD FOOD • SIZZLING GRILLS • COLD DRINKS
+        </h2>
 
-             {/* CTA BUTTONS */}
-             <div className="flex flex-col sm:flex-row gap-4 items-center w-full sm:w-auto">
-               <Link 
-                 href="/menu"
-                 className="w-full sm:w-auto bg-[#ff5722] text-black font-black font-[family-name:var(--font-bebas)] text-xl px-10 py-3.5 tracking-wider skew-x-[-8deg] hover:bg-white hover:shadow-[0_0_25px_rgba(255,87,34,0.6)] transition-all"
-               >
-                 <span className="skew-x-[8deg] block">VIEW MENU &amp; ORDER</span>
-               </Link>
+        <p className="text-neutral-400 font-sans text-sm sm:text-base max-w-xl mx-auto mb-8 leading-relaxed">
+          The top dining spot in Seeduwa. Charcoal BBQ, spicy devilled kottu, fresh seafood rice, burgers, juices, and full bar. Free parking for 15+ cars.
+        </p>
 
-               <a 
-                 href="https://wa.me/94777702044?text=Hi%20RoadHouse,%20I%20would%20like%20to%20reserve%20a%20table."
-                 target="_blank"
-                 rel="noopener noreferrer"
-                 className="w-full sm:w-auto border border-[#ff5722]/50 bg-black/40 text-[#ff5722] font-bold font-[family-name:var(--font-bebas)] text-xl px-8 py-3.5 tracking-wider skew-x-[-8deg] hover:bg-[#ff5722] hover:text-black transition-all"
-               >
-                 <span className="skew-x-[8deg] block">BOOK A TABLE (WHATSAPP)</span>
-               </a>
-             </div>
+        {/* CTA BUTTONS (Early RoadHouse skewed style) */}
+        <div className="flex flex-col sm:flex-row gap-4 items-center justify-center w-full max-w-md">
+          <Link 
+            href="/menu"
+            className="w-full sm:w-auto bg-[#ff5722] text-black font-black font-[family-name:var(--font-bebas)] text-2xl px-10 py-4 tracking-wider skew-x-[-8deg] hover:bg-white transition-all shadow-[0_0_25px_rgba(255,87,34,0.4)] flex items-center justify-center gap-2"
+          >
+            <span className="skew-x-[8deg] inline-flex items-center gap-2">
+              <Flame size={22} /> SEE MENU &amp; ORDER
+            </span>
+          </Link>
 
-             <motion.div 
-                animate={{ y: [0, 8, 0] }}
-                transition={{ repeat: Infinity, duration: 1.5 }}
-                className="text-[#ff5722]/60"
-             >
-                <ArrowDown size={28} />
-             </motion.div>
-         </div>
+          <a 
+            href="https://wa.me/94777702044?text=Hi%20RoadHouse,%20I%20would%20like%20to%20reserve%20a%20table."
+            target="_blank"
+            rel="noopener noreferrer"
+            className="w-full sm:w-auto border-2 border-white/20 bg-black/50 text-white font-bold font-[family-name:var(--font-bebas)] text-2xl px-8 py-4 tracking-wider skew-x-[-8deg] hover:border-[#ff5722] hover:text-[#ff5722] transition-colors flex items-center justify-center gap-2"
+          >
+            <span className="skew-x-[8deg] inline-flex items-center gap-2">
+              <Phone size={20} /> BOOK A TABLE
+            </span>
+          </a>
+        </div>
+
+        {/* Scroll indicator */}
+        <div className="mt-12 text-neutral-500 flex flex-col items-center gap-1">
+          <span className="text-[10px] font-mono tracking-widest uppercase">Scroll Down</span>
+          <ArrowDown size={18} className="animate-bounce text-[#ff5722]" />
+        </div>
+
       </div>
 
     </section>

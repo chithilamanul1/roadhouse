@@ -1,8 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import Image from "next/image";
-import { X, ChevronLeft, ChevronRight, Sparkles } from "lucide-react";
+import { X, ChevronLeft, ChevronRight } from "lucide-react";
 
 // Real photos from RoadHouse Café & Restro, Seeduwa
 const GALLERY_PHOTOS = [
@@ -42,16 +41,16 @@ export default function PhotoGallery() {
 
           {/* Big featured image */}
           <div
-            className="md:col-span-2 md:row-span-2 h-[340px] md:h-[580px] overflow-hidden relative group cursor-pointer rounded-2xl border border-white/10 hover:border-[#ff5722] transition-all shadow-xl"
+            className="md:col-span-2 md:row-span-2 h-[340px] md:h-[580px] overflow-hidden relative group cursor-pointer rounded-2xl border border-white/10 hover:border-[#ff5722] transition-colors shadow-xl bg-neutral-900"
             onClick={() => openLightbox(0)}
           >
-            <Image
+            <img
               src={GALLERY_PHOTOS[0].src}
               alt={GALLERY_PHOTOS[0].label}
-              fill
-              className="object-cover transition-transform duration-700 group-hover:scale-105"
+              className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+              loading="lazy"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
+            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-200 flex items-end p-6">
               <span className="text-white font-[family-name:var(--font-bebas)] text-2xl tracking-widest text-[#ff5722]">
                 {GALLERY_PHOTOS[0].label}
               </span>
@@ -62,16 +61,16 @@ export default function PhotoGallery() {
           {GALLERY_PHOTOS.slice(1).map((photo, i) => (
             <div
               key={i + 1}
-              className="h-[280px] overflow-hidden relative group cursor-pointer rounded-2xl border border-white/10 hover:border-[#ff5722] transition-all shadow-lg"
+              className="h-[280px] overflow-hidden relative group cursor-pointer rounded-2xl border border-white/10 hover:border-[#ff5722] transition-colors shadow-lg bg-neutral-900"
               onClick={() => openLightbox(i + 1)}
             >
-              <Image
+              <img
                 src={photo.src}
                 alt={photo.label}
-                fill
-                className="object-cover transition-transform duration-700 group-hover:scale-105"
+                className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                loading="lazy"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-200 flex items-end p-4">
                 <span className="text-white font-[family-name:var(--font-bebas)] text-lg tracking-wider text-[#ff5722]">
                   {photo.label}
                 </span>
@@ -84,13 +83,13 @@ export default function PhotoGallery() {
         {/* Lightbox Modal */}
         {lightboxIndex !== null && (
           <div
-            className="fixed inset-0 z-50 bg-black/95 flex items-center justify-center p-4 backdrop-blur-sm"
+            className="fixed inset-0 z-50 bg-black/95 flex items-center justify-center p-4"
             onClick={closeLightbox}
           >
             <button
               onClick={closeLightbox}
               className="absolute top-6 right-6 text-white hover:text-[#ff5722] p-2"
-              aria-label="Close lightbox"
+              aria-label="Close"
             >
               <X size={32} />
             </button>
@@ -98,7 +97,7 @@ export default function PhotoGallery() {
             <button
               onClick={(e) => { e.stopPropagation(); prev(); }}
               className="absolute left-4 top-1/2 -translate-y-1/2 text-white hover:text-[#ff5722] p-2"
-              aria-label="Previous photo"
+              aria-label="Previous"
             >
               <ChevronLeft size={40} />
             </button>
@@ -106,22 +105,21 @@ export default function PhotoGallery() {
             <button
               onClick={(e) => { e.stopPropagation(); next(); }}
               className="absolute right-4 top-1/2 -translate-y-1/2 text-white hover:text-[#ff5722] p-2"
-              aria-label="Next photo"
+              aria-label="Next"
             >
               <ChevronRight size={40} />
             </button>
 
             <div
-              className="relative max-w-4xl max-h-[85vh] w-full h-[70vh]"
+              className="relative max-w-4xl max-h-[85vh] w-full h-[70vh] flex items-center justify-center"
               onClick={(e) => e.stopPropagation()}
             >
-              <Image
+              <img
                 src={GALLERY_PHOTOS[lightboxIndex].src}
                 alt={GALLERY_PHOTOS[lightboxIndex].label}
-                fill
-                className="object-contain"
+                className="max-w-full max-h-full object-contain"
               />
-              <p className="absolute bottom-2 left-0 right-0 text-center font-mono text-sm text-neutral-300 bg-black/70 py-2">
+              <p className="absolute bottom-2 left-0 right-0 text-center font-mono text-sm text-neutral-300 bg-black/80 py-2">
                 {GALLERY_PHOTOS[lightboxIndex].label} ({lightboxIndex + 1} / {GALLERY_PHOTOS.length})
               </p>
             </div>

@@ -10,17 +10,17 @@ export default function ParkingInfo() {
         {/* Left: Text Info */}
         <div className="flex-1">
            <p className="text-[#ff5722] font-mono text-xs tracking-[0.3em] uppercase mb-2 font-bold">
-              Hassle-Free Arrival
+              Easy Parking
            </p>
            <h2 className="text-4xl md:text-5xl font-[family-name:var(--font-blackops)] text-white mb-6">
               FREE &amp; SAFE <span className="text-[#ff5722]">PARKING</span>
            </h2>
            <p className="text-neutral-400 font-sans mb-6 leading-relaxed text-sm md:text-base">
-              Parking near restaurants in Seeduwa and along the main airport road can often be difficult. At RoadHouse, you do not have to worry. We have our own private, secure parking lot with plenty of room for all our guests.
+              Parking near Colombo Airport and along the main Negombo road can be difficult. At RoadHouse, you do not have to worry. We have our own private, secure parking lot with plenty of room right outside.
            </p>
            
            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              <div className="flex items-center gap-4 bg-neutral-900/60 border border-white/5 p-4 rounded-xl">
+              <div className="flex items-center gap-4 bg-neutral-900/80 border border-white/5 p-4 rounded-xl">
                  <div className="p-3 bg-[#ff5722]/10 text-[#ff5722] rounded-lg">
                     <Car size={24} />
                  </div>
@@ -30,7 +30,7 @@ export default function ParkingInfo() {
                  </div>
               </div>
 
-              <div className="flex items-center gap-4 bg-neutral-900/60 border border-white/5 p-4 rounded-xl">
+              <div className="flex items-center gap-4 bg-neutral-900/80 border border-white/5 p-4 rounded-xl">
                  <div className="p-3 bg-[#ff5722]/10 text-[#ff5722] rounded-lg">
                     <ShieldCheck size={24} />
                  </div>
@@ -48,6 +48,7 @@ export default function ParkingInfo() {
               src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=800&auto=format&fit=crop" 
               alt="RoadHouse Parking Area" 
               className="w-full h-full object-cover opacity-75"
+              loading="lazy"
            />
            <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent flex items-end p-6">
               <span className="font-mono text-xs uppercase tracking-widest text-[#ff5722] bg-black/80 px-3 py-1.5 rounded-lg border border-white/10">

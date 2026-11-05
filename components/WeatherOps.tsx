@@ -1,7 +1,6 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { motion } from "framer-motion";
 import { CloudRain, Sun, Moon, CloudFog } from "lucide-react";
 
 export default function WeatherOps() {
@@ -20,7 +19,6 @@ export default function WeatherOps() {
         const data = await res.json();
         setWeather(data);
       } catch (error) {
-        // Fallback default
         setWeather({ main: { temp: 28 }, weather: [{ main: "Clear", icon: "01d" }] });
       } finally {
         setLoading(false);
@@ -41,50 +39,37 @@ export default function WeatherOps() {
   const isHot = temp > 29;
 
   const getComment = () => {
-    if (isRaining) return "Rainy weather — Warm soups & hot coffee ready!";
-    if (isHot) return `Warm outside (${temp}°C) — Try an iced passion mojito!`;
-    if (isNight) return "Evening chill — Grills & cold drinks live!";
-    return "Great weather for delicious food & cold drinks!";
+    if (isRaining) return "Warm soups & hot coffee ready!";
+    if (isHot) return "Try a cold iced passion mojito!";
+    if (isNight) return "Grills & cold drinks live tonight!";
+    return "Great weather for delicious food!";
   };
 
   return (
-    <>
-      {/* Night Atmosphere */}
-      {isNight && (
-        <div className="fixed inset-0 bg-orange-950/10 mix-blend-multiply pointer-events-none z-[5]" />
-      )}
+    <div className="fixed top-28 right-6 z-40 hidden md:flex items-center gap-3 pointer-events-none">
+      <div className="bg-black/90 border border-white/10 p-3 rounded-xl flex items-center gap-3.5 shadow-xl pointer-events-auto">
+         <div className="text-[#ff5722]">
+            {isRaining ? <CloudRain size={20} /> : 
+             isNight ? <Moon size={20} /> : 
+             isHot ? <Sun size={20} /> : 
+             <CloudFog size={20} />}
+         </div>
 
-      {/* TOP RIGHT WIDGET */}
-      <motion.div 
-        initial={{ opacity: 0, y: -20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 0.8 }}
-        className="fixed top-28 right-6 z-40 hidden md:flex items-center gap-3"
-      >
-        <div className="bg-black/90 backdrop-blur-md border border-white/10 p-3 rounded-xl flex items-center gap-3.5 shadow-xl">
-           <div className="text-[#ff5722] animate-pulse">
-              {isRaining ? <CloudRain size={20} /> : 
-               isNight ? <Moon size={20} /> : 
-               isHot ? <Sun size={20} /> : 
-               <CloudFog size={20} />}
-           </div>
-
-           <div className="flex flex-col">
-              <div className="flex items-center gap-3">
-                 <span className="text-lg font-[family-name:var(--font-blackops)] text-white leading-none">
-                    {temp}°C
-                 </span>
-                 <span className="text-[9px] font-mono text-[#ff5722] uppercase tracking-wider font-bold">
-                    SEEDUWA LIVE
-                 </span>
-              </div>
-              
-              <p className="text-[10px] text-neutral-400 mt-0.5 max-w-[200px] leading-tight font-sans">
-                 {getComment()}
-              </p>
-           </div>
-        </div>
-      </motion.div>
-    </>
+         <div className="flex flex-col">
+            <div className="flex items-center gap-3">
+               <span className="text-lg font-[family-name:var(--font-blackops)] text-white leading-none">
+                  {temp}°C
+               </span>
+               <span className="text-[9px] font-mono text-[#ff5722] uppercase tracking-wider font-bold">
+                  SEEDUWA LIVE
+               </span>
+            </div>
+            
+            <p className="text-[10px] text-neutral-400 mt-0.5 max-w-[190px] leading-tight font-sans">
+               {getComment()}
+            </p>
+         </div>
+      </div>
+    </div>
   );
 }

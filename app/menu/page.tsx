@@ -6,8 +6,7 @@ import FloatingReserve from "@/components/FloatingReserve";
 import { getMasterData } from "@/lib/storage";
 import { MENU_ITEMS, MENU_CATEGORIES } from "@/lib/menuData";
 import { useCart } from "@/context/CartContext";
-import { Plus, Check, ShoppingBag, Search, Sparkles } from "lucide-react";
-import { motion } from "framer-motion";
+import { Plus, Check, Search } from "lucide-react";
 
 export default function MenuPage() {
   const [activeTab, setActiveTab] = useState("all");
@@ -16,7 +15,7 @@ export default function MenuPage() {
   const [searchQuery, setSearchQuery] = useState("");
   const [justAdded, setJustAdded] = useState<string | null>(null);
 
-  const { addToCart, tableNumber, totalCount, setIsCartOpen } = useCart();
+  const { addToCart, tableNumber } = useCart();
 
   useEffect(() => {
     async function loadMenu() {
@@ -61,13 +60,9 @@ export default function MenuPage() {
 
       <div className="pt-32 pb-16 px-6 max-w-7xl mx-auto">
 
-        {/* TABLE QR BANNER (Shows if customer scanned QR at table) */}
+        {/* TABLE QR BANNER */}
         {tableNumber && tableNumber !== "Takeaway / Delivery" && (
-          <motion.div
-            initial={{ opacity: 0, y: -10 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="mb-8 p-4 rounded-xl bg-[#ff5722]/10 border border-[#ff5722]/40 flex items-center justify-between"
-          >
+          <div className="mb-8 p-4 rounded-xl bg-[#ff5722]/10 border border-[#ff5722]/40 flex items-center justify-between">
             <div className="flex items-center gap-3">
               <span className="w-3 h-3 rounded-full bg-[#ff5722] animate-ping" />
               <div>
@@ -82,12 +77,12 @@ export default function MenuPage() {
             <span className="text-xs font-mono uppercase tracking-widest bg-[#ff5722] text-black px-3 py-1 font-black rounded">
               Dine In
             </span>
-          </motion.div>
+          </div>
         )}
 
         {/* HEADER */}
         <div className="text-center mb-10">
-          <p className="text-[#ff5722] font-mono text-xs tracking-[0.3em] uppercase mb-2">
+          <p className="text-[#ff5722] font-mono text-xs tracking-[0.3em] uppercase mb-2 font-bold">
             Fresh &amp; Made to Order
           </p>
           <h1 className="text-5xl md:text-7xl font-[family-name:var(--font-blackops)] text-white">
@@ -137,7 +132,7 @@ export default function MenuPage() {
           ))}
         </div>
 
-        {/* DISHES GRID */}
+        {/* DISHES GRID (Pure CSS hardware accelerated, zero scroll jank) */}
         {filteredItems.length === 0 ? (
           <div className="text-center py-20 text-neutral-500">
             <p className="text-xl font-[family-name:var(--font-bebas)]">No dishes found</p>
@@ -145,25 +140,22 @@ export default function MenuPage() {
           </div>
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {filteredItems.map((item: any, i: number) => {
+            {filteredItems.map((item: any) => {
               const isAdded = justAdded === (item.id || item.name);
               return (
-                <motion.div
-                  key={item.id || i}
-                  initial={{ opacity: 0, y: 15 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: (i % 6) * 0.05 }}
-                  className="bg-neutral-900/60 border border-white/10 rounded-2xl overflow-hidden hover:border-[#ff5722] transition-all duration-300 flex flex-col group hover:-translate-y-1 shadow-lg"
+                <div
+                  key={item.id}
+                  className="bg-neutral-900/80 border border-white/10 rounded-2xl overflow-hidden hover:border-[#ff5722] transition-colors flex flex-col group shadow-lg"
                 >
                   {/* Dish Image */}
                   <div className="h-48 overflow-hidden relative bg-black">
                     <img
                       src={item.image || "/images/real/real-patio-ambience.png"}
                       alt={item.name}
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                      loading="lazy"
                     />
-                    <div className="absolute top-3 right-3 bg-black/80 backdrop-blur px-3 py-1 rounded-full border border-white/10">
+                    <div className="absolute top-3 right-3 bg-black/90 backdrop-blur px-3 py-1 rounded-full border border-white/10">
                       <span className="font-mono text-sm font-bold text-[#ff5722]">
                         Rs. {item.price.toLocaleString()}
                       </span>
@@ -201,7 +193,7 @@ export default function MenuPage() {
                       </button>
                     </div>
                   </div>
-                </motion.div>
+                </div>
               );
             })}
           </div>

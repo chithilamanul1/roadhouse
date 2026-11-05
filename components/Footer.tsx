@@ -1,14 +1,13 @@
 "use client";
 
 import Link from "next/link";
-import { Instagram, MapPin, Phone, Mail, Navigation, Heart } from "lucide-react";
+import { Instagram, MapPin, Phone, Mail } from "lucide-react";
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="bg-[#030303] border-t border-white/10 pt-20 pb-12 relative overflow-hidden">
-      
+    <footer className="bg-black border-t border-white/10 pt-20 pb-12 relative overflow-hidden text-neutral-400">
       <div className="max-w-7xl mx-auto px-6 relative z-10">
         
         <div className="grid grid-cols-1 md:grid-cols-12 gap-12 mb-16">
@@ -24,11 +23,11 @@ export default function Footer() {
               </span>
             </Link>
             
-            <p className="text-neutral-400 font-sans text-sm leading-relaxed max-w-sm">
-              Your favourite restaurant and bar in Seeduwa. Delicious BBQ, devilled kottu, fried rice, burgers, fresh juices, and chilled drinks. Just 10 minutes from Katunayake Airport.
+            <p className="font-sans text-sm leading-relaxed max-w-sm text-neutral-400">
+              Seeduwa&apos;s favourite restaurant &amp; grill house. Delicious charcoal BBQ, spicy devilled kottu, fried rice, burgers, and cold drinks. Just 10 minutes from Katunayake Airport.
             </p>
             
-            {/* Socials & Profile */}
+            {/* Socials & WhatsApp */}
             <div className="flex gap-3 pt-2">
               <a 
                 href="https://www.instagram.com/roadhouse.cafe.restro" 
@@ -64,23 +63,23 @@ export default function Footer() {
 
           {/* COLUMN 2: QUICK LINKS (Span 3) */}
           <div className="md:col-span-3 space-y-4">
-            <p className="font-mono text-xs uppercase tracking-widest text-[#ff5722] font-bold">
+            <h4 className="font-mono text-xs uppercase tracking-widest text-[#ff5722] font-bold">
               EXPLORE
-            </p>
-            <ul className="space-y-2.5 font-[family-name:var(--font-bebas)] text-lg tracking-wider text-neutral-400">
+            </h4>
+            <ul className="space-y-2.5 font-[family-name:var(--font-bebas)] text-lg tracking-wider text-neutral-300">
               <li>
                 <Link href="/menu" className="hover:text-[#ff5722] transition-colors">
-                  OUR MENU &amp; ONLINE ORDERING
+                  OUR MENU &amp; ORDER
                 </Link>
               </li>
               <li>
                 <Link href="/about" className="hover:text-[#ff5722] transition-colors">
-                  THE ROADHOUSE STORY
+                  ABOUT ROADHOUSE
                 </Link>
               </li>
               <li>
                 <Link href="/#gallery" className="hover:text-[#ff5722] transition-colors">
-                  PHOTO GALLERY
+                  RESTAURANT PHOTOS
                 </Link>
               </li>
               <li>
@@ -94,8 +93,8 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
-                <Link href="/admin" className="hover:text-[#ff5722] transition-colors text-neutral-600 hover:text-neutral-300 text-sm font-mono uppercase">
-                  Management Login
+                <Link href="/admin" className="hover:text-[#ff5722] transition-colors text-neutral-600 hover:text-neutral-400 text-xs font-mono uppercase">
+                  Admin Login
                 </Link>
               </li>
             </ul>
@@ -103,18 +102,18 @@ export default function Footer() {
 
           {/* COLUMN 3: CONTACT & HOURS (Span 4) */}
           <div className="md:col-span-4 space-y-4">
-            <p className="font-mono text-xs uppercase tracking-widest text-[#ff5722] font-bold">
+            <h4 className="font-mono text-xs uppercase tracking-widest text-[#ff5722] font-bold">
               CONTACT &amp; VISIT
-            </p>
+            </h4>
             <div className="space-y-3 text-sm font-sans text-neutral-300">
               <div className="flex items-start gap-3">
                 <MapPin size={18} className="text-[#ff5722] shrink-0 mt-0.5" />
-                <span>24 Kotugoda Rd, Seeduwa, Sri Lanka<br />(10 mins from Katunayake Airport)</span>
+                <span>24 Kotugoda Rd, Seeduwa, Sri Lanka<br />(10 mins from Airport)</span>
               </div>
               <div className="flex items-center gap-3">
                 <Phone size={18} className="text-[#ff5722] shrink-0" />
                 <a href="tel:+94777702044" className="hover:text-[#ff5722] transition-colors font-mono font-bold">
-                  077 770 2044 / +94 77 770 2044
+                  077 770 2044
                 </a>
               </div>
               <div className="flex items-center gap-3">
@@ -137,10 +136,10 @@ export default function Footer() {
         </div>
 
         {/* BOTTOM COPYRIGHT */}
-        <div className="pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-4 text-xs font-mono text-neutral-500">
+        <div className="pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-4 text-xs font-mono text-neutral-500">
           <p>© {currentYear} RoadHouse Café &amp; Restro. All rights reserved.</p>
           <div className="flex gap-6">
-            <Link href="/privacy" className="hover:text-[#ff5722] transition-colors">Privacy &amp; Terms</Link>
+            <Link href="/privacy" className="hover:text-[#ff5722] transition-colors">Privacy</Link>
             <Link href="/faq" className="hover:text-[#ff5722] transition-colors">FAQ</Link>
             <Link href="/contact" className="hover:text-[#ff5722] transition-colors">Contact</Link>
           </div>

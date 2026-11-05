@@ -1,13 +1,13 @@
 "use client";
 
-import { ReactLenis } from "@studio-freight/react-lenis";
-import AmbientBackground from "@/components/AmbientBackground";
+import React from "react";
 
+// Optimized wrapper: Uses pure native hardware-accelerated smooth scrolling
+// Eliminates heavy Lenis RAF loop and scroll-jacking for buttery 120 FPS performance
 export default function SmoothScrollWrapper({ children }: { children: React.ReactNode }) {
   return (
-    <ReactLenis root>
-      <AmbientBackground />
+    <div className="relative w-full min-h-screen bg-[#050505]">
       {children}
-    </ReactLenis>
+    </div>
   );
 }
