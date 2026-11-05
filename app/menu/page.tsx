@@ -127,7 +127,7 @@ export default function MenuPage() {
                   : "bg-neutral-900 text-neutral-400 border-white/10 hover:border-[#ff5722]/50 hover:text-white"
               }`}
             >
-              {cat.name}
+              {cat.label || (cat as any).name}
             </button>
           ))}
         </div>

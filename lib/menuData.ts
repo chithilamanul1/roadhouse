@@ -1,11 +1,11 @@
 export const MENU_CATEGORIES = [
-  { id: "starters", label: "Starters & Short Eats" },
-  { id: "subs_burgers", label: "Subs & Burgers" },
-  { id: "mains", label: "BBQ & Grill" },
-  { id: "rice_kottu", label: "Rice & Kottu" },
-  { id: "portions", label: "Meat Portions" },
-  { id: "drinks", label: "Juice Bar" },
-  { id: "dessert", label: "Desserts" },
+  { id: "starters", label: "Starters & Short Eats", name: "Starters & Short Eats" },
+  { id: "subs_burgers", label: "Subs & Burgers", name: "Subs & Burgers" },
+  { id: "mains", label: "BBQ & Grill", name: "BBQ & Grill" },
+  { id: "rice_kottu", label: "Rice & Kottu", name: "Rice & Kottu" },
+  { id: "portions", label: "Meat Portions", name: "Meat Portions" },
+  { id: "drinks", label: "Juice Bar", name: "Juice Bar" },
+  { id: "dessert", label: "Desserts", name: "Desserts" },
 ];
 
 export const MENU_ITEMS = [

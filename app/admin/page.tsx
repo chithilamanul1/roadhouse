@@ -473,7 +473,7 @@ export default function AdminPage() {
                         : "bg-white/5 text-neutral-400 hover:text-white"
                     }`}
                   >
-                    {cat.name}
+                    {cat.label || (cat as any).name}
                   </button>
                 ))}
               </div>
@@ -550,7 +550,7 @@ export default function AdminPage() {
                           >
                             {MENU_CATEGORIES.map((cat) => (
                               <option key={cat.id} value={cat.id}>
-                                {cat.name}
+                                {cat.label || (cat as any).name}
                               </option>
                             ))}
                           </select>
